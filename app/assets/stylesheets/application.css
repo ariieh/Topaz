@@ -1,0 +1,60 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+html, body, header, main, footer, nav, h1, a, ul, li, section, p, small {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+}
+
+nav {
+	background: black;
+  list-style: none;
+}
+
+nav > .logo{
+	float: left;
+	padding: 10px;
+	color: white;
+	font-family: ‘Lucida Sans Unicode’, ‘Lucida Grande’, sans-serif;
+	font-size: 25px;
+}
+
+nav > ul{
+	text-align: right;
+}
+
+nav > ul > li{
+	display: inline-block;
+	padding: 15px;
+	color: white;
+}
+
+.twitter_logo{
+  background:url(/images/Twitter_logo_white.png) no-repeat;
+  width: 23px; 
+  height: 18px;
+  display: inline-block;
+}
+
+.facebook_logo{
+  background:url(/images/FB-f-Logo__white_29.png) no-repeat;
+	background-size: 18px 18px;
+	width: 18px;
+	height: 18px;
+  display: inline-block;
+}
