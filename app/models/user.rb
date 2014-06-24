@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   
   has_many :articles, class_name: "Article", foreign_key: :author_id, inverse_of: :author
   has_many :comments, class_name: "Comment", foreign_key: :author_id, inverse_of: :author
+  has_many :votes, inverse_of: :user
   
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)

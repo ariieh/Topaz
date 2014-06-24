@@ -6,6 +6,7 @@ class Article < ActiveRecord::Base
   has_many :comments, class_name: "Comment", foreign_key: :article_id, inverse_of: :article, dependent: :destroy
   has_many :taggings, inverse_of: :article, dependent: :destroy
   has_many :tags, through: :taggings, dependent: :destroy
+  has_many :votes, inverse_of: :article
   
   def taglist=(tagstring)
     tags_to_add = tagstring.split(" ").uniq
@@ -16,5 +17,9 @@ class Article < ActiveRecord::Base
   
   def taglist
     self.tags.map{ |tag| tag.name + " " }.join(" ")
+  end
+  
+  def votecount
+    self.votes.count
   end
 end

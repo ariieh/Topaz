@@ -6,20 +6,20 @@
   <br><br>
 <% end %>
 
-
 <% content_for :sidebar do %>
   <ul>
     <% @user.articles.order(:created_at).reverse.each do |article| %>
     	<li>
-      <a href="<%= article_url(article) %>"><%= article.title %></a>
-      <% if @user == current_user %>
-        <form action="<%= article_url(article) %>" method="post">
-          <%= auth_token %>
-          <%= hidden_method("delete") %>
-          <input type="submit" value="Delete">
-        </form>
-        <a href="<%= edit_article_url(article) %>">Edit</a><br>
-      <% end %>
+        <%= render "articles/snippet", article: article, view: "author",
+            el: @user.username %>        
+        <% if @user == current_user %>
+          <form action="<%= article_url(article) %>" method="post">
+            <%= auth_token %>
+            <%= hidden_method("delete") %>
+            <input type="submit" value="Delete">
+          </form>
+          <a href="<%= edit_article_url(article) %>">Edit</a><br>
+        <% end %>
       </li>
     <% end %>
   </ul>

@@ -1,7 +1,7 @@
 <% content_for :sidebar do %>
   <ul>
   <% @articles.each do |article| %>
-    <li><a href="<%= article_url(article) %>"><%= article.title %></a></li>
+    <%= render "articles/snippet", article: article, view: nil, el: nil %>
   <% end %>
   </ul>
 <% end %>

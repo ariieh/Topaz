@@ -1,0 +1,6 @@
+<a href="<%= article_url(article, view: view, el: el) %>">
+  <%= article.title %></a>
+<br>
+
+<%= time_ago_in_words(article.created_at) + " ago" %>
+<br>
