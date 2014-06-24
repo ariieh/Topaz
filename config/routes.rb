@@ -2,18 +2,20 @@ Rails.application.routes.draw do
 
   shallow do
     resources :users do
-      resources :articles do
-        resources :comments
-        resources :tags
-      end
+      resources :articles, only: [:index]
     end
+  end
+  
+  resources :articles, shallow: true do
+    resources :comments
+    resources :tags
   end
   
   resources :comments, only: [:create]
   resources :tags, only: [:create]
   resource :session
 
-  root "static_pages#home"
+  root "articles#index"
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

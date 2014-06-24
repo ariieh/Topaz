@@ -10,10 +10,18 @@
 </head>
 <body>
 
-<%= render "shared/navbar" %>
-<%= render "shared/flash" %>
-
-<%= yield %>
+  <%= render "shared/navbar" %>
+  <%= render "shared/tagbar" %>
+  
+  <section class="main">
+    <section class="sidebar">
+      <%= yield :sidebar %>
+    </section>
+    <section class="page">
+      <%= render "shared/flash" %>
+      <%= yield %>
+    </section>
+  </section>
 
 </body>
 </html>

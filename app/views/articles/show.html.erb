@@ -1,5 +1,35 @@
-<h1><%= @article.title %></h1>
-<h3><%= User.find(@article.author_id).username %></h3>
+<% content_for :sidebar do %>
+  <ul>
+  <% if !@view %>
+    <% Article.all.order(:created_at).reverse.each do |article| %>
+      <li>
+        <a href="<%= article_url(article) %>"><%= article.title %></a>
+      </li>
+    <% end %>
+  <% elsif @view == "tag" %>
+    <% @tag = Tag.find_by_name(@el) %>
+    <% @tag.articles.order(:created_at).reverse.each do |article| %>
+      <li>
+        <a href="<%= article_url(article, view: "tag", el: @tag.name) %>">
+          <%= article.title %>
+        </a>
+      </li>
+    <% end %>
+  <% elsif @view == "author" %>
+    <% @user = User.find_by_username(@el) %>
+    <% @user.articles.order(:created_at).reverse.each do |article| %>
+      <li>
+        <a href="<%= article_url(article, view: "author", el: @user.username) %>">
+          <%= article.title %>
+        </a>
+      </li>
+    <% end %>
+  <% end %>
+  </ul>
+<% end %>
+
+<h2><%= @article.title %></h2>
+<h3><a href="<%= user_url(@article.author_id) %>"><%= User.find(@article.author_id).username %></a></h3>
 <%= simple_format(h @article.body) %>
 
 <form action="<%= article_comments_url(@article) %>" method="post">
@@ -8,10 +38,10 @@
 	<input type="submit" value="Add Comment">
 </form>
 
-<% @article.comments.each do |comment| %>
+<% @article.comments.order(:created_at).reverse.each do |comment| %>
 	<%= comment.author.username + ": " + comment.text %><br>
 <% end %>
 
-<% @article.tags.each do |tag| %>
+<% @article.tags.order(:name).each do |tag| %>
 	<%= tag.name + " "%>
 <% end %>

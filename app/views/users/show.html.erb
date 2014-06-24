@@ -1,8 +1,26 @@
-<h3><%= @user.username %></h3>
-<h4><%= @user.email %></h4>
+<h2><%= @user.username %></h2>
+<h3><%= @user.email %></h3>
 
-<a href="<%= new_user_article_url(current_user) %>">New article</a>
-<br><br>
-<% @user.articles.each do |article| %>
-	<a href="<%= article_url(article) %>"><%= article.title %></a><br>
+<% if @user == current_user %>
+  <a href="<%= new_article_url %>">New article</a>
+  <br><br>
+<% end %>
+
+
+<% content_for :sidebar do %>
+  <ul>
+    <% @user.articles.order(:created_at).reverse.each do |article| %>
+    	<li>
+      <a href="<%= article_url(article) %>"><%= article.title %></a>
+      <% if @user == current_user %>
+        <form action="<%= article_url(article) %>" method="post">
+          <%= auth_token %>
+          <%= hidden_method("delete") %>
+          <input type="submit" value="Delete">
+        </form>
+        <a href="<%= edit_article_url(article) %>">Edit</a><br>
+      <% end %>
+      </li>
+    <% end %>
+  </ul>
 <% end %>

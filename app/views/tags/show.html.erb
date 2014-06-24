@@ -1,0 +1,5 @@
+<% content_for :sidebar do %>
+  <% @tag.articles.order(:created_at).reverse.each do |article| %>
+    <a href="<%= article_url(article, view: "tag", el: @tag.name) %>"><%= article.title %></a><br>
+  <% end %>
+<% end %>

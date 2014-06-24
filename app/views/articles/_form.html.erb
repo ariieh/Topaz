@@ -1,21 +1,31 @@
-<form action="<%= user_articles_url(current_user) %>" method="post">
+<% if action == "new" %>
+  <form action="<%= articles_url(current_user) %>" method="post">
+<% else %>
+  <form action="<%= article_url(@article) %>" method="post">
+	<%= hidden_method("put") %>  
+<% end %>
+
 	<%= auth_token %>  
 
 	<label>
 		Title<br>
-		<input type="text" name="article[title]">
+		<input type="text" name="article[title]" value="<%= @article.title %>">
 	</label>
 
 	<br>
 
 	<label>
 		Body<br>
-		<textarea name="article[body]" cols="100" rows="20"> </textarea>
+		<textarea name="article[body]" cols="100" rows="20"><%= @article.body %></textarea>
 	</label>
 
 	<br><br>
 
-  <input type="text" name="article[taglist]" placeholder="Add some tags">
+  <input type="text" name="article[taglist]" placeholder="Add some tags" value="<%= @article.taglist %>">
 
+<% if action == "new" %>
   <input type="submit" value="Create Article">
+<% else %>
+  <input type="submit" value="Update Article">
+<% end %>
 </form>

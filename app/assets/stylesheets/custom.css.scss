@@ -1,4 +1,4 @@
-html, body, header, main, footer, nav, h1, a, ul, li, section, p, small {
+html, body, header, main, footer, nav, a, ul, li, section, p, small {
   margin: 0;
   padding: 0;
   border: 0;
@@ -30,11 +30,15 @@ nav button{
 }
 
 nav > .logo{
-	float: left;
-	padding: 10px;
+}
+
+nav > .logo > a{
+  text-decoration: none;
 	color: white;
 	font-family: ‘Lucida Sans Unicode’, ‘Lucida Grande’, sans-serif;
 	font-size: 25px;
+	padding: 10px;
+	float: left;
 }
 
 nav > .welcome{
@@ -74,6 +78,7 @@ nav > ul > li{
 	width: 120px;
 	list-style: none;
 	background-color: black;
+  z-index: 9999;
 }
 
 .menu-bar > li{
@@ -118,6 +123,44 @@ nav > ul > li{
 
   left: 83%;
   margin-left: -10px;
+}
+
+/* tagbar */
+.tagbar{
+  background: rgb(57,57,57);
+  position: absolute;
+  top: 49px;
+  bottom: 0px;
+  width: 100%;
+}
+
+/* sidebar & main */
+.main{
+  background: white;
+  position: absolute;
+  top: 135px;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.sidebar{
+  background: rgb(248,248,248);
+  position: absolute;
+  top: 0;
+  width: 250px;
+  height: 100%;
+  overflow: auto;
+}
+
+.page{
+  background: white;
+  position: absolute;
+  top: 0;
+  left: 250px;
+  right: 0;
+  height: 100%;
+  overflow: auto;
 }
 
 /* input */

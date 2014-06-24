@@ -25,7 +25,7 @@ $(document).ready(function(){
 	  $(".menu-bar").fadeToggle("fast");
 	});
 	
-	$('.fa-search, .fa-twitter, .fa-facebook, .fa-tasks, .logo').hover(
+	$('.fa-search, .fa-twitter, .fa-facebook, .fa-tasks, .logo a').hover(
 	    function() {
 	        $(this).animate({'color': selectColor}, 'fast');
 	    }, 
