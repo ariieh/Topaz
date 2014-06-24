@@ -41,13 +41,15 @@
 	<%= tag.name + " "%>
 <% end %>
 
-<form action="<%= article_votes_url(@article) %>" method="post">
-  <%= auth_token %>
+<% if signed_in? %>
+  <form action="<%= article_votes_url(@article) %>" method="post">
+    <%= auth_token %>
 
-  <% if current_user.votes &&
-     current_user.votes.map(&:article_id).include?(@article.id) %>
-    <input type="submit" value="Favorite" disabled>
-  <% else %>
-    <input type="submit" value="Favorite">
-  <% end %>
-</form>
+    <% if current_user.votes &&
+       current_user.votes.map(&:article_id).include?(@article.id) %>
+      <input type="submit" value="Favorite" disabled>
+    <% else %>
+      <input type="submit" value="Favorite">
+    <% end %>
+  </form>
+<% end %>
