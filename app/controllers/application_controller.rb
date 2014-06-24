@@ -21,4 +21,8 @@ class ApplicationController < ActionController::Base
   def signed_in?
     current_user.present?
   end
+  
+  def check_if_signed_in
+    redirect_to new_session_url unless signed_in?
+  end
 end

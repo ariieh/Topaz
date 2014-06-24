@@ -9,5 +9,5 @@
 </form>
 
 <% @article.comments.each do |comment| %>
-	<%= comment.textÍ %>
+	<%= comment.author.username + ": " + comment.text %><br>
 <% end %>

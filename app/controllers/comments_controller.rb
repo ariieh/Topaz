@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
+  before_action :check_if_signed_in, only: [:create]
+  
   def create
-    fail
     @article = Article.find(params[:article_id])
     @comment = @article.comments.new(comment_params)
     @comment.author_id = current_user.id
@@ -8,8 +9,8 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to @article
     else
-      flash.now[:errors] = @comment.errors.full_messages
-      render :new
+      flash[:errors] = @comment.errors.full_messages
+      redirect_to @article
     end
   end
   
