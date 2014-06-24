@@ -4,11 +4,13 @@ Rails.application.routes.draw do
     resources :users do
       resources :articles do
         resources :comments
+        resources :tags
       end
     end
   end
   
-  resources :comments
+  resources :comments, only: [:create]
+  resources :tags, only: [:create]
   resource :session
 
   root "static_pages#home"

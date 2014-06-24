@@ -11,3 +11,7 @@
 <% @article.comments.each do |comment| %>
 	<%= comment.author.username + ": " + comment.text %><br>
 <% end %>
+
+<% @article.tags.each do |tag| %>
+	<%= tag.name + " "%>
+<% end %>
