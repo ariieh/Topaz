@@ -1,0 +1,7 @@
+<h3><%= @user.username %></h3>
+
+<% @user.articles.each do |article| %>
+	<a href="<%= article_url(article) %>"><%= article.title %></a>
+<% end %>
+
+<a href="<%= new_user_article_url(current_user) %>">New article</a>

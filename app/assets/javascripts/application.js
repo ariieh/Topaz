@@ -11,6 +11,28 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
+//= require jquery.color-2.1.2.min
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function(){
+
+	var selectColor = "#e74c3c";
+	
+	$(".fa-tasks").click(function() {
+	  $(".menu-bar").fadeToggle("fast");
+	});
+	
+	$('.fa-search, .fa-twitter, .fa-facebook, .fa-tasks, .logo').hover(
+	    function() {
+	        $(this).animate({'color': selectColor}, 'fast');
+	    }, 
+	    function() {
+	        $(this).animate({'color': "white"}, 'fast');
+	    }
+	);
+	
+	
+});

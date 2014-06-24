@@ -1,0 +1,126 @@
+html, body, header, main, footer, nav, h1, a, ul, li, section, p, small {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+}
+
+$select-color: #e74c3c;
+
+/* navbar */
+
+nav {
+	background: black;
+  list-style: none;
+}
+
+nav button{
+	background:transparent;
+  border:none; 
+  border: 0;
+	padding: 10px;
+	margin: 0;
+	width: 100%;
+	text-align: left;
+	font-family: sans-serif;
+	font-size: 13px;
+	color: white;
+	display: block;
+	cursor: pointer;
+}
+
+nav > .logo{
+	float: left;
+	padding: 10px;
+	color: white;
+	font-family: ‘Lucida Sans Unicode’, ‘Lucida Grande’, sans-serif;
+	font-size: 25px;
+}
+
+nav > .welcome{
+	float: left;
+	padding: 15px;
+	color: white;
+	font-family: ‘Lucida Sans Unicode’, ‘Lucida Grande’, sans-serif;
+	font-size: 15px;
+}
+
+nav > ul{
+	text-align: right;
+	list-style: none;
+	float: right;
+}
+
+nav > ul > li{
+	position: relative;
+	float: left;
+	padding: 15px;
+	color: white;
+	cursor: pointer;
+}
+
+.group:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.menu-bar{
+	display: none;
+	position: absolute;
+	right: 0px;
+	top: 49px;
+	border: 5px solid rgb(140,140,140);
+	width: 120px;
+	list-style: none;
+	background-color: black;
+}
+
+.menu-bar > li{
+}
+
+.menu-bar > li:hover{
+	background-color: $select-color;
+}
+
+.menu-bar a{
+	font-family: sans-serif;
+	font-size: 13px;
+	color: white;
+	border-top: 1px solid rgb(140,140,140);
+	display: block;
+	text-align: left;
+	text-decoration: none;
+	padding: 10px;
+	cursor: pointer;
+}
+
+.menu-bar > li:first-child{
+	border-top: 0;
+}
+
+.menu-bar:after {
+  content: "";
+  display: block;
+
+  width: 0;
+  height: 0;
+  background: transparent;
+
+  border-bottom: 10px solid rgb(140,140,140);
+  border-top: 0 solid rgb(140,140,140);
+
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+
+  position: absolute;
+  top: -15px;
+
+  left: 83%;
+  margin-left: -10px;
+}
+
+/* input */
+textarea{
+	resize: none;
+}

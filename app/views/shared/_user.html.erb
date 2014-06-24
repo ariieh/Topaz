@@ -1,0 +1,37 @@
+<% if action == "sign_up" %>
+	<form action="<%= users_url %>" method="post">
+<% else %>
+	<form action="<%= session_url %>" method="post">
+<% end %>
+
+<%= auth_token %>  
+
+<label>
+	Username<br>
+	<input type="text" name="user[username]">
+</label>
+
+<br>
+
+<% if action == "sign_up" %>
+	<label>
+		Email<br>
+		<input type="text" name="user[email]">
+	</label>
+
+	<br>
+<% end %>
+
+<label>
+	Password<br>
+	<input type="password" name="user[password]">
+</label>
+
+<br><br>
+
+<% if action == "sign_up" %>
+  <input type="submit" value="Sign Up">
+<% else %>
+  <input type="submit" value="Sign In">
+<% end %>  
+</form>

@@ -1,0 +1,13 @@
+<h1><%= @article.title %></h1>
+<h3><%= User.find(@article.author_id).username %></h3>
+<%= simple_format(h @article.body) %>
+
+<form action="<%= article_comments_url(@article) %>" method="post">
+	<%= auth_token %>
+	<input type="text" name="comment[text]">
+	<input type="submit" value="Add Comment">
+</form>
+
+<% @article.comments.each do |comment| %>
+	<%= comment.textÍ %>
+<% end %>

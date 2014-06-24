@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+
+  shallow do
+    resources :users do
+      resources :articles do
+        resources :comments
+      end
+    end
+  end
+  
+  resources :comments
+  resource :session
+
   root "static_pages#home"
   
   # The priority is based upon order of creation: first created -> highest priority.

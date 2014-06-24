@@ -1,0 +1,19 @@
+<form action="<%= user_articles_url(current_user) %>" method="post">
+	<%= auth_token %>  
+
+	<label>
+		Title<br>
+		<input type="text" name="article[title]">
+	</label>
+
+	<br>
+
+	<label>
+		Body<br>
+		<textarea name="article[body]" cols="100" rows="20"> </textarea>
+	</label>
+
+	<br><br>
+
+  <input type="submit" value="Create Article">
+</form>
