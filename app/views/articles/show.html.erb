@@ -41,3 +41,7 @@
 	<%= tag.name + " "%>
 <% end %>
 
+<form action="<%= article_votes(@article) %>" method="post">
+  <% auth_token %>
+  <input type="submit" value="Favorite">
+</form>

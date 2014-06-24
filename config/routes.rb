@@ -9,8 +9,10 @@ Rails.application.routes.draw do
   resources :articles, shallow: true do
     resources :comments
     resources :tags
+    resources :votes
   end
   
+  resources :votes, only: [:create]
   resources :comments, only: [:create]
   resources :tags, only: [:create]
   resource :session

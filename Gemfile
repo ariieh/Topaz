@@ -27,10 +27,11 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 group :development do
-  gem 'bcrypt'
   gem 'better_errors'
   gem 'binding_of_caller'
 end
+
+gem 'bcrypt'
 
 gem 'jquery-turbolinks'
 
