@@ -41,7 +41,8 @@
 	<%= tag.name + " "%>
 <% end %>
 
-<form action="<%= article_votes(@article) %>" method="post">
-  <% auth_token %>
+<form action="<%= article_votes_url(@article) %>" method="post">
+  <%= auth_token %>
+  <%# if @user.votes.map(&:article_id).include?() %>
   <input type="submit" value="Favorite">
 </form>
