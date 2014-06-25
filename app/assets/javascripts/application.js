@@ -24,8 +24,12 @@ $(document).ready(function(){
 	$(".fa-tasks").click(function() {
 	  $(".menu-bar").fadeToggle("fast");
 	});
+  
+	$(".fa-flag").click(function() {
+	  $(".notifications").fadeToggle("fast");
+	});
 	
-	$('.fa-search, .fa-twitter, .fa-facebook, .fa-tasks, .logo a').hover(
+	$('.fa, .logo a').hover(
 	    function() {
 	        $(this).animate({'color': selectColor}, 'fast');
 	    }, 
