@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  get "static_pages/empty"
-  get "static_pages/welcome"
+  get "favorites" => "static_pages#empty", as: :static_pages_empty
+  get "welcome" => "static_pages#welcome", as: :static_pages_welcome
+  get "about" => "static_pages#about", as: :static_pages_about
+  root "articles#index"
   
   shallow do
     resources :users do
@@ -19,7 +21,6 @@ Rails.application.routes.draw do
   resources :tags, only: [:create]
   resource :session
 
-  root "articles#index"
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
