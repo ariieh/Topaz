@@ -8,9 +8,18 @@
         </a>
       </li>
   	  <li>
-        <a href="<%= signed_in? ? 
-          article_url(current_user.favorites.first, view: "favorite", el: nil) :
-          new_session_url %>">
+        <a href="<%= 
+          if signed_in?
+            if current_user.favorites.count > 0
+                article_url(current_user.favorites.first,
+                            view: "favorite", el: nil)
+              else
+                static_pages_empty_url
+              end
+          else
+            new_session_url
+          end
+          %>">
           Favorited
         </a>
       </li>

@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     
     if @user.save
+      @user.notifications.create(type: 1)
       sign_in @user
       redirect_to @user
     else

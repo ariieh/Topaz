@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-
+  get "static_pages/empty"
+  
   shallow do
     resources :users do
       resources :articles, only: [:index]

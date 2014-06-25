@@ -10,9 +10,9 @@
   		<li>
         <i class="fa fa-flag"></i>
         <ul class="notifications">
-          <li><a href="#">Someone upvoted your article.</a></li>
-          <li><a href="#">You got a comment on your article.</a></li>
-          <li><a href="#">Welcome to Topaz.</a></li>
+          <% current_user.notifications.each do |notification| %>
+            <li><a href="#"><%= notification.message %></a></li>
+          <% end %>
         </ul>
       </li>
   	<% end %>
