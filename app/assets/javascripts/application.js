@@ -14,6 +14,7 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery.color-2.1.2.min
+//= require jquery.ba-outside-events.min
 //= require turbolinks
 //= require_tree .
 
@@ -28,6 +29,14 @@ $(document).ready(function(){
 	$(".fa-flag").click(function() {
 	  $(".notifications").fadeToggle("fast");
 	});
+  
+  $(".fa-flag").bind("clickoutside", function(event){
+    $(".notifications").fadeOut("fast");
+  });
+  
+  $(".fa-tasks").bind("clickoutside", function(event){
+    $(".menu-bar").fadeOut("fast");
+  });
 	
 	$('.fa, .logo a').hover(
 	    function() {
