@@ -17,7 +17,8 @@
 <% end %>
 
 <% @article.tags.order(:name).each do |tag| %>
-	<%= tag.name + " "%>
+	<a href="<%= article_url(tag.articles.order(:created_at).reverse.first,
+                    view: "tag", el: tag.name) %>"><%= tag.name%></a>
 <% end %>
 
 <% if signed_in? %>
