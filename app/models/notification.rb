@@ -1,9 +1,9 @@
 class Notification < ActiveRecord::Base
-  validates :type, :read, :user_id, presence: true
+  validates :notification_type, :user_id, presence: true
   belongs_to :user
   
   def message
-    case self.type
+    case self.notification_type
     when 1
       return "Welcome to Topaz!"
     when 2

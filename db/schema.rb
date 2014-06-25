@@ -39,9 +39,9 @@ ActiveRecord::Schema.define(version: 20140625142440) do
   add_index "comments", ["author_id"], name: "index_comments_on_author_id", using: :btree
 
   create_table "notifications", force: true do |t|
-    t.integer  "type",                       null: false
-    t.boolean  "read",       default: false
-    t.integer  "user_id",                    null: false
+    t.integer  "notification_type",                 null: false
+    t.boolean  "read",              default: false
+    t.integer  "user_id",                           null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
