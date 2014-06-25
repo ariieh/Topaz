@@ -1,6 +1,0 @@
-<% content_for :sidebar do %>
-  <% @tag.articles.order(:created_at).reverse.each do |article| %>
-    <%= render "articles/snippet", article: article, view: "tag",
-        el: @tag.name %>
-  <% end %>
-<% end %>

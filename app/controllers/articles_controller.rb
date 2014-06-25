@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   before_action :check_if_signed_in, only: [:new, :create, :edit, :update, :destroy]
   
   def index
-    @articles = Article.order(:created_at).reverse
+    redirect_to article_url(Article.last)
   end
 
   def new

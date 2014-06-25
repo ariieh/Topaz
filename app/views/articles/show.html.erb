@@ -1,44 +1,5 @@
 <% content_for :sidebar do %>
-  <ul>
-  <% if !@view %>
-    <% Article.all.order(:created_at).reverse.each do |article| %>
-      <%= render "snippet", article: article, view: nil, el: nil %>
-    <% end %>
-  <% elsif @view == "tag" %>
-    <% @tag = Tag.find_by_name(@el) %>
-    <% @tag.articles.order(:created_at).reverse.each do |article| %>
-      <li>
-        <%= render "snippet", article: article, view: "tag", el: @tag.name %>
-      </li>
-    <% end %>
-  <% elsif @view == "author" %>
-    <% @user = User.find_by_username(@el) %>
-    <% @user.articles.order(:created_at).reverse.each do |article| %>
-      <li>
-        <%= render "snippet", article: article, view: "author",
-            el: @user.username %>
-      </li>
-    <% end %>
-  <% elsif @view == "popular" %>
-    <% Article.all.sort_by{ |article| article.votecount }.reverse.each do |article| %>
-      <li>
-        <%= render "snippet", article: article, view: "popular",
-            el: nil %>
-      </li>
-    <% end %>
-  <% elsif @view == "favorite" %>
-    <% if signed_in? %>
-        <% current_user.favorites.each do |article| %>
-          <li>
-            <%= render "snippet", article: article, view: "favorite",
-                el: nil %>
-          </li>
-        <% end %>
-    <% else %>
-      <% redirect_to new_session_url %>
-    <% end %>    
-  <% end %>
-  </ul>
+  <%= render "sidebar", view: @view, el: @el %>
 <% end %>
 
 <h2><%= @article.title %></h2>

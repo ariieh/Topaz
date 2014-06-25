@@ -1,8 +1,4 @@
 class VotesController < ApplicationController
-  def index
-    @articles = Article.all.sort_by{ |article| article.votecount }.reverse
-  end
-  
   def create
     @article = Article.find(params[:article_id])
     @vote = Vote.new(user_id: current_user.id, article_id: params[:article_id])
