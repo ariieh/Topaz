@@ -13,6 +13,7 @@ a{ text-decoration: none; }
 textarea{ resize: none; }
 
 $select-color: #e74c3c;
+$fly-blue: rgb(22,141,217);
 
 /* navbar */
 
@@ -115,7 +116,7 @@ nav .badge{
 }
 
 .notifications > ul > li.unread{
-  background: rgb(22,141,217);
+  background: $fly-blue;
 }
 
 .notifications a, .menu-bar a{
@@ -161,7 +162,6 @@ nav .badge{
   top: 49px;
   bottom: 0px;
   width: 100%;
-	color: $select-color;
 	font-family:  Arial, Helvetica, sans-serif;
 }
 
@@ -171,7 +171,11 @@ nav .badge{
 }
 
 .tagbar a:hover{
-	color: $select-color;
+	color: $fly-blue;
+}
+
+.tagbar ul{
+  float: left;
 }
 
 .tagbar li{
@@ -179,6 +183,38 @@ nav .badge{
 	padding: 10px;
 	float: left;
 	list-style: none;
+}
+
+.tagbar .filters{
+  margin-left: 120px;
+}
+
+.tagbar .filters li{
+  float: none;
+	padding: 5px;
+  margin: 0px;
+}
+
+.tagbar #filter-label{
+  position: absolute;
+  float: left;
+  padding: 33px;
+  height: 20px;
+	color: $fly-blue;
+  border-right: 2px solid rgb(133,133,133);
+}
+
+.tagbar #tags-label{
+  position: absolute;
+  float: left;
+  padding: 33px;
+  height: 20px;
+	color: $fly-blue;
+  border-right: 2px solid rgb(133,133,133);
+}
+
+.tagbar .tags{
+  margin-left: 106px;
 }
 
 /* main */
@@ -236,4 +272,8 @@ nav .badge{
   font-style: italic;
   font-size: 13px;
   color: rgb(178,178,178);
+}
+
+.fa-thumbs-o-up{
+  margin-left: 5px;
 }

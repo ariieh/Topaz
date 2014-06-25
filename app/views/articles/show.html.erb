@@ -29,6 +29,8 @@
 	<%= comment.author.username + ": " + comment.text %><br>
 <% end %>
 
+<br>
+<i class="fa fa-tags"></i>
 <% @article.tags.order(:name).each do |tag| %>
 	<a href="<%= article_url(tag.articles.order(:created_at).reverse.first,
                     view: "tag", el: tag.name) %>"><%= tag.name%></a>

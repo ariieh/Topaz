@@ -1,4 +1,5 @@
 <section class="tagbar">
+  <span id="filter-label">Filters</span>
 	<ul class="filters">
   	  <li>
         <a href="<%= 
@@ -28,6 +29,8 @@
       </li>
 	</ul>
 	
+  <span id="tags-label">Tags</span>
+  
 	<ul class="tags">
 	  <% Tag.all.each do |tag| %>
 	    <li>
