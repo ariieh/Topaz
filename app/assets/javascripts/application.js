@@ -22,11 +22,11 @@ $(document).ready(function(){
 
 	var selectColor = "#e74c3c";
 	
-	$(".fa-tasks").click(function() {
+	$("nav .fa-tasks").click(function() {
 	  $(".menu-bar").fadeToggle("fast");
 	});
   
-	$(".fa-flag").click(function() {
+	$("nav .fa-flag").click(function() {
 	  $(".notifications").fadeToggle("fast");
 	});
   
@@ -39,7 +39,7 @@ $(document).ready(function(){
   //   $(".menu-bar").fadeOut("fast");
   // });
 	
-	$('.fa, .logo a').hover(
+	$('nav .fa, .logo a').hover(
 	    function() {
 	        $(this).animate({'color': selectColor}, 'fast');
 	    }, 

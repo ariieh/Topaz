@@ -6,22 +6,13 @@
 <h3><a href="<%= user_url(@article.author_id) %>"><%= User.find(@article.author_id).username %></a></h3>
 <%= simple_format(h @article.body) %>
 
-<form action="<%= article_comments_url(@article) %>" method="post">
-	<%= auth_token %>
-	<input type="text" name="comment[text]">
-	<input type="submit" value="Add Comment">
-</form>
-
-<% @article.comments.order(:created_at).reverse.each do |comment| %>
-	<%= comment.author.username + ": " + comment.text %><br>
-<% end %>
-
-<% @article.tags.order(:name).each do |tag| %>
-	<a href="<%= article_url(tag.articles.order(:created_at).reverse.first,
-                    view: "tag", el: tag.name) %>"><%= tag.name%></a>
-<% end %>
-
 <% if signed_in? %>
+  <form action="<%= article_comments_url(@article) %>" method="post">
+  	<%= auth_token %>
+  	<input type="text" name="comment[text]">
+  	<input type="submit" value="Add Comment">
+  </form>
+
   <form action="<%= article_votes_url(@article) %>" method="post">
     <%= auth_token %>
 
@@ -32,4 +23,13 @@
       <input type="submit" value="Favorite">
     <% end %>
   </form>
+<% end %>
+
+<% @article.comments.order(:created_at).reverse.each do |comment| %>
+	<%= comment.author.username + ": " + comment.text %><br>
+<% end %>
+
+<% @article.tags.order(:name).each do |tag| %>
+	<a href="<%= article_url(tag.articles.order(:created_at).reverse.first,
+                    view: "tag", el: tag.name) %>"><%= tag.name%></a>
 <% end %>

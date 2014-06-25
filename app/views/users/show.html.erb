@@ -9,10 +9,8 @@
 <% content_for :sidebar do %>
   <ul>
     <% @user.articles.order(:created_at).reverse.each do |article| %>
-    	<li>
         <%= render "articles/snippet", article: article, view: "author",
             el: @user.username %>        
-		</li>
     <% end %>
   </ul>
 <% end %>

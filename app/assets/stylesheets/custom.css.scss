@@ -5,6 +5,10 @@ html, body, header, main, footer, nav, a, ul, li, section, p, small {
   font: inherit;
 }
 
+p{
+  padding-bottom: 15px;
+}
+
 $select-color: #e74c3c;
 
 /* navbar */
@@ -177,7 +181,7 @@ nav .badge{
 	list-style: none;
 }
 
-/* sidebar & main */
+/* main */
 .main{
   background: white;
   position: absolute;
@@ -185,15 +189,6 @@ nav .badge{
   left: 0;
   bottom: 0;
   width: 100%;
-}
-
-.sidebar{
-  background: rgb(248,248,248);
-  position: absolute;
-  top: 0;
-  width: 250px;
-  height: 100%;
-  overflow: auto;
 }
 
 .page{
@@ -204,6 +199,45 @@ nav .badge{
   right: 0;
   height: 100%;
   overflow: auto;
+  font-family: sans-serif;
+}
+
+#content{
+  padding: 30px;
+}
+
+.page h2{
+  margin-top: 0;
+}
+
+/* sidebar */
+.sidebar{
+  background: rgb(248,248,248);
+  position: absolute;
+  top: 0;
+  width: 250px;
+  height: 100%;
+  overflow: auto;
+  font-family: sans-serif;
+}
+
+.sidebar > ul > li{
+  padding: 15px;
+  border-bottom: 1px solid rgb(229,229,229);
+}
+
+.sidebar > ul > li:hover{
+  background: rgb(252,252,252);
+}
+
+.sidebar > ul > li > a{
+  text-decoration: none;
+}
+
+.snippet-footer{
+  font-style: italic;
+  font-size: 13px;
+  color: rgb(178,178,178);
 }
 
 /* input */

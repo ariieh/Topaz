@@ -1,12 +1,16 @@
+<li>
 <a href="<%= article_url(article, view: view, el: el) %>">
   <%= article.title %></a>
-<% if view == "popular" %>
-	<%= article.votecount.to_s + " votes" %>
-<% end %>
 <br>
-
-<%= time_ago_in_words(article.created_at) + " ago" %>
-<br>
+<div class="snippet-footer">
+  <% if view == "popular" %>
+  	<%= article.votecount.to_s + " votes" %>
+  <% end %>
+  <br>
+  <i class="fa fa-clock-o"></i>
+  <%= " " + time_ago_in_words(article.created_at) + " ago" %>
+  <br>
+</div>
 
 <% if view == "author" && @user == current_user %>
   <form action="<%= article_url(article) %>" method="post">
@@ -16,3 +20,4 @@
   </form>
   <a href="<%= edit_article_url(article) %>">Edit</a><br>
 <% end %>
+</li>
