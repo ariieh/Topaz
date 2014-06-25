@@ -1,5 +1,14 @@
 <section class="tagbar">
-  <% Tag.all.each do |tag| %>
-    <a href=" <%= tag_url(tag) %> "><%= tag.name %></a>
-  <% end %>
+	<ul class="filters">
+	  <li>Filters</li>
+  	  <li><a href="<%= votes_url %>">Popular</a></li>
+  	  <li><a href="<%= signed_in? ? article_url(current_user.favorites.first, view: "favorite", el: nil) : new_session_url %>">Favorited</a></li>
+  	  <li><a href="/">Latest</a></li>
+	</ul>
+	
+	<ul class="tags">
+	  <% Tag.all.each do |tag| %>
+	    <li><a href=" <%= tag_url(tag) %> "><%= tag.name.capitalize %></a></li>
+	  <% end %>
+  	</ul>
 </section>

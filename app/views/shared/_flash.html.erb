@@ -1,17 +1,17 @@
 <% if !flash.empty? %>
-<div id="alerts">
-<% flash.each do |key, value| %>
-	<% value.each do |message| %>
-	<% 
-		next if message.include?("Password is too short") &&
-		value.include?("Password can't be blank")
-	%>
+	<div id="alerts">
+	<% flash.each do |key, value| %>
+		<% value.each do |message| %>
+		<% 
+			next if message.include?("Password is too short") &&
+			value.include?("Password can't be blank")
+		%>
 	
-    <li>
-      <%= message %>
-    </li>
+	    <li>
+	      <%= message %>
+	    </li>
 		
-    <% end %>
-<% end %>
-</div>
+	    <% end %>
+	<% end %>
+	</div>
 <% end %>

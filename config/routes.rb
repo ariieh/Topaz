@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :votes
   end
   
-  resources :votes, only: [:create]
+  resources :votes, only: [:index, :create]
   resources :comments, only: [:create]
   resources :tags, only: [:create]
   resource :session

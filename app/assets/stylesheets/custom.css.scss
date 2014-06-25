@@ -134,6 +134,22 @@ nav > ul > li{
   width: 100%;
 }
 
+.tagbar a{
+	text-decoration: none;
+	color: white;
+	font-family: sans-serif;
+}
+
+.tagbar a:hover{
+	color: $select-color;
+}
+
+.tagbar li{
+	padding: 10px;
+	float: left;
+	list-style: none;
+}
+
 /* sidebar & main */
 .main{
   background: white;

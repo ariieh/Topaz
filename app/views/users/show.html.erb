@@ -12,15 +12,7 @@
     	<li>
         <%= render "articles/snippet", article: article, view: "author",
             el: @user.username %>        
-        <% if @user == current_user %>
-          <form action="<%= article_url(article) %>" method="post">
-            <%= auth_token %>
-            <%= hidden_method("delete") %>
-            <input type="submit" value="Delete">
-          </form>
-          <a href="<%= edit_article_url(article) %>">Edit</a><br>
-        <% end %>
-      </li>
+		</li>
     <% end %>
   </ul>
 <% end %>

@@ -19,6 +19,24 @@
             el: @user.username %>
       </li>
     <% end %>
+  <% elsif @view == "popular" %>
+    <% Article.all.sort_by{ |article| article.votecount }.reverse.each do |article| %>
+      <li>
+        <%= render "snippet", article: article, view: "popular",
+            el: nil %>
+      </li>
+    <% end %>
+  <% elsif @view == "favorite" %>
+    <% if signed_in? %>
+        <% current_user.favorites.each do |article| %>
+          <li>
+            <%= render "snippet", article: article, view: "favorite",
+                el: nil %>
+          </li>
+        <% end %>
+    <% else %>
+      <% redirect_to new_session_url %>
+    <% end %>    
   <% end %>
   </ul>
 <% end %>
