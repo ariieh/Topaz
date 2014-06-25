@@ -3,10 +3,18 @@
 <% end %>
 
 <h2><%= @article.title %></h2>
-<h3><a href="<%= user_url(@article.author_id) %>"><%= User.find(@article.author_id).username %></a></h3>
+<h3>author: <a href="<%= user_url(@article.author_id) %>"><%= User.find(@article.author_id).username %></a></h3>
+<h5><%= @article.created_at %></h5>
 
 <div id="body-text">
-  <%= simple_format(h @article.body) %>
+  <% body_text = simple_format(h @article.body) %>
+  <% body_text.scan("<p>").each_with_index do |p, index| %>
+    <% body_text[body_text.index(p)..body_text.index(p)+2] = "<p id=\"#{index +           1}\">" %>
+  <% end %>
+  
+  <%# body_text = body_text.gsub("</p>", "<div class='comment-button'><i class='fa fa-comment'></i></div></p>").html_safe %>
+
+  <%= body_text %>
 </div>
 
 <% if signed_in? %>

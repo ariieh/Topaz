@@ -47,9 +47,4 @@ $(document).ready(function(){
 	        $(this).animate({'color': "white"}, 'fast');
 	    }
 	);
-  
-  $('#body-text p')
-    .append("<div class='comment-button'><i class='fa fa-comment'></i></div>")
-    .append("<div class='comment-box'></div>");
-  
 });
