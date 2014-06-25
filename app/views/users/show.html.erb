@@ -10,7 +10,7 @@
   <ul>
     <% @user.articles.order(:created_at).reverse.each do |article| %>
         <%= render "articles/snippet", article: article, view: "author",
-            el: @user.username %>        
+            el: @user.username %>
     <% end %>
   </ul>
 <% end %>

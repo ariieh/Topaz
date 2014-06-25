@@ -248,6 +248,36 @@ nav .badge{
   margin-top: 0;
 }
 
+#body-text{
+  padding-right: 150px;
+}
+
+#body-text p{
+  position: relative;
+}
+
+#body-text .comment-button{
+  background: green;
+  position: absolute;
+  top: 0;
+  right: -40px;
+  width: 25px;
+  height: 25px;
+  border-radius: 2px;
+  opacity: 0.5;
+}
+
+#body-text .comment-button:hover{
+  opacity: 1.0;
+  background: green;
+}
+
+#body-text .comment-button .fa{
+  padding-left: 5px;
+  padding-top: 4px;
+  color: white;
+}
+
 /* sidebar */
 .sidebar{
   background: rgb(248,248,248);

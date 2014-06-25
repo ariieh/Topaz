@@ -48,4 +48,8 @@ $(document).ready(function(){
 	    }
 	);
   
+  $('#body-text p')
+    .append("<div class='comment-button'><i class='fa fa-comment'></i></div>")
+    .append("<div class='comment-box'></div>");
+  
 });

@@ -4,7 +4,10 @@
 
 <h2><%= @article.title %></h2>
 <h3><a href="<%= user_url(@article.author_id) %>"><%= User.find(@article.author_id).username %></a></h3>
-<%= simple_format(h @article.body) %>
+
+<div id="body-text">
+  <%= simple_format(h @article.body) %>
+</div>
 
 <% if signed_in? %>
   <form action="<%= article_comments_url(@article) %>" method="post">
@@ -30,6 +33,7 @@
 <% end %>
 
 <br>
+
 <i class="fa fa-tags"></i>
 <% @article.tags.order(:name).each do |tag| %>
 	<a href="<%= article_url(tag.articles.order(:created_at).reverse.first,
