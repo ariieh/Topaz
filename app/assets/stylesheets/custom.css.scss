@@ -1,3 +1,4 @@
+/* global */
 html, body, header, main, footer, nav, a, ul, li, section, p, small {
   margin: 0;
   padding: 0;
@@ -5,9 +6,11 @@ html, body, header, main, footer, nav, a, ul, li, section, p, small {
   font: inherit;
 }
 
-p{
-  padding-bottom: 15px;
-}
+p{ padding-bottom: 15px; }
+
+a{ text-decoration: none; }
+
+textarea{ resize: none; }
 
 $select-color: #e74c3c;
 
@@ -37,7 +40,6 @@ nav > .logo{
 }
 
 nav > .logo > a{
-  text-decoration: none;
 	color: white;
 	font-family: ‘Lucida Sans Unicode’, ‘Lucida Grande’, sans-serif;
 	font-size: 25px;
@@ -123,7 +125,6 @@ nav .badge{
 	border-top: 1px solid rgb(140,140,140);
 	display: block;
 	text-align: left;
-	text-decoration: none;
 	padding: 10px;
 	cursor: pointer;
 }
@@ -165,7 +166,6 @@ nav .badge{
 }
 
 .tagbar a{
-	text-decoration: none;
 	color: white;
 	font-family: Arial, Helvetica, sans-serif;
 }
@@ -189,6 +189,7 @@ nav .badge{
   left: 0;
   bottom: 0;
   width: 100%;
+  border-top: 1px solid rgb(229,229,229);
 }
 
 .page{
@@ -200,6 +201,7 @@ nav .badge{
   height: 100%;
   overflow: auto;
   font-family: sans-serif;
+  border-left: 1px solid rgb(229,229,229);
 }
 
 #content{
@@ -230,17 +232,8 @@ nav .badge{
   background: rgb(252,252,252);
 }
 
-.sidebar > ul > li > a{
-  text-decoration: none;
-}
-
 .snippet-footer{
   font-style: italic;
   font-size: 13px;
   color: rgb(178,178,178);
-}
-
-/* input */
-textarea{
-	resize: none;
 }
