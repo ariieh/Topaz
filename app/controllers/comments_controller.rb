@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
     @comment.author_id = current_user.id
     
     if @comment.save
+      Notification.create(notification_type: 2, user_id: @article.author.id, url: article_url(@article))
       redirect_to @article
     else
       flash[:errors] = @comment.errors.full_messages

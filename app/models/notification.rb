@@ -14,4 +14,9 @@ class Notification < ActiveRecord::Base
       return nil
     end
   end
+  
+  def url_path
+    self.update_attributes(read: true)
+    self.url
+  end
 end

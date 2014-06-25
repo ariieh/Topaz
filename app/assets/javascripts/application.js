@@ -30,13 +30,14 @@ $(document).ready(function(){
 	  $(".notifications").fadeToggle("fast");
 	});
   
-  $(".fa-flag").bind("clickoutside", function(event){
-    $(".notifications").fadeOut("fast");
-  });
-  
-  $(".fa-tasks").bind("clickoutside", function(event){
-    $(".menu-bar").fadeOut("fast");
-  });
+  // buggy
+  // $(".fa-flag").bind("clickoutside", function(event){
+  //   $(".notifications").fadeOut("fast");
+  // });
+  //
+  // $(".fa-tasks").bind("clickoutside", function(event){
+  //   $(".menu-bar").fadeOut("fast");
+  // });
 	
 	$('.fa, .logo a').hover(
 	    function() {
@@ -46,6 +47,5 @@ $(document).ready(function(){
 	        $(this).animate({'color': "white"}, 'fast');
 	    }
 	);
-	
-	
+  
 });

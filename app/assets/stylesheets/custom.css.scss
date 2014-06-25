@@ -63,6 +63,19 @@ nav > ul > li{
 	cursor: pointer;
 }
 
+nav .badge{
+  display: inline;
+  position: absolute;
+  font-family: sans-serif;
+  background: $select-color;
+  margin-left: 5px;
+  
+  margin-top: -19px;
+  padding: 2px 5px;
+  border-radius: 15px;
+  font-size: 12px;
+}
+
 .group:after{
 	content: "";
 	display: block;
@@ -81,8 +94,22 @@ nav > ul > li{
   z-index: 9999;
 }
 
-.notifications > li:hover, .menu-bar > li:hover{
+.notifications{
+  width: 200px;
+	right: -15px;
+}
+
+.notifications ul{
+  max-height: 250px;
+  overflow: auto;
+}
+
+.notifications > ul > li:hover, .menu-bar > li:hover{
 	background-color: $select-color;
+}
+
+.notifications > ul > li.unread{
+  background: rgb(22,141,217);
 }
 
 .notifications a, .menu-bar a{
@@ -97,7 +124,7 @@ nav > ul > li{
 	cursor: pointer;
 }
 
-.notifications > li:first-child, .menu-bar > li:first-child{
+.notifications > ul > li:first-child, .menu-bar > li:first-child{
 	border-top: 0;
 }
 

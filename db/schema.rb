@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20140625142440) do
     t.integer  "notification_type",                 null: false
     t.boolean  "read",              default: false
     t.integer  "user_id",                           null: false
+    t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

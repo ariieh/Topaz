@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get "static_pages/empty"
+  get "static_pages/welcome"
   
   shallow do
     resources :users do
