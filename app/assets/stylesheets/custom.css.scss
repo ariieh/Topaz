@@ -260,6 +260,9 @@ nav .badge{
 	position: relative;
 }
 
+#body-text .comment-form{
+}
+
 #body-text .comment-button{
   background: green;
   position: absolute;
@@ -283,12 +286,13 @@ nav .badge{
 }
 
 #body-text .comment-box{
-  background: green;
+	display: none;
+  background: #27ae60;
   position: absolute;
   top: 0;
   right: -160px;
   width: 110px;
-  max-height: 100px;
+  max-height: 200px;
   border-radius: 2px;
 	overflow: auto;
 }

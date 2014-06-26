@@ -47,4 +47,9 @@ $(document).ready(function(){
 	        $(this).animate({'color': "white"}, 'fast');
 	    }
 	);
+	
+	$('.comment-button').click(function(){
+		$(".comment-box").not($(this).siblings()).hide();
+		$(this).siblings(".comment-box").fadeToggle("fast");
+	});
 });

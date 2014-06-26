@@ -4,7 +4,7 @@
 
 <h2><%= @article.title %></h2>
 <h3>author: <a href="<%= user_url(@article.author_id) %>"><%= User.find(@article.author_id).username %></a></h3>
-<h5><%= @article.created_at %></h5>
+<h5>submitted <%= @article.created_at.to_formatted_s(:long_ordinal) %></h5>
 
 <div id="body-text">
   <% body_text = simple_format(h @article.body) %>
@@ -17,17 +17,20 @@
 	
 	<div class='comment-button'><i class='fa fa-comment'></i></div>
 	<div class='comment-box'>
-		#{@article.comments.where(p_id: index+1)
+		#{@article.comments.where(p_id: index+1).order(:created_at).reverse
    				   .map{ |comment| comment.author.username + ": " + comment.text }
 				   .join("<br>")}
+      	<form class='comment-form'
+		action=\" #{article_comments_url(@article)} \" method='post'>
+          	#{auth_token}
+          	<input type='text' name='comment[text]'>
+      		<input type='hidden' name='comment[p_id]' value='#{index+1}'>
+          	<input type='submit' value='Add Comment'>
+       </form>
+
 	</div>
+
 	
-	<form action=\" #{article_comments_url(@article)} \" method='post'>
-    	#{auth_token}
-    	<input type='text' name='comment[text]'>
-		<input type='hidden' name='comment[p_id]' value='#{index+1}'>
-    	<input type='submit' value='Add Comment'>
-    </form>
 	</div>" %>
   <% end %>
   
@@ -35,12 +38,6 @@
 </div>
 
 <% if signed_in? %>
-  <form action="<%= article_comments_url(@article) %>" method="post">
-  	<%= auth_token %>
-  	<input type="text" name="comment[text]">
-  	<input type="submit" value="Add Comment">
-  </form>
-
   <form action="<%= article_votes_url(@article) %>" method="post">
     <%= auth_token %>
 
@@ -52,12 +49,6 @@
     <% end %>
   </form>
 <% end %>
-
-<% @article.comments.order(:created_at).reverse.each do |comment| %>
-	<%= comment.author.username + ": " + comment.text %><br>
-<% end %>
-
-<br>
 
 <i class="fa fa-tags"></i>
 <% @article.tags.order(:name).each do |tag| %>
