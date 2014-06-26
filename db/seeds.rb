@@ -62,7 +62,7 @@ The key to success is not hard working but smart working.
 
 There’s a notable distinction between being busy and being productive. Being busy doesn’t necessarily mean you’re being productive. Being productive is less about time management and more on managing your energy. It is the business of life. We need to learn how to spend the least amount of energy to get the most benefits. I am so lucky to work with an amazing team here at Filemobile. Everyone always challenges me and helps me sort my priorities to become more productive. I learned to reduce my work week from 80 hours to 40 hours, and get a lot more work done in the process. In other words, less is more.",
 created_at: "2014-05-29 18:21",
-photo: "https://s3.amazonaws.com/TopazProd/1-4iq1xLcfZCYkcDGLFiFEyQ.jpeg")
+photo: "https://s3.amazonaws.com/TopazProd/productivity.jpg")
 
 b1 = u2.articles.create!(title: "Studies Show That Words Look Strange When You Look At Them For Too Long",
 body: "After coding for 4 hours straight, Carolyn Jiang** thought she was seeing things. The word “follow,” which was once a trivial word in her vernacular, suddenly looked odd. Was F-O-L-L-O-W really the right way to spell “follow”? Even enunciating the syllables out loud sounded like she was speaking in foreign tongues.
@@ -119,6 +119,6 @@ b2.taglist = "humor tech"
 Article.all.each do |article|
   User.all.each do |user|
     Vote.create!(user_id: user.id, article_id: article.id)
-    break if (1..10).to_a.sample == 2
+    break if (1..15).to_a.sample == 2
   end
 end
