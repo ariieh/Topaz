@@ -228,6 +228,18 @@ nav .badge{
   margin-left: 106px;
 }
 
+/* alerts */
+#alerts{
+	padding-top: 5px;
+	padding-left: 30px;
+	list-style: none;
+}
+
+#alerts > li{
+	color: red;
+	padding-top: 5px;
+}
+
 /* main */
 .main{
   background: white;
@@ -305,8 +317,6 @@ nav .badge{
   background: #0a0;
 }
 
-
-
 #body-text .comment-button{
   background: green;
   position: absolute;
@@ -316,6 +326,9 @@ nav .badge{
   height: 25px;
   border-radius: 2px;
   opacity: 0.5;
+	-moz-box-shadow: 0 0 1px #888;
+	-webkit-box-shadow: 0 0 1px#888;
+	box-shadow: 0 0 1px #888;
 }
 
 #body-text .comment-button:hover{
@@ -327,7 +340,7 @@ nav .badge{
 	position: relative;
   padding-left: 5px;
   padding-top: 4px;
-  color: white;
+  color: white;	
 }
 
 #body-text .comment-box{
@@ -343,6 +356,9 @@ nav .badge{
 	color: white;
 	font-size: 13px;
 	padding: 10px;
+	-moz-box-shadow: 0 0 1px #888;
+	-webkit-box-shadow: 0 0 1px#888;
+	box-shadow: 0 0 1px #888;
 }
 
 #body-text .comment-count{
@@ -402,6 +418,7 @@ nav .badge{
   height: 100%;
   overflow: auto;
   font-family: sans-serif;
+	
 }
 
 .sidebar > ul > li{
