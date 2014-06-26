@@ -117,8 +117,9 @@ b2.tags.create!(name: "humor")
 b2.taglist = "humor tech"
 
 Article.all.each do |article|
-  User.all.each do |user|
+  num = (1..52).to_a.sample
+  User.all.each_with_index do |user, index|
     Vote.create!(user_id: user.id, article_id: article.id)
-    break if (1..15).to_a.sample == 2
+    break if num == index
   end
 end
