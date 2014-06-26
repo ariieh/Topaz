@@ -6,6 +6,10 @@ html, body, header, main, footer, nav, a, ul, li, section, p, small {
   font: inherit;
 }
 
+input[type="submit"]{
+  outline: 0;
+}
+
 h1{ margin-top: 0;}
 
 p{ padding-bottom: 15px; }
@@ -267,8 +271,41 @@ nav .badge{
 	position: relative;
 }
 
-#body-text .comment-form{
+#body-text .comment-form input{
+	outline: 0;
+	border: 0;
 }
+
+#body-text .comment-form input[type="text"]{
+	font-size: 15px;
+	width: 100%;
+}
+
+#body-text .comment-form input[type="submit"]{
+  position: relative;
+  display: inline-block;
+	border: 0px;
+	background: #0c0;
+  color: white;
+  box-shadow: 0 3px 0 0 #070;
+  border-radius: 3px;
+	font-size: 10px;
+	margin-top: 5px;
+	width: 100%;
+}
+
+#body-text .comment-form input[type="submit"]:hover{
+  background: #0b0;
+}
+
+
+#body-text .comment-form input[type="submit"]:active{
+  top: 3px;
+  box-shadow: none;
+  background: #0a0;
+}
+
+
 
 #body-text .comment-button{
   background: green;
@@ -314,6 +351,46 @@ nav .badge{
 	top: 7px;
 	color: black;
 	font-size: 10px;
+}
+
+.favorite-button{
+  position: relative;
+  display: inline-block;
+	border: 0px;
+	margin-bottom: 25px;
+  padding: 10px 20px;
+  background: #0c0;
+  color: white;
+  box-shadow: 0 3px 0 0 #070;
+  border-radius: 3px;
+  font-weight: bold;
+	font-size: 15px;
+}
+
+.favorite-button:hover{
+  background: #0b0;
+}
+
+
+.favorite-button:active {
+  top: 3px;
+  box-shadow: none;
+  background: #0a0;
+}
+
+.disabled-favorite-button{
+  position: relative;
+  display: inline-block;
+	border: 0px;
+	margin-bottom: 25px;
+  padding: 10px 20px;
+  background: #95a5a6;
+  color: #ecf0f1;
+  box-shadow: 0 3px 0 0 #7f8c8d;
+  border-radius: 3px;
+  font-weight: bold;
+	font-size: 15px;
+	opacity: 0.5;
 }
 
 /* sidebar */

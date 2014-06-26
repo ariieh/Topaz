@@ -20,10 +20,11 @@
     <% body_text[body_text.index(p)..body_text.index(p)+3] = "</p >
 	
 	<div class='comment-button'>
-		<i class='fa fa-comment'>		<span class='comment-count'>
-			#{@article.comments.where(p_id: index+1).count}
-		</span>
-</i>
+		<i class='fa fa-comment'>
+			<span class='comment-count'>
+				#{@article.comments.where(p_id: index+1).count}
+			</span>
+		</i>
 	</div>
 	<div class='comment-box'>
 		#{@article.comments.where(p_id: index+1).order(:created_at).reverse
@@ -49,9 +50,9 @@
 
     <% if current_user.votes &&
        current_user.votes.map(&:article_id).include?(@article.id) %>
-      <input type="submit" value="Favorite" disabled>
+      <input type="submit" class="disabled-favorite-button" value="Favorite" disabled>
     <% else %>
-      <input type="submit" value="Favorite">
+      <input type="submit" class="favorite-button" value="Favorite">
     <% end %>
   </form>
 <% end %>
