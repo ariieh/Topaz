@@ -43,9 +43,6 @@ nav button{
 	cursor: pointer;
 }
 
-nav > .logo{
-}
-
 nav > .logo > a{
 	color: white;
 	font-family: ‘Lucida Sans Unicode’, ‘Lucida Grande’, sans-serif;
@@ -88,6 +85,25 @@ nav .badge{
   border-radius: 15px;
   font-size: 12px;
 }
+
+nav .search-bar {
+	display: none;
+	position: absolute;
+  outline: none;
+  padding: 3px 0px 3px 3px;
+  border: 1px solid #DDDDDD;
+	top: 11px;
+	left: -190px;
+	font-size: 11px;
+	width: 200px;
+	border-radius: 2px;
+}
+ 
+nav .search-bar:focus {
+  box-shadow: 0 0 5px $select-color;
+  border: 1px solid $select-color;
+}
+
 
 .group:after{
 	content: "";

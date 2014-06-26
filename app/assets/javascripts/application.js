@@ -29,6 +29,10 @@ $(document).ready(function(){
 	$("nav .fa-flag").click(function() {
 	  $(".notifications").fadeToggle("fast");
 	});
+	
+	$("nav .fa-search").click(function() {
+	  $(".search-bar").fadeToggle("fast");
+	});
   
   // buggy
   // $(".fa-flag").bind("clickoutside", function(event){
