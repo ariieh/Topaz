@@ -205,48 +205,32 @@ nav .search-bar:focus {
 	color: $fly-blue;
 }
 
+.tagbar div{
+	float: left;
+	padding: 10px;
+	padding-top: 4px;
+}
+
+.tagbar div:first-child{
+	width: 240px;
+}
+
 .tagbar ul{
-  float: left;
+	margin-top: 4px;
+	padding-top: 8px;
+	list-style: none;
+	border-top: 1px solid rgb(127,127,127);
 }
 
 .tagbar li{
-  margin-top: 25px;
-	padding: 10px;
 	float: left;
-	list-style: none;
+	padding-right: 10px;
+	padding-bottom: 10px;
 }
 
-.tagbar .filters{
-	margin-top: 5px;
-  margin-left: 120px;
-}
-
-.tagbar .filters li{
-  float: none;
-	padding: 5px;
-  margin: 0px;
-}
-
-.tagbar #filter-label{
-  position: absolute;
-  float: left;
-  padding: 35px;
-  height: 20px;
-	color: $fly-blue;
-  border-right: 2px solid rgb(133,133,133);
-}
-
-.tagbar #tags-label{
-  position: absolute;
-  float: left;
-  padding: 35px;
-  height: 20px;
-	color: $fly-blue;
-  border-right: 2px solid rgb(133,133,133);
-}
-
-.tagbar .tags{
-  margin-left: 106px;
+.tagbar .tagbar-header{
+	color: rgb(127,127,127);
+	padding-bottom: 5px;
 }
 
 /* alerts */

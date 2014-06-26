@@ -1,6 +1,7 @@
 <section class="tagbar">
-  <span id="filter-label">Filters</span>
-	<ul class="filters">
+<div id="filter-div">
+  <span class="tagbar-header">Filters</span>
+	<ul>
   	  <li>
         <a href="<%= 
           article_url(Article.all
@@ -28,10 +29,11 @@
         <a href="<%= article_url(Article.last) %>">Latest</a>
       </li>
 	</ul>
-	
-  <span id="tags-label">Tags</span>
-  
-	<ul class="tags">
+</div>
+
+<div id="tag-div">
+  <span class="tagbar-header">Tags</span>
+	<ul>
 	  <% Tag.all.each do |tag| %>
 	    <li>
         <a href=" <%=
@@ -41,4 +43,5 @@
       </li>
 	  <% end %>
   	</ul>
+</div>
 </section>
