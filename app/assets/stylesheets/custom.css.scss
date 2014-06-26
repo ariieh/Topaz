@@ -249,7 +249,7 @@ nav .badge{
 }
 
 #body-text{
-  padding-right: 150px;
+  padding-right: 190px;
 }
 
 #body-text p{
@@ -290,11 +290,14 @@ nav .badge{
   background: #27ae60;
   position: absolute;
   top: 0;
-  right: -160px;
-  width: 110px;
+  right: -209px;
+  width: 140px;
   max-height: 200px;
   border-radius: 2px;
 	overflow: auto;
+	color: white;
+	font-size: 13px;
+	padding: 10px;
 }
 
 /* sidebar */
