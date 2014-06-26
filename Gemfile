@@ -36,6 +36,7 @@ end
 gem "nokogiri", '1.6.1'
 gem "paperclip"
 gem "aws-sdk"
+gem "figaro"
 
 gem 'bcrypt'
 
