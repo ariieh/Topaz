@@ -18,7 +18,7 @@
           <ul>
             <% current_user.notifications.each do |notification| %>
               <li class="<%= 'unread' unless notification.read %>">
-                <a href="<%= notification.url_path %>">
+                <a href="<%= notifications_url(notification) %>">
                   <%= notification.message %>
                 </a>
               </li>            

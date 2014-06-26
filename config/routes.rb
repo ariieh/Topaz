@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get "favorites" => "static_pages#empty", as: :static_pages_empty
   get "welcome" => "static_pages#welcome", as: :static_pages_welcome
   get "about" => "static_pages#about", as: :static_pages_about
+  get "notifications/:id" => "notifications#url_path", as: :notifications
   root "articles#index"
   
   shallow do
