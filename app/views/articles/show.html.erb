@@ -15,7 +15,12 @@
   <% body_text.scan("</p>").each_with_index do |p, index| %>
     <% body_text[body_text.index(p)..body_text.index(p)+3] = "</p >
 	
-	<div class='comment-button'><i class='fa fa-comment'></i></div>
+	<div class='comment-button'>
+		<i class='fa fa-comment'>		<span class='comment-count'>
+			#{@article.comments.where(p_id: index+1).count}
+		</span>
+</i>
+	</div>
 	<div class='comment-box'>
 		#{@article.comments.where(p_id: index+1).order(:created_at).reverse
    				   .map{ |comment| comment.author.username + ": " + comment.text }
