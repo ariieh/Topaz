@@ -34,7 +34,7 @@ group :development do
 end
 
 gem "nokogiri", '1.6.1'
-gem "paperclip"
+gem 'paperclip', github: 'thoughtbot/paperclip' 
 gem "aws-sdk"
 gem "figaro"
 

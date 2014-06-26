@@ -7,6 +7,10 @@ class Article < ActiveRecord::Base
   has_many :taggings, inverse_of: :article, dependent: :destroy
   has_many :tags, through: :taggings, dependent: :destroy
   has_many :votes, inverse_of: :article
+  has_attached_file :photo, :styles => {
+    :big => "400x400#",
+    :small => "50x50#"
+  }
   
   def taglist=(tagstring)
     tags_to_add = tagstring.split(" ").uniq

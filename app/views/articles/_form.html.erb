@@ -1,7 +1,7 @@
 <% if action == "new" %>
-  <form action="<%= articles_url(current_user) %>" method="post">
+  <form enctype="multipart/form-data" action="<%= articles_url(current_user) %>" method="post">
 <% else %>
-  <form action="<%= article_url(@article) %>" method="post">
+  <form enctype="multipart/form-data" action="<%= article_url(@article) %>" method="post">
 	<%= hidden_method("put") %>  
 <% end %>
 
@@ -15,9 +15,17 @@
 	<br>
 
 	<label>
+		Image<br>
+		<input type="file" name="article[photo]">
+	</label>
+
+	<br>
+
+	<label>
 		Body<br>
 		<textarea name="article[body]" cols="100" rows="20"><%= @article.body %></textarea>
 	</label>
+
 
 	<br><br>
 

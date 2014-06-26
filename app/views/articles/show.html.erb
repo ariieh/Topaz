@@ -6,6 +6,8 @@
 <h3>author: <a href="<%= user_url(@article.author_id) %>"><%= User.find(@article.author_id).username %></a></h3>
 <h5>submitted <%= @article.created_at.to_formatted_s(:long_ordinal) %></h5>
 
+<%= image_tag @article.photo.url(:big) %>
+
 <div id="body-text">
   <% body_text = simple_format(h @article.body) %>
   <% body_text.scan("<p>").each_with_index do |p, index| %>

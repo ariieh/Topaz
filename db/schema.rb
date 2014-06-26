@@ -11,17 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140625142440) do
+ActiveRecord::Schema.define(version: 20140626144817) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "articles", force: true do |t|
-    t.string   "title",      null: false
-    t.text     "body",       null: false
-    t.integer  "author_id",  null: false
+    t.string   "title",              null: false
+    t.text     "body",               null: false
+    t.integer  "author_id",          null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   add_index "articles", ["author_id"], name: "index_articles_on_author_id", using: :btree
