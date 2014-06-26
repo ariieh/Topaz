@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20140625142440) do
     t.text     "text"
     t.integer  "author_id"
     t.integer  "article_id"
+    t.integer  "p_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -9,11 +9,28 @@
 <div id="body-text">
   <% body_text = simple_format(h @article.body) %>
   <% body_text.scan("<p>").each_with_index do |p, index| %>
-    <% body_text[body_text.index(p)..body_text.index(p)+2] = "<p id=\"#{index +           1}\">" %>
+    <% body_text[body_text.index(p)..body_text.index(p)+2] = "<div id=\"#{index +           1}\"><p >" %>
   <% end %>
   
-  <%# body_text = body_text.gsub("</p>", "<div class='comment-button'><i class='fa fa-comment'></i></div></p>").html_safe %>
-
+  <% body_text.scan("</p>").each_with_index do |p, index| %>
+    <% body_text[body_text.index(p)..body_text.index(p)+3] = "</p >
+	
+	<div class='comment-button'><i class='fa fa-comment'></i></div>
+	<div class='comment-box'>
+		#{@article.comments.where(p_id: index+1)
+   				   .map{ |comment| comment.author.username + ": " + comment.text }
+				   .join("<br>")}
+	</div>
+	
+	<form action=\" #{article_comments_url(@article)} \" method='post'>
+    	#{auth_token}
+    	<input type='text' name='comment[text]'>
+		<input type='hidden' name='comment[p_id]' value='#{index+1}'>
+    	<input type='submit' value='Add Comment'>
+    </form>
+	</div>" %>
+  <% end %>
+  
   <%= body_text %>
 </div>
 
