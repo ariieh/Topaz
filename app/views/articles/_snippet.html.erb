@@ -16,8 +16,8 @@
   <form action="<%= article_url(article) %>" method="post">
     <%= auth_token %>
     <%= hidden_method("delete") %>
-    <input type="submit" value="Delete">
+    <input class="delete-button" type="submit" value="Delete">
   </form>
-  <a href="<%= edit_article_url(article) %>">Edit</a><br>
+  <a class="edit-link" href="<%= edit_article_url(article) %>">Edit</a><br>
 <% end %>
 </li>

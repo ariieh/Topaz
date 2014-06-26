@@ -33,6 +33,10 @@ group :development do
   gem "letter_opener"
 end
 
+gem "nokogiri", '1.6.1'
+gem "paperclip"
+gem "aws-sdk"
+
 gem 'bcrypt'
 
 gem 'jquery-turbolinks'

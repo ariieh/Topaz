@@ -329,10 +329,33 @@ nav .badge{
   background: rgb(252,252,252);
 }
 
+.sidebar .delete-button{
+	background: none;
+	border: none;
+	padding: 0;
+	color: black;
+	font-family: sans-serif;
+	font-size: 13px;
+	cursor: pointer;
+	display: inline;
+}
+
+.sidebar form{
+	display: inline;
+}
+
+.sidebar .edit-link{
+	color: black;
+	font-family: sans-serif;
+	font-size: 13px;
+	display: inline;
+}
+
 .snippet-footer{
   font-style: italic;
   font-size: 13px;
   color: rgb(178,178,178);
+	padding-bottom: 10px;
 }
 
 .fa-thumbs-o-up{
