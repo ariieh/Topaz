@@ -23,10 +23,12 @@ $(document).ready(function(){
 	var selectColor = "#e74c3c";
 	
 	$("nav .fa-tasks").click(function() {
+	  $(".notifications").fadeOut("fast");
 	  $(".menu-bar").fadeToggle("fast");
 	});
   
 	$("nav .fa-flag").click(function() {
+	  $(".menu-bar").fadeOut("fast");
 	  $(".notifications").fadeToggle("fast");
 	});
 	
