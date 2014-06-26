@@ -42,6 +42,9 @@
 					</li>
 				<% else %>
 					<li>
+						<a href="<%= user_url(current_user) %>">Dashboard</a>
+					</li>
+					<li>
 						<form action="<%= session_url %>"
 							method="post">
 							<%= auth_token %>

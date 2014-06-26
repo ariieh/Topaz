@@ -123,11 +123,14 @@ nav .badge{
 	font-family: sans-serif;
 	font-size: 13px;
 	color: white;
-	border-top: 1px solid rgb(140,140,140);
 	display: block;
 	text-align: left;
 	padding: 10px;
 	cursor: pointer;
+}
+
+.notifications li, .menu-bar li{
+	border-top: 1px solid rgb(140,140,140);
 }
 
 .notifications > ul > li:first-child, .menu-bar > li:first-child{

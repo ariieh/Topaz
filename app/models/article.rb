@@ -8,9 +8,10 @@ class Article < ActiveRecord::Base
   has_many :tags, through: :taggings, dependent: :destroy
   has_many :votes, inverse_of: :article
   has_attached_file :photo, :styles => {
-    :big => "400x400#",
-    :small => "50x50#"
+    :big => "400x400#"
   }
+  
+  validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
   
   def taglist=(tagstring)
     tags_to_add = tagstring.split(" ").uniq
