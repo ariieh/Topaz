@@ -240,6 +240,58 @@ nav .badge{
 	padding-top: 5px;
 }
 
+/* article form */
+#article-form input[type="file"]{
+	outline: none;
+}
+
+#article-form input[type=text], textarea {
+  -webkit-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  -ms-transition: all 0.15s ease-in-out;
+  -o-transition: all 0.15s ease-in-out;
+  outline: none;
+  padding: 3px 0px 3px 3px;
+  border: 1px solid #DDDDDD;
+}
+ 
+#article-form input[type=text]:focus, textarea:focus {
+  box-shadow: 0 0 5px #2ecc71;
+  border: 1px solid #2ecc71;
+}
+
+#article-form input[type="text"]{
+	font-size: 20px;
+}
+
+#article-form textarea{
+	font-size: 15px;
+}
+
+#article-form input[type="submit"]{
+	  position: relative;
+	  display: inline-block;
+		border: 0px;
+		margin-bottom: 25px;
+	  padding: 10px 20px;
+	  background: #0c0;
+	  color: white;
+	  box-shadow: 0 3px 0 0 #070;
+	  border-radius: 3px;
+	  font-weight: bold;
+		font-size: 15px;
+	}
+
+#article-form input[type="submit"]:hover{
+  background: #0b0;
+}
+
+#article-form input[type="submit"]:active{
+  top: 3px;
+  box-shadow: none;
+  background: #0a0;
+}
+	
 /* main */
 .main{
   background: white;
@@ -386,7 +438,6 @@ nav .badge{
 .favorite-button:hover{
   background: #0b0;
 }
-
 
 .favorite-button:active {
   top: 3px;
