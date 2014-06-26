@@ -3,8 +3,7 @@
 <% end %>
 
 <h2><%= @article.title %></h2>
-<h3>author: <a href="<%= user_url(@article.author_id) %>"><%= User.find(@article.author_id).username %></a></h3>
-<h5>submitted <%= @article.created_at.to_formatted_s(:long_ordinal) %></h5>
+<h4>author: <a href="<%= user_url(@article.author_id) %>"><%= User.find(@article.author_id).username %></a>, submitted <%= @article.created_at.to_formatted_s(:long_ordinal) %></h4>
 
 <% if @article.photo_file_name %>
 	<%= image_tag @article.photo.url(:big) %>

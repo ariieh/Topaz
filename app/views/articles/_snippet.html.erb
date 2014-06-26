@@ -3,9 +3,7 @@
   <%= article.title %></a>
 <br>
 <div class="snippet-footer">
-  <% if view == "popular" %>
-  	<%= article.votecount.to_s %><i class="fa fa-thumbs-o-up"></i>
-  <% end %>
+  <%= article.votecount.to_s %><i class="fa fa-thumbs-o-up"></i>
   <br>
   <i class="fa fa-clock-o"></i>
   <%= " " + time_ago_in_words(article.created_at) + " ago" %>

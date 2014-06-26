@@ -10,7 +10,20 @@ input[type="submit"]{
   outline: 0;
 }
 
-h1{ margin-top: 0;}
+h1{
+	margin-top: 0;
+}
+
+h2{
+	margin-bottom: 5px;
+}
+
+h4{
+	margin-top: 0;
+	color: rgb(141,141,141);
+	opacity: 0.8;
+	font-size: 14px;
+}
 
 p{ 
 	padding-bottom: 15px; 
