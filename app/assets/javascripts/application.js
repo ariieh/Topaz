@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.serializeJSON
+//= require underscore
 //= require jquery.color-2.1.2.min
 //= require jquery.ba-outside-events.min
 //= require underscore

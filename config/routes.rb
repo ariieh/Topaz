@@ -22,6 +22,25 @@ Rails.application.routes.draw do
   resources :comments, only: [:create]
   resources :tags, only: [:create]
   resource :session
+  
+  namespace :api, defaults: { format: :json } do
+    shallow do
+      resources :users do
+        resources :articles, only: [:index]
+      end
+    end
+  
+    resources :articles, shallow: true do
+      resources :comments
+      resources :tags
+      resources :votes
+    end
+  
+    resources :votes, only: [:index, :create]
+    resources :comments, only: [:create]
+    resources :tags, only: [:create]
+    resource :session
+  end
 
   
   # The priority is based upon order of creation: first created -> highest priority.
