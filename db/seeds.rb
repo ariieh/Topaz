@@ -76,7 +76,7 @@ created_at: "2014-06-26 14:45",
 photo: "https://s3.amazonaws.com/TopazProd/Semantic-e1382262909875.jpg")
 
 b2 = u2.articles.create!(
-title: "9 Problems Only App Academy Students Understand",
+title: "13 Problems Only App Academy Students Understand",
 body: 
 "1. Having your solo day on the first day of a new curriculum.
 
@@ -95,7 +95,14 @@ body:
 8. Waiting too long for the elevator and having a dilemma about taking the stairs because you don't know if the elevator might come right at that moment.
 
 9. Not getting enough sleep the night before and then Jonathan dims the lights for his CSS demo.
-",
+
+10. Your friends asking you to hang out the night before an assessment.
+
+11. Your friends asking you to hang out the weekend you have to do the whole Hartl tutorial/read the whole SQL book/read the Effective Javascript book.
+
+12. Having to read the Effective Javascript book.
+
+13. Having only one spec left on the assessment and not being able to figure out how to pass it.",
 created_at: "2014-06-26 15:00",
 photo: "https://s3.amazonaws.com/TopazProd/photo.JPG")
 

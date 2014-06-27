@@ -34,13 +34,16 @@ group :development do
 end
 
 gem "nokogiri", '1.6.1'
-gem 'paperclip', github: 'thoughtbot/paperclip' 
+gem 'paperclip', github: 'thoughtbot/paperclip'
 gem "aws-sdk"
 gem "figaro"
 
 gem 'bcrypt'
 
 gem 'jquery-turbolinks'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'uuidtools'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

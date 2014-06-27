@@ -1,7 +1,7 @@
 <% if action == "sign_up" %>
-	<form action="<%= users_url %>" method="post">
+	<form class="sign" action="<%= users_url %>" method="post">
 <% else %>
-	<form action="<%= session_url %>" method="post">
+	<form class="sign" action="<%= session_url %>" method="post">
 <% end %>
 
 <%= auth_token %>  
@@ -33,5 +33,7 @@
   <input type="submit" value="Sign Up">
 <% else %>
   <input type="submit" value="Sign In">
-<% end %>  
+<% end %>
 </form>
+<br>
+<a class="twitter-link" href="/auth/facebook">Login with Facebook</a>

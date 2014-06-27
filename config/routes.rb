@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get "welcome" => "static_pages#welcome", as: :static_pages_welcome
   get "about" => "static_pages#about", as: :static_pages_about
   get "notifications/:id" => "notifications#url_path", as: :notifications
+  get "/auth/facebook/callback", to: "sessions#facebook_login"
   root "articles#index"
   
   shallow do

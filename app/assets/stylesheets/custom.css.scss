@@ -478,6 +478,30 @@ nav .search-bar:focus {
 	opacity: 0.5;
 }
 
+input[value="Sign In"], input[value="Sign Up"]{
+  position: relative;
+  display: inline-block;
+	border: 0px;
+	margin-bottom: 10px;
+  padding: 10px 20px;
+  background: #2980b9;
+  color: white;
+  box-shadow: 0 3px 0 0 #2c3e50;
+  border-radius: 3px;
+  font-weight: bold;
+	font-size: 15px;
+}
+
+input[value="Sign In"]:hover, input[value="Sign Up"]:hover{
+  background: #3498db;
+}
+
+input[value="Sign In"]:active, input[value="Sign Up"]:active {
+  top: 3px;
+  box-shadow: none;
+  background: #2980b9;
+}
+
 a .tag{
 	padding-right: 5px;
 }
@@ -491,7 +515,6 @@ a .tag{
   height: 100%;
   overflow: auto;
   font-family: sans-serif;
-	
 }
 
 .sidebar > ul > li{

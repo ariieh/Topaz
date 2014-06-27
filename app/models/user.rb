@@ -29,4 +29,14 @@ class User < ActiveRecord::Base
     self.session_token
   end
   
+  def self.find_or_create_by_facebook(provider, uid, name, email)
+    user = User.find_by(provider: provider, uid: uid)
+    unless user
+      user = User.new(provider: provider, uid: uid, username: name, email: email)
+      user.password_digest = SecureRandom.urlsafe_base64(16)
+      user.save!
+    end
+    user
+  end
+  
 end
