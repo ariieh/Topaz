@@ -263,7 +263,7 @@ nav .search-bar:focus {
 	outline: none;
 }
 
-#article-form input[type=text], textarea {
+#article-form input[type=text], #article-form textarea {
   -webkit-transition: all 0.15s ease-in-out;
   -moz-transition: all 0.15s ease-in-out;
   -ms-transition: all 0.15s ease-in-out;
@@ -273,7 +273,7 @@ nav .search-bar:focus {
   border: 1px solid #DDDDDD;
 }
  
-#article-form input[type=text]:focus, textarea:focus {
+#article-form input[type=text]:focus, #article-form textarea:focus {
   box-shadow: 0 0 5px #2ecc71;
   border: 1px solid #2ecc71;
 }
@@ -500,6 +500,22 @@ input[value="Sign In"]:active, input[value="Sign Up"]:active {
   top: 3px;
   box-shadow: none;
   background: #2980b9;
+}
+
+form.sign input[type=text], form.sign input[type=password] {
+  -webkit-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  -ms-transition: all 0.15s ease-in-out;
+  -o-transition: all 0.15s ease-in-out;
+  outline: none;
+  padding: 3px 0px 3px 3px;
+  border: 1px solid #DDDDDD;
+	font-size: 20px;
+}
+ 
+form.sign input[type=text]:focus, form.sign input[type=password]:focus {
+  box-shadow: 0 0 5px $fly-blue;
+  border: 1px solid $fly-blue;
 }
 
 a .tag{

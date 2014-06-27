@@ -11,7 +11,7 @@
 	<input type="text" name="user[username]">
 </label>
 
-<br>
+<br><br>
 
 <% if action == "sign_up" %>
 	<label>
@@ -19,7 +19,7 @@
 		<input type="text" name="user[email]">
 	</label>
 
-	<br>
+	<br><br>
 <% end %>
 
 <label>
@@ -35,5 +35,5 @@
   <input type="submit" value="Sign In">
 <% end %>
 </form>
-<br>
-<a class="twitter-link" href="/auth/facebook">Login with Facebook</a>
+<br><br><br>
+<a class="twitter-link" href="/auth/facebook"><%= image_tag("fb-login.png") %></a>
