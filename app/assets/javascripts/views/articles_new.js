@@ -20,7 +20,7 @@ Topaz.Views.ArticlesNew = Backbone.View.extend({
     var newArticle = new Topaz.Models.Article(formData["article"]);
 		
     newArticle.save({
-    	
+    	// handle files here
     }, {
       success: function () {
         Topaz.Collections.articles.add(newArticle);
