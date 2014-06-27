@@ -4,13 +4,25 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		this.$sidebarEl = options.$sidebarEl
 	},
 	routes: {
+		"": "articlesIndex",
 		"articles/new": "articlesNew",
-		"articles/:id": "articlesShow"
+		"articles/:id": "articlesShow",
+		"articles/:id/edit": "articlesEdit"
+	},
+	
+	articlesIndex: function(){
+    Topaz.Collections.articles.fetch();
+    var indexView = new Topaz.Views.ArticlesIndex({
+      collection: Topaz.Collections.articles
+    });
+    this._swapView(indexView);
 	},
 	
 	articlesNew: function(){
 		var article = new Topaz.Models.Article();
-		var newView = new Topaz.Views.ArticlesNew();
+		var newView = new Topaz.Views.ArticlesNew({
+			model: article
+		});
 		this._swapView(newView);
 	},
 	
@@ -20,6 +32,14 @@ Topaz.Routers.Router = Backbone.Router.extend({
       model: article
     });
     this._swapView(showView);
+	},
+	
+	articlesEdit: function(id){
+    var article = Topaz.Collections.articles.getOrFetch(id);
+    var editView = new Topaz.Views.ArticlesShow({
+      model: article
+    });
+    this._swapView(editView);
 	},
 	
 	_swapView: function(view){

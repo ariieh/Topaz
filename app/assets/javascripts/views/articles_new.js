@@ -14,8 +14,8 @@ Topaz.Views.ArticlesNew = Backbone.View.extend({
 		event.preventDefault();
 		
 		var formData = $(event.currentTarget).serializeJSON();
-		$("file").files
-		this.handle_files();
+		// $("file").files
+		// this.handle_files();
 		
     var newArticle = new Topaz.Models.Article(formData["article"]);
 		
@@ -24,6 +24,7 @@ Topaz.Views.ArticlesNew = Backbone.View.extend({
     }, {
       success: function () {
         Topaz.Collections.articles.add(newArticle);
+        Backbone.history.navigate("/", { trigger: true });
       }
     });
 		
