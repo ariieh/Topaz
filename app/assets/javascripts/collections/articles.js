@@ -1,6 +1,6 @@
 Topaz.Collections.Articles = Backbone.Collection.extend({
 	model: Topaz.Models.Article,
-	url: "/articles"
+	url: "/api/articles"
 });
 
 Topaz.Collections.articles = new Topaz.Collections.Articles();

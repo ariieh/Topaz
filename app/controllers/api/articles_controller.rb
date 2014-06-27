@@ -10,14 +10,16 @@ class Api::ArticlesController < ApplicationController
   end
   
   def create
-    # @article = current_user.articles.new(article_params)
-    #
-    # if @article.save
-    #   redirect_to @article
-    # else
-    #   flash.now[:errors] = @article.errors.full_messages
-    #   render :new
-    # end
+    @article = current_user.articles.new(self.article_params)
+
+    if @article.save
+      render json: @article
+      # redirect_to @article
+    else
+      # flash.now[:errors] = @article.errors.full_messages
+      # render :new
+      render :json => @article.errors, :status => :unprocessable_entity      
+    end
   end
   
   def show
@@ -45,9 +47,9 @@ class Api::ArticlesController < ApplicationController
     # redirect_to current_user
   end
   
-  private
+  protected
   
   def article_params
-    # params.require(:article).permit(:title, :body, :taglist, :photo)
+    self.params.permit(:title, :body, :taglist, :photo)
   end
 end

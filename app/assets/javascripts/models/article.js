@@ -1,3 +1,3 @@
 Topaz.Models.Article = Backbone.Model.extend({
-	urlRoot: "/articles"
+	urlRoot: "/api/articles"
 });

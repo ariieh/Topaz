@@ -12,14 +12,28 @@ Topaz.Views.ArticlesNew = Backbone.View.extend({
 	},
 	submit: function(event){
 		event.preventDefault();
+		
 		var formData = $(event.currentTarget).serializeJSON();
+		$("file").files
+		this.handle_files();
+		
     var newArticle = new Topaz.Models.Article(formData["article"]);
-
-    newArticle.save({}, {
+		
+    newArticle.save({
+    	
+    }, {
       success: function () {
         Topaz.Collections.articles.add(newArticle);
       }
     });
 		
+	},
+	handle_files: function(files, callback) {
+	  var file = files[0];
+	  var reader = new FileReader();
+	  reader.onload = function(e) {
+	  	callback(e.target.result);
+	  }
+	  reader.readAsDataURL(file);
 	}
 });

@@ -12,7 +12,7 @@ class ArticlesController < ApplicationController
   def create
     @article = current_user.articles.new(article_params)
     
-    if @article.save  
+    if @article.save
       redirect_to @article
     else
       flash.now[:errors] = @article.errors.full_messages
