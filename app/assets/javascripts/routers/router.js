@@ -15,6 +15,8 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		Topaz.Collections.articles.fetch({
     	success: function(){
 		    var indexView = new Topaz.Views.ArticlesIndex({
+					$contentEl: that.$contentEl,
+					$sidebarEl: that.$sidebarEl,
 		      collection: Topaz.Collections.articles
 		    });
 		    that._swapView(indexView);
@@ -48,7 +50,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	
 	_swapView: function(view){
 		if (this.currentView) this.currentView.remove();
-		this.$contentEl.html(view.render().$el);
+		view.render();
 		this.currentView = view;
 	}
 });

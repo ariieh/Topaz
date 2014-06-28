@@ -10,18 +10,26 @@ Topaz.Views.ArticlesSnippet = Backbone.View.extend({
 });
 
 Topaz.Views.ArticlesIndex = Backbone.View.extend({
+	initialize: function(options){
+		this.$contentEl = options.$contentEl;
+		this.$sidebarEl = options.$sidebarEl;
+	},
 	template: JST["articles/index"],
 	render: function(){
 		var renderedContent = this.template({
 			articles: this.collection
 		});
-		this.$el.html(renderedContent);
+		this.$contentEl.html(renderedContent);
 		this.addSubviews();
 		return this;
 	},
 	addSubviews: function(){
-		this.collection.forEach(function(article){
-			
-		});
+		this.$sidebarEl.empty();
+		this.collection.each(function(article){
+	    var snippetView = new Topaz.Views.ArticlesSnippet({
+	      model: article
+	    });
+			this.$sidebarEl.append(snippetView.render().$el);
+		}, this);
 	}
 });
