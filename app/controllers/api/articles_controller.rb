@@ -2,7 +2,10 @@ class Api::ArticlesController < ApplicationController
   before_action :check_if_signed_in, only: [:new, :create, :edit, :update, :destroy]
   
   def index
-    @articles = Article.order(:created_at).reverse
+    @articles = Article.order(:created_at).reverse.to_a
+    @articles.each_with_index do |article, index|
+      @articles[index] = {id: article.id, title: article.title, body: article.body, votecount: article.votecount, created_at: article.created_at, taglist: article.taglist}
+    end
     render json: @articles
     # redirect_to article_url(Article.last)
   end
@@ -48,6 +51,11 @@ class Api::ArticlesController < ApplicationController
   def destroy
     # current_user.articles.find(params[:id]).destroy
     # redirect_to current_user
+  end
+  
+  def votecount
+    @article = Article.find(params[:id])
+    render json: @article.votecount    
   end
   
   protected

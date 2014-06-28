@@ -16,6 +16,7 @@
 //= require underscore
 //= require jquery.color-2.1.2.min
 //= require jquery.ba-outside-events.min
+//= require jquery.timeago
 //= require underscore
 //= require backbone
 //= require topaz

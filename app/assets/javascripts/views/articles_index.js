@@ -1,7 +1,6 @@
 Topaz.Views.ArticlesSnippet = Backbone.View.extend({
   template: JST["articles/snippet"],
   tagName: "li",
-
   render: function () {
     var renderedContent = this.template({ article: this.model });
     this.$el.html(renderedContent);
@@ -31,5 +30,6 @@ Topaz.Views.ArticlesIndex = Backbone.View.extend({
 	    });
 			this.$sidebarEl.append(snippetView.render().$el);
 		}, this);
+		$(".sidebar li").wrapAll("<ul></ul>");
 	}
 });

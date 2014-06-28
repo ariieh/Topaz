@@ -1,1 +1,10 @@
-<%= article.escape("title") %>
+<a href="<%= "#/articles/" + article.escape("id") %>">
+  <%= article.escape("title") %></a>
+<br>
+<div class="snippet-footer">
+  <%= article.escape("votecount") %><i class="fa fa-thumbs-o-up"></i>
+  <br>
+  <i class="fa fa-clock-o"></i>
+  <%= " " + jQuery.timeago(article.escape("created_at")) %>
+  <br>
+</div>
