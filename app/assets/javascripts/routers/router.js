@@ -7,7 +7,8 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		"": "articlesIndex",
 		"articles/new": "articlesNew",
 		"articles/:id": "articlesShow",
-		"articles/:id/edit": "articlesEdit"
+		"articles/:id/edit": "articlesEdit",
+		"users/:id": "usersShow",
 	},
 	
 	articlesIndex: function(){
@@ -52,6 +53,20 @@ Topaz.Routers.Router = Backbone.Router.extend({
       model: article
     });
     this._swapView(editView);
+	},
+	
+	usersShow: function(id){
+		var that = this;
+    var user = new Topaz.Models.User({ id: id });
+    user.fetch({ success: function () {
+	    var showView = new Topaz.Views.UsersShow({
+				$contentEl: that.$contentEl,
+				$sidebarEl: that.$sidebarEl,
+	      model: user
+	    });
+	    that._swapView(showView);
+			}
+		});
 	},
 	
 	_swapView: function(view){
