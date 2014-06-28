@@ -13,6 +13,14 @@ class Article < ActiveRecord::Base
   
   validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
   
+  def self.hashify(article)
+    jsonarticle = JSON.parse(article.to_json)
+    jsonarticle[:votecount] = article.votecount
+    jsonarticle[:taglist] = article.taglist
+    jsonarticle[:photo_url] = article.photo.url(:big)
+    jsonarticle
+  end
+  
   def taglist=(tagstring)
     tags_to_add = tagstring.split(" ").uniq
                             .map { |tag| tag.strip.downcase }

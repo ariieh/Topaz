@@ -4,10 +4,7 @@ class Api::ArticlesController < ApplicationController
   def index
     @articles = Article.order(:created_at).reverse.to_a
     @articles.each_with_index do |article, index|
-      jsonarticle = JSON.parse(article.to_json)
-      jsonarticle[:votecount] = article.votecount
-      jsonarticle[:taglist] = article.taglist
-      @articles[index] = jsonarticle
+      @articles[index] = Article.hashify(article)
     end
     render json: @articles
     # redirect_to article_url(Article.last)
@@ -28,7 +25,7 @@ class Api::ArticlesController < ApplicationController
   
   def show
     @article = Article.find(params[:id])
-    render json: @article
+    render json: Article.hashify(@article)
     # @view = params[:view] || nil
     # @el = params[:el] || nil
     # @article = Article.find(params[:id])
