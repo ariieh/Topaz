@@ -4,18 +4,22 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		this.$sidebarEl = options.$sidebarEl
 	},
 	routes: {
-		"/": "articlesIndex",
+		"": "articlesIndex",
 		"articles/new": "articlesNew",
 		"articles/:id": "articlesShow",
 		"articles/:id/edit": "articlesEdit"
 	},
 	
 	articlesIndex: function(){
-    Topaz.Collections.articles.fetch();
-    var indexView = new Topaz.Views.ArticlesIndex({
-      collection: Topaz.Collections.articles
+    var that = this;
+		Topaz.Collections.articles.fetch({
+    	success: function(){
+		    var indexView = new Topaz.Views.ArticlesIndex({
+		      collection: Topaz.Collections.articles
+		    });
+		    that._swapView(indexView);
+    	}
     });
-    this._swapView(indexView);
 	},
 	
 	articlesNew: function(){
