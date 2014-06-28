@@ -26,9 +26,9 @@
   
   <br><br>
 
-<% if (article.escape("title")).length === 0 %>
+<% if (article.escape("title").length === 0){ %>
   <input type="submit" value="Create Article">
-<% else %>
+<% } else { %>
   <input type="submit" value="Update Article">
-<% end %>
+<% } %>
 </form>

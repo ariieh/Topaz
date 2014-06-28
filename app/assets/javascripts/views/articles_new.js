@@ -1,5 +1,5 @@
-Topaz.Views.ArticlesNew = Backbone.View.extend({
-	template: JST["articles/new"],
+Topaz.Views.ArticlesForm = Backbone.View.extend({
+	template: JST["articles/form"],
 	events: {
 		"submit form": "submit"
 	},

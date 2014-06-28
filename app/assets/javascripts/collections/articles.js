@@ -16,5 +16,3 @@ Topaz.Collections.Articles = Backbone.Collection.extend({
     return article;
   }
 });
-
-Topaz.Collections.articles = new Topaz.Collections.Articles();

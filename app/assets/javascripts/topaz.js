@@ -4,11 +4,16 @@ window.Topaz = {
   Views: {},
   Routers: {},
   initialize: function() {
-    new Topaz.Routers.Router({
-    	$contentEl: $("#content"),
-			$sidebarEl: $(".sidebar")
-    });
-    Backbone.history.start();
+		Topaz.Collections.articles = new Topaz.Collections.Articles();
+		Topaz.Collections.articles.fetch({
+			success: function(){
+		    new Topaz.Routers.Router({
+		    	$contentEl: $("#content"),
+					$sidebarEl: $(".sidebar")
+		    });
+		    Backbone.history.start();
+			}
+		});
   }
 };
 

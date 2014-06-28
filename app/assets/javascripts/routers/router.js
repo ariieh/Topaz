@@ -4,7 +4,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		this.$sidebarEl = options.$sidebarEl
 	},
 	routes: {
-		"": "articlesIndex",
+		"/": "articlesIndex",
 		"articles/new": "articlesNew",
 		"articles/:id": "articlesShow",
 		"articles/:id/edit": "articlesEdit"
@@ -20,7 +20,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	
 	articlesNew: function(){
 		var article = new Topaz.Models.Article();
-		var newView = new Topaz.Views.ArticlesNew({
+		var newView = new Topaz.Views.ArticlesForm({
 			model: article
 		});
 		this._swapView(newView);
@@ -36,7 +36,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	
 	articlesEdit: function(id){
     var article = Topaz.Collections.articles.getOrFetch(id);
-    var editView = new Topaz.Views.ArticlesShow({
+    var editView = new Topaz.Views.ArticlesForm({
       model: article
     });
     this._swapView(editView);

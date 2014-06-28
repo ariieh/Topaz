@@ -2,7 +2,7 @@ class Api::ArticlesController < ApplicationController
   before_action :check_if_signed_in, only: [:new, :create, :edit, :update, :destroy]
   
   def index
-    @articles = Article.all.order(:created_at).reverse
+    @articles = Article.order(:created_at).reverse
     render json: @articles
     # redirect_to article_url(Article.last)
   end
