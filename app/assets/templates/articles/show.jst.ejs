@@ -1,1 +1,2 @@
 <h2><%= article.escape("title") %></h2>
+<h4>author: <a href="<%= "#/users/" + article.escape("author_id") %>"></a>, submitted <%= jQuery.timeago(article.get("created_at")) %></h4>

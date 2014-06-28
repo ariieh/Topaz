@@ -1,22 +1,27 @@
 Topaz.Views.ArticlesForm = Backbone.View.extend({
 	template: JST["articles/form"],
+	initialize: function(options){
+		this.$contentEl = options.$contentEl;
+		this.$sidebarEl = options.$sidebarEl;
+	},
 	events: {
-		"submit form": "submit"
+		"submit": "submit"
 	},
 	render: function(){
 		var renderedContent = this.template({
 			article: this.model
 		});
-		this.$el.html(renderedContent);
+		this.$contentEl.html(renderedContent);
 		return this;
 	},
 	submit: function(event){
+		alert("hi");
 		event.preventDefault();
 		
 		var formData = $(event.currentTarget).serializeJSON();
 		// $("file").files
 		// this.handle_files();
-		
+		console.log(formData);
     var newArticle = new Topaz.Models.Article(formData["article"]);
 		
     newArticle.save({
@@ -24,7 +29,6 @@ Topaz.Views.ArticlesForm = Backbone.View.extend({
     }, {
       success: function () {
         Topaz.Collections.articles.add(newArticle);
-        Backbone.history.navigate("/", { trigger: true });
       }
     });
 		

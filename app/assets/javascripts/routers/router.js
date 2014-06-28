@@ -27,6 +27,8 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	articlesNew: function(){
 		var article = new Topaz.Models.Article();
 		var newView = new Topaz.Views.ArticlesForm({
+			$contentEl: this.$contentEl,
+			$sidebarEl: this.$sidebarEl,
 			model: article
 		});
 		this._swapView(newView);
@@ -35,6 +37,8 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	articlesShow: function(id){
     var article = Topaz.Collections.articles.getOrFetch(id);
     var showView = new Topaz.Views.ArticlesShow({
+			$contentEl: this.$contentEl,
+			$sidebarEl: this.$sidebarEl,
       model: article
     });
     this._swapView(showView);
@@ -43,6 +47,8 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	articlesEdit: function(id){
     var article = Topaz.Collections.articles.getOrFetch(id);
     var editView = new Topaz.Views.ArticlesForm({
+			$contentEl: this.$contentEl,
+			$sidebarEl: this.$sidebarEl,
       model: article
     });
     this._swapView(editView);

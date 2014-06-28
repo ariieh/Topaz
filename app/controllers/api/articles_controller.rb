@@ -4,7 +4,10 @@ class Api::ArticlesController < ApplicationController
   def index
     @articles = Article.order(:created_at).reverse.to_a
     @articles.each_with_index do |article, index|
-      @articles[index] = {id: article.id, title: article.title, body: article.body, votecount: article.votecount, created_at: article.created_at, taglist: article.taglist}
+      jsonarticle = JSON.parse(article.to_json)
+      jsonarticle[:votecount] = article.votecount
+      jsonarticle[:taglist] = article.taglist
+      @articles[index] = jsonarticle
     end
     render json: @articles
     # redirect_to article_url(Article.last)
