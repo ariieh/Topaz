@@ -1,4 +1,7 @@
 Topaz.Collections.Articles = Backbone.Collection.extend({
+	initialize: function(){
+    this.sortKey = 'created_at';
+	},
 	model: Topaz.Models.Article,
 	url: "/api/articles",
   getOrFetch: function (id) {
@@ -14,5 +17,14 @@ Topaz.Collections.Articles = Backbone.Collection.extend({
     }
 
     return article;
-  }
+  },
+	comparator: function(a,b){
+    a = a.get(this.sortKey);
+    b = b.get(this.sortKey);
+    return a > b ? -1 : a < b ? 1 : 0;
+	},
+	sortByKey: function(key){
+		this.sortKey = key;
+		this.sort();
+	}
 });

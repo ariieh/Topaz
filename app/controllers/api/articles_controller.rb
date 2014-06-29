@@ -2,12 +2,20 @@ class Api::ArticlesController < ApplicationController
   before_action :check_if_signed_in, only: [:new, :create, :edit, :update, :destroy]
   
   def index
-    @articles = Article.order(:created_at).reverse.to_a
+    @articles = Article.all.to_a
     @articles.each_with_index do |article, index|
       @articles[index] = Article.hashify(article)
     end
     render json: @articles
     # redirect_to article_url(Article.last)
+  end
+  
+  def favorites
+    @articles = current_user.favorites
+    @articles.each_with_index do |article, index|
+      @articles[index] = Article.hashify(article)
+    end
+    render json: @articles
   end
 
   def create

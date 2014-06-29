@@ -5,6 +5,8 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	},
 	routes: {
 		"": "articlesIndex",
+		"articles/popular": "articlesIndexPopular",
+		"articles/favorites": "articlesIndexFavorites",
 		"articles/new": "articlesNew",
 		"articles/:id": "articlesShow",
 		"articles/:id/edit": "articlesEdit",
@@ -23,6 +25,25 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		    that._swapView(indexView);
     	}
     });
+	},
+	
+	articlesIndexPopular: function(){
+    var that = this;
+		Topaz.Collections.articles.fetch({
+    	success: function(){
+				Topaz.Collections.articles.sortByKey("votecount");
+		    var indexView = new Topaz.Views.ArticlesIndex({
+					$contentEl: that.$contentEl,
+					$sidebarEl: that.$sidebarEl,
+		      collection: Topaz.Collections.articles
+		    });
+		    that._swapView(indexView);
+    	}
+    });
+	},
+	
+	articlesIndexFavorites: function(){
+		
 	},
 	
 	articlesNew: function(){
