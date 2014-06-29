@@ -5,13 +5,19 @@ window.Topaz = {
   Routers: {},
   initialize: function() {
 		Topaz.Collections.articles = new Topaz.Collections.Articles();
-		Topaz.Collections.articles.fetch({
+		Topaz.Collections.users = new Topaz.Collections.Users();
+		
+		Topaz.Collections.users.fetch({
 			success: function(){
-		    new Topaz.Routers.Router({
-		    	$contentEl: $("#content"),
-					$sidebarEl: $(".sidebar")
-		    });
-		    Backbone.history.start();
+				Topaz.Collections.articles.fetch({
+					success: function(){
+				    new Topaz.Routers.Router({
+				    	$contentEl: $("#content"),
+							$sidebarEl: $(".sidebar")
+				    });
+				    Backbone.history.start();
+					}
+				});
 			}
 		});
   }

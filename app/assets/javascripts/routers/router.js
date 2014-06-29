@@ -37,10 +37,12 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	
 	articlesShow: function(id){
     var article = Topaz.Collections.articles.getOrFetch(id);
-    var showView = new Topaz.Views.ArticlesShow({
+    var user = Topaz.Collections.users.getOrFetch(id);
+    var showView = new Topaz.Views.UsersShow({
 			$contentEl: this.$contentEl,
 			$sidebarEl: this.$sidebarEl,
-      model: article
+      model: article,
+			user: user
     });
     this._swapView(showView);
 	},
@@ -56,17 +58,13 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	},
 	
 	usersShow: function(id){
-		var that = this;
-    var user = new Topaz.Models.User({ id: id });
-    user.fetch({ success: function () {
-	    var showView = new Topaz.Views.UsersShow({
-				$contentEl: that.$contentEl,
-				$sidebarEl: that.$sidebarEl,
-	      model: user
-	    });
-	    that._swapView(showView);
-			}
-		});
+    var user = Topaz.Collections.users.getOrFetch(id);
+    var showView = new Topaz.Views.UsersShow({
+			$contentEl: this.$contentEl,
+			$sidebarEl: this.$sidebarEl,
+      model: user
+    });
+    this._swapView(showView);
 	},
 	
 	_swapView: function(view){
