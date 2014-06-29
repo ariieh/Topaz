@@ -4,3 +4,7 @@
 <% if (article.escape("photo_url") !== "/photos/big/missing.png" ){ %>
 	<img src="<%= article.escape("photo_url") %>"></img>
 <% } %>
+
+<div id="body-text">
+	<%= article.escape("body") %>
+</div>
