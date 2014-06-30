@@ -24,6 +24,10 @@ class Article < ActiveRecord::Base
     jsonarticle
   end
   
+  def hashify
+    Article.hashify(self)
+  end
+  
   def taglist=(tagstring)
     tags_to_add = tagstring.split(" ").uniq
                             .map { |tag| tag.strip.downcase }

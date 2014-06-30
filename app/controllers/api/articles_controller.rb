@@ -39,6 +39,11 @@ class Api::ArticlesController < ApplicationController
     # @article = Article.find(params[:id])
   end
   
+  def tagshow
+    @tag = Tag.find(params[:id])
+    render json: @tag.articles.map(&:hashify)
+  end
+  
   def update
     @article = Article.find(params[:id])
     if @article.update_attributes(self.article_params)

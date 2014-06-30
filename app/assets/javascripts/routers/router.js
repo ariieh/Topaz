@@ -11,6 +11,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		"articles/:id": "articlesShow",
 		"articles/:id/edit": "articlesEdit",
 		"users/:id": "usersShow",
+		"articles/tag/:id": "tagsShow"
 	},
 	
 	articlesIndex: function(){
@@ -60,6 +61,21 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		} else {
 			alert("Sign in to see your favorites!");
 		}
+	},
+	
+	tagsShow: function(id){
+		var that = this;
+		$.ajax({
+			url: Topaz.Collections.articles.url + "/tag/" + id,
+			success: function(data){
+		    var indexView = new Topaz.Views.ArticlesIndex({
+					$contentEl: that.$contentEl,
+					$sidebarEl: that.$sidebarEl,
+		      collection: new Topaz.Collections.Articles(data)
+		    });
+		    that._swapView(indexView);
+			}
+		});
 	},
 	
 	articlesNew: function(){
