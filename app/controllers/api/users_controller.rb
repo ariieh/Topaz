@@ -28,10 +28,4 @@ class Api::UsersController < ApplicationController
     render json: @user.hashify
     # @user = User.find(params[:id])
   end
-  
-  private
-  
-  def user_params
-    # params.require(:user).permit(:username, :email, :password)
-  end
 end

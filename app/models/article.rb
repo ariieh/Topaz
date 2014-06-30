@@ -1,4 +1,6 @@
-# include ActionView::Helpers::TextHelper
+require "erb"
+include ERB::Util
+include ActionView::Helpers::TextHelper
 
 class Article < ActiveRecord::Base
   validates :title, :body, :author, presence: true
@@ -17,6 +19,7 @@ class Article < ActiveRecord::Base
   
   def self.hashify(article)
     jsonarticle = JSON.parse(article.to_json)
+    jsonarticle[:body] = simple_format(h article.body)
     jsonarticle[:votecount] = article.votecount
     jsonarticle[:taglist] = article.taglist
     jsonarticle[:photo_url] = article.photo.url(:big)

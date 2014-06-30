@@ -13,7 +13,7 @@ Topaz.Views.ArticlesForm = Backbone.View.extend({
 		return this;
 	},
 	submit: function(event){
-    if(event){ event.preventDefault(); }
+    event.preventDefault();
 		
 		var formData = $(event.currentTarget).serializeJSON();
     var newArticle = new Topaz.Models.Article(formData["article"]);
