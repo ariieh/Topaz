@@ -11,3 +11,12 @@
 
 <i class="fa fa-tags"></i>
 <%= article.escape("taglist") %>
+
+<% if(window.currentUserId){ %>
+  
+    <% if (currentUser.escape("votes") && currentUser.escape("votes").split(",").indexOf(article.escape("id").toString()) !== -1){ %>
+      <button class="disabled-favorite-button" disabled>Favorite</button>
+    <% } else { %>
+      <button class="favorite-button">Favorite</button>
+    <% } %>
+<% } %>

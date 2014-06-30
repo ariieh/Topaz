@@ -14,13 +14,18 @@ class Api::UsersController < ApplicationController
   end
   
   def index
-    @users = User.all
+    @users = User.all.to_a
+    
+    @users.each_with_index do |user, index|
+      @users[index] = user.hashify
+    end
+
     render json: @users
   end
   
   def show
     @user = User.find(params[:id])
-    render json: @user
+    render json: @user.hashify
     # @user = User.find(params[:id])
   end
   

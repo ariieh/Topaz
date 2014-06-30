@@ -4,7 +4,7 @@ class Api::ArticlesController < ApplicationController
   def index
     @articles = Article.all.to_a
     @articles.each_with_index do |article, index|
-      @articles[index] = Article.hashify(article)
+      @articles[index] = article.hashify
     end
     render json: @articles
     # redirect_to article_url(Article.last)
@@ -13,7 +13,7 @@ class Api::ArticlesController < ApplicationController
   def favorites
     @articles = current_user.favorites
     @articles.each_with_index do |article, index|
-      @articles[index] = Article.hashify(article)
+      @articles[index] = article.hashify
     end
     render json: @articles
   end
@@ -22,7 +22,7 @@ class Api::ArticlesController < ApplicationController
     @article = current_user.articles.new(self.article_params)
 
     if @article.save
-      render json: @article
+      render json: @article.hashify
       # redirect_to @article
     else
       # flash.now[:errors] = @article.errors.full_messages
@@ -33,7 +33,7 @@ class Api::ArticlesController < ApplicationController
   
   def show
     @article = Article.find(params[:id])
-    render json: Article.hashify(@article)
+    render json: @article.hashify
     # @view = params[:view] || nil
     # @el = params[:el] || nil
     # @article = Article.find(params[:id])
@@ -47,7 +47,7 @@ class Api::ArticlesController < ApplicationController
   def update
     @article = Article.find(params[:id])
     if @article.update_attributes(self.article_params)
-      render json: @article
+      render json: @article.hashify
     else
       render json: @article.errors, status: :unprocessable_entity      
     end

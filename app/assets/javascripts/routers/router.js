@@ -87,6 +87,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	articlesShow: function(id){
     var article = Topaz.Collections.articles.getOrFetch(id);
     var user = Topaz.Collections.users.getOrFetch(article.get("author_id"));
+		
     var showView = new Topaz.Views.ArticlesShow({
       model: article,
 			user: user

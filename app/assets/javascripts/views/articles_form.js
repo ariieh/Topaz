@@ -13,30 +13,25 @@ Topaz.Views.ArticlesForm = Backbone.View.extend({
 		return this;
 	},
 	submit: function(event){
-		event.preventDefault();
+    if(event){ event.preventDefault(); }
 		
 		var formData = $(event.currentTarget).serializeJSON();
-		// $("file").files
-		// this.handle_files();
-		console.log(formData);
     var newArticle = new Topaz.Models.Article(formData["article"]);
-		
+
     newArticle.save({
-    	// handle files here
     }, {
       success: function () {
         Topaz.Collections.articles.add(newArticle);
-				Backbone.history.navigate("/", {trigger: true});
       }
     });
 		
-	},
-	handle_files: function(files, callback) {
-	  var file = files[0];
-	  var reader = new FileReader();
-	  reader.onload = function(e) {
-	  	callback(e.target.result);
-	  }
-	  reader.readAsDataURL(file);
 	}
+	// handle_files: function(files, callback) {
+	//   var file = files[0];
+	//   var reader = new FileReader();
+	//   reader.onload = function(e) {
+	//   	callback(e.target.result);
+	//   }
+	//   reader.readAsDataURL(file);
+	// }
 });

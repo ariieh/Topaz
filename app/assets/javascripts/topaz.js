@@ -6,7 +6,6 @@ window.Topaz = {
   initialize: function() {
 		Topaz.Collections.articles = new Topaz.Collections.Articles();
 		Topaz.Collections.users = new Topaz.Collections.Users();
-		Topaz.Collections.tags = new Topaz.Collections.Tags();
 		
 		Topaz.Collections.users.fetch({
 			success: function(){

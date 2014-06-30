@@ -10,6 +10,7 @@ Topaz.Views.ArticlesSnippet = Backbone.View.extend({
 
 Topaz.Views.ArticlesIndex = Backbone.View.extend({
 	initialize: function(options){
+		this.listenTo(this.collection,"sync add change remove",this.render);
 	},
 	tagName: "ul",
 	template: JST["articles/index"],
