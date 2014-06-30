@@ -7,6 +7,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		"": "articlesIndex",
 		"articles/popular": "articlesIndexPopular",
 		"articles/favorites": "articlesIndexFavorites",
+		"articles/latest": "articlesIndex",
 		"articles/new": "articlesNew",
 		"articles/:id": "articlesShow",
 		"articles/:id/edit": "articlesEdit",
@@ -22,7 +23,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		      collection: Topaz.Collections.articles
 		    });
 		    that._swapSidebarView(indexView);
-				that._showFirst(collection);
+				that._showFirst(Topaz.Collections.articles);
     	}
     });
 	},
@@ -36,7 +37,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		      collection: Topaz.Collections.articles
 		    });
 		    that._swapSidebarView(indexView);
-				that._showFirst(collection);
+				that._showFirst(Topaz.Collections.articles);
     	}
     });
 	},
@@ -47,9 +48,9 @@ Topaz.Routers.Router = Backbone.Router.extend({
 			$.ajax({
 				url: Topaz.Collections.articles.url + "/favorites",
 				success: function(data){
-					console.log(data);
+					var collection = new Topaz.Collections.Articles(data);
 			    var indexView = new Topaz.Views.ArticlesIndex({
-			      collection: new Topaz.Collections.Articles(data)
+			      collection: collection
 			    });
 			    that._swapSidebarView(indexView);
 					that._showFirst(collection);
@@ -65,10 +66,12 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		$.ajax({
 			url: Topaz.Collections.articles.url + "/tag/" + id,
 			success: function(data){
+				var collection = new Topaz.Collections.Articles(data);
 		    var indexView = new Topaz.Views.ArticlesIndex({
-		      collection: new Topaz.Collections.Articles(data)
+		      collection: collection
 		    });
 		    that._swapSidebarView(indexView);
+				that._showFirst(collection);
 			}
 		});
 	},

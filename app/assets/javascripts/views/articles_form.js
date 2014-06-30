@@ -13,7 +13,6 @@ Topaz.Views.ArticlesForm = Backbone.View.extend({
 		return this;
 	},
 	submit: function(event){
-		alert("hi");
 		event.preventDefault();
 		
 		var formData = $(event.currentTarget).serializeJSON();
@@ -27,6 +26,7 @@ Topaz.Views.ArticlesForm = Backbone.View.extend({
     }, {
       success: function () {
         Topaz.Collections.articles.add(newArticle);
+				Backbone.history.navigate("/", {trigger: true});
       }
     });
 		
