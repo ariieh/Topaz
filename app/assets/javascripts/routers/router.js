@@ -22,6 +22,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		      collection: Topaz.Collections.articles
 		    });
 		    that._swapSidebarView(indexView);
+				that._showFirst(collection);
     	}
     });
 	},
@@ -35,6 +36,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		      collection: Topaz.Collections.articles
 		    });
 		    that._swapSidebarView(indexView);
+				that._showFirst(collection);
     	}
     });
 	},
@@ -50,6 +52,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 			      collection: new Topaz.Collections.Articles(data)
 			    });
 			    that._swapSidebarView(indexView);
+					that._showFirst(collection);
 				}
 			});
 		} else {
@@ -100,6 +103,16 @@ Topaz.Routers.Router = Backbone.Router.extend({
     var user = Topaz.Collections.users.getOrFetch(id);
     var showView = new Topaz.Views.UsersShow({
       model: user
+    });
+    this._swapContentView(showView);
+	},
+	
+	_showFirst: function(collection){
+		var article = collection.first();
+    var user = Topaz.Collections.users.getOrFetch(article.get("author_id"));
+    var showView = new Topaz.Views.ArticlesShow({
+      model: article,
+			user: user
     });
     this._swapContentView(showView);
 	},
