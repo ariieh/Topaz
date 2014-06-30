@@ -1,17 +1,15 @@
 Topaz.Views.ArticlesForm = Backbone.View.extend({
 	template: JST["articles/form"],
 	initialize: function(options){
-		this.$contentEl = options.$contentEl;
-		this.$sidebarEl = options.$sidebarEl;
 	},
 	events: {
-		"submit": "submit"
+		"submit form": "submit"
 	},
 	render: function(){
 		var renderedContent = this.template({
 			article: this.model
 		});
-		this.$contentEl.html(renderedContent);
+		this.$el.html(renderedContent);
 		return this;
 	},
 	submit: function(event){

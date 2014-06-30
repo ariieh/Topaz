@@ -1,7 +1,5 @@
 Topaz.Views.ArticlesShow = Backbone.View.extend({
 	initialize: function(options){
-		this.$contentEl = options.$contentEl;
-		this.$sidebarEl = options.$sidebarEl;
 		this.user = options.user;
 	},
 	template: JST["articles/show"],
@@ -11,7 +9,7 @@ Topaz.Views.ArticlesShow = Backbone.View.extend({
 			article: this.model,
 			user: this.user
 		});
-		this.$contentEl.html(renderedContent);
+		this.$el.html(renderedContent);
 		return this;
 	}
 });
