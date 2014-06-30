@@ -4,7 +4,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		this.$sidebarEl = options.$sidebarEl
 	},
 	routes: {
-		"": "articlesIndex",
+		"/": "articlesIndex",
 		"articles/popular": "articlesIndexPopular",
 		"articles/favorites": "articlesIndexFavorites",
 		"articles/new": "articlesNew",
@@ -43,7 +43,23 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	},
 	
 	articlesIndexFavorites: function(){
-		
+		var that = this;
+		if (window.currentUserId){
+			$.ajax({
+				url: Topaz.Collections.articles.url + "/favorites",
+				success: function(data){
+					console.log(data);
+			    var indexView = new Topaz.Views.ArticlesIndex({
+						$contentEl: that.$contentEl,
+						$sidebarEl: that.$sidebarEl,
+			      collection: new Topaz.Collections.Articles(data)
+			    });
+			    that._swapView(indexView);
+				}
+			});
+		} else {
+			alert("Sign in to see your favorites!");
+		}
 	},
 	
 	articlesNew: function(){
