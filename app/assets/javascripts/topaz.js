@@ -63,8 +63,8 @@ $(document).ready(function(){
 	);
 
 	/* rails only */
-	// $('.comment-button').click(function(){
-	// 	$(".comment-box").not($(this).siblings()).hide();
-	// 	$(this).siblings(".comment-box").fadeToggle("fast");
-	// });
+	$('.comment-button').click(function(){
+		$(".comment-box").not($(this).siblings()).hide();
+		$(this).siblings(".comment-box").fadeToggle("fast");
+	});
 });

@@ -5,10 +5,6 @@ Topaz.Models.Article = Backbone.Model.extend({
 			this.comments().set(response.comments);
 			delete response.comments;
 		}
-		if (response.votes){
-			this._votecount = response.votes.length;
-			delete response.votes;
-		}
 		return response;
 	},
 	comments: function(){
@@ -18,8 +14,5 @@ Topaz.Models.Article = Backbone.Model.extend({
 			});
 		}
 		return this._comments;
-	},
-	votecount: function(){
-		return this._votecount;
 	}
 });

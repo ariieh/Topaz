@@ -450,8 +450,9 @@ nav .search-bar:focus {
 	clear: both;
 }
 
-.favorite-button{
+.favorite-button, .disabled-favorite-button{
   position: absolute;
+	left: 0px;
 	bottom: -100px;
   display: inline-block;
 	border: 0px;
@@ -471,18 +472,12 @@ nav .search-bar:focus {
 }
 
 .favorite-button:active {
-  top: 3px;
+	bottom: -103px;
   box-shadow: none;
   background: #0a0;
 }
 
 .disabled-favorite-button{
-  position: absolute;
-	bottom: -100px;
-  display: inline-block;
-	border: 0px;
-	margin-bottom: 25px;
-  padding: 10px 20px;
   background: #95a5a6;
   color: #ecf0f1;
   box-shadow: 0 3px 0 0 #7f8c8d;

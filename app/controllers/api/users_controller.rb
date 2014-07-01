@@ -28,4 +28,5 @@ class Api::UsersController < ApplicationController
     render json: @user.hashify
     # @user = User.find(params[:id])
   end
+  
 end

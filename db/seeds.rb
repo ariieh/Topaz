@@ -126,6 +126,7 @@ b2.taglist = "humor tech"
 Article.all.each do |article|
   num = (1..52).to_a.sample
   User.all.each_with_index do |user, index|
+    next if user.id == 1 || user.id == 2
     Vote.create!(user_id: user.id, article_id: article.id)
     break if num == index
   end

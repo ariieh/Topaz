@@ -1,7 +1,7 @@
 Topaz.Views.ArticlesShow = Backbone.View.extend({
 	initialize: function(options){
 		this.user = options.user;
-		this.listenTo(this.model,"sync add change remove",this.render);
+		this.listenTo(this.model, "sync add change remove", this.render);
 		this.subviews = [];
 	},
 	className: "article-show-container",
@@ -11,11 +11,10 @@ Topaz.Views.ArticlesShow = Backbone.View.extend({
 	template: JST["articles/show"],
 	render: function(){
 		var that = this;
-				
+		
 		var renderedContent = this.template({
 			article: this.model,
-			user: this.user,
-			currentUser: window.currentUser
+			user: this.user
 		});
 		
 		this.$el.html(renderedContent);
@@ -30,6 +29,13 @@ Topaz.Views.ArticlesShow = Backbone.View.extend({
 			type: "post",
 			url: Topaz.Collections.articles.url + "/" + this.model.get("id") + "/votes",
 			success: function(response){
+				if (window.currentUser.get("votes")){
+					window.currentUser.get("votes").push(that.model.id);
+					window.currentUser.set(
+						{votes: window.currentUser.get("votes")});
+				} else {
+					window.currentUser.set({votes: [that.model.id]});
+				}
 				that.model.set({votecount: response});
 			}
 		});

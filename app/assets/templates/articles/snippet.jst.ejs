@@ -2,7 +2,7 @@
   <%= article.escape("title") %></a>
 <br>
 <div class="snippet-footer">
-  <%= article.votecount() %><i class="fa fa-thumbs-o-up"></i>
+  <%= article.get("votecount") %><i class="fa fa-thumbs-o-up"></i>
   <br>
   <i class="fa fa-clock-o"></i>
   <%= " " + jQuery.timeago(article.escape("created_at")) %>
