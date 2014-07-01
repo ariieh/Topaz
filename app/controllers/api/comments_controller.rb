@@ -8,11 +8,16 @@ class Api::CommentsController < ApplicationController
     
     if @comment.save
       Notification.create(notification_type: 2, user_id: @article.author.id, url: article_url(@article))
-      render json: @comment
+      render partial: "api/comments/comment", locals: { comment: @comment }
     else
       # flash[:errors] = @comment.errors.full_messages
       render json: @comment.errors
     end
+  end
+  
+  def show
+    @comment = Comment.find(params[:id])
+    render partial: "api/comments/comment", locals: { comment: @comment }
   end
   
   protected

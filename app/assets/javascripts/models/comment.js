@@ -1,3 +1,3 @@
-Topaz.Models.Article = Backbone.Model.extend({
+Topaz.Models.Comment = Backbone.Model.extend({
 	urlRoot: "/api/comments"
 });

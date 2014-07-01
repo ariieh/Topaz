@@ -2,12 +2,13 @@ class Api::ArticlesController < ApplicationController
   before_action :check_if_signed_in, only: [:new, :create, :edit, :update, :destroy]
   
   def index
-    @articles = Article.all.to_a
-    @articles.each_with_index do |article, index|
-      @articles[index] = article.hashify
-    end
-    render json: @articles
+    @articles = Article.all
+    # @articles.each_with_index do |article, index|
+    #   @articles[index] = article.hashify
+    # end
+    #render json: @articles
     # redirect_to article_url(Article.last)
+    render :index
   end
   
   def favorites
@@ -33,10 +34,11 @@ class Api::ArticlesController < ApplicationController
   
   def show
     @article = Article.find(params[:id])
-    render json: @article.hashify
+    #render json: @article.hashify
     # @view = params[:view] || nil
     # @el = params[:el] || nil
     # @article = Article.find(params[:id])
+    render partial: "api/articles/article", locals: { article: @article }
   end
   
   def tagshow
