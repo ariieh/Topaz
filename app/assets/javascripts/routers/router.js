@@ -45,17 +45,35 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	articlesIndexFavorites: function(){
 		var that = this;
 		if (window.currentUserId){
-			$.ajax({
-				url: Topaz.Collections.articles.url + "/favorites",
-				success: function(data){
-					var collection = new Topaz.Collections.Articles(data);
-			    var indexView = new Topaz.Views.ArticlesIndex({
-			      collection: collection
+			
+			Topaz.Collections.articles.fetch({
+	    	success: function(){
+					var newCollection = new Topaz.Collections.Articles();
+					
+					window.currentUser.get("favorites").forEach(function(fav){
+						newCollection.add(Topaz.Collections.articles.where({id: fav}));
+					});
+					
+					var indexView = new Topaz.Views.ArticlesIndex({
+			      collection: newCollection
 			    });
 			    that._swapSidebarView(indexView);
-					that._showFirst(collection);
-				}
-			});
+					that._showFirst(Topaz.Collections.articles);
+	    	}
+	    });
+			
+			
+			// $.ajax({
+			// 	url: Topaz.Collections.articles.url + "/favorites",
+			// 	success: function(data){
+			// 		var collection = new Topaz.Collections.Articles(data);
+			//     var indexView = new Topaz.Views.ArticlesIndex({
+			//       collection: collection
+			//     });
+			//     that._swapSidebarView(indexView);
+			// 		that._showFirst(collection);
+			// 	}
+			// });
 		} else {
 			alert("Sign in to see your favorites!");
 		}
