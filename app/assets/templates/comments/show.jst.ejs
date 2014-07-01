@@ -3,12 +3,14 @@
 <div class='comment-button'>
 	<i class='fa fa-comment'>
 		<span class='comment-count'>
-			0
+			<%= comments.length %>
 		</span>
 	</i>
 </div>
 
 	<div class='comment-box'>
+	<%= comments.map( function(comment) { comment.author + ": " + comment.text }).join("<br>") %>
+	
 		<form class='comment-form'>
 	    	<input type='text' name='comment[text]'>
 			<input type='hidden' name='comment[p_id]' value=1>

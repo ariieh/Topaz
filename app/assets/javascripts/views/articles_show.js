@@ -34,17 +34,16 @@ Topaz.Views.ArticlesShow = Backbone.View.extend({
 	},
 	addSubviews: function(){
 		var text = $(this.model.get("htmlbody"));
+		var bodytext = $("<div id='body-text'></div>");
 		var that = this;
 		var i = 1;
-		
-		var bodytext = $("<div id='body-text'></div>")
 		
 		text.each(function(el){
 			if ($(text[el]).is("p")){
 		    var commentView = new Topaz.Views.CommentsShow({
 		      article: that.model,
 					paragraph: $(text[el]).text(),
-					comments: that.model.comments(),
+					comments: that.model.comments().where({p_id: i, article_id: that.model.get("id")}),
 					id: i
 		    });
 
@@ -54,6 +53,5 @@ Topaz.Views.ArticlesShow = Backbone.View.extend({
 		});
 		
 		this.$el.append(bodytext);
-		
 	}
 });
