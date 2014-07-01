@@ -6,19 +6,19 @@ window.Topaz = {
   initialize: function() {
 		Topaz.Collections.articles = new Topaz.Collections.Articles();
 		Topaz.Collections.users = new Topaz.Collections.Users();
+		window.currentUser = new Topaz.Models.User({id: window.currentUserId});
 		
-		Topaz.Collections.users.fetch({
-			success: function(){
-				Topaz.Collections.articles.fetch({
-					success: function(){
-				    new Topaz.Routers.Router({
-				    	$contentEl: $("#content"),
-							$sidebarEl: $(".sidebar")
-				    });
-				    Backbone.history.start();
-					}
-				});
-			}
+		window.currentUser.fetch({success: function(){		
+			Topaz.Collections.users.fetch({success: function(){
+				Topaz.Collections.articles.fetch({success: function(){
+					new Topaz.Routers.Router({
+			    	$contentEl: $("#content"),
+						$sidebarEl: $(".sidebar")
+			    });
+			    Backbone.history.start();
+				}});
+			}});
+		}
 		});
   }
 };

@@ -5,10 +5,6 @@
 	<img src="<%= article.escape("photo_url") %>"></img>
 <% } %>
 
-<div id="body-text">
-	<%= article.get("htmlbody") %>
-</div>
-
 <i class="fa fa-tags"></i>
 <%= article.escape("taglist") %>
 

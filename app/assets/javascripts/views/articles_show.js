@@ -9,15 +9,15 @@ Topaz.Views.ArticlesShow = Backbone.View.extend({
 	template: JST["articles/show"],
 	render: function(){
 		var that = this;
-	  var currentUser = Topaz.Collections.users.getOrFetch(window.currentUserId, function(){
-			var renderedContent = that.template({
-				article: that.model,
-				user: that.user,
-				currentUser: currentUser
-			});
-			that.$el.html(renderedContent);
-	  });
-		// this.addSubviews();
+				
+		var renderedContent = this.template({
+			article: this.model,
+			user: this.user,
+			currentUser: window.currentUser
+		});
+		
+		this.$el.html(renderedContent);
+		this.addSubviews();
 		return this;
 	},
 	favorite: function(event) {
@@ -33,21 +33,27 @@ Topaz.Views.ArticlesShow = Backbone.View.extend({
 		});
 	},
 	addSubviews: function(){
-		var text = $(this.model.get("body"));
+		var text = $(this.model.get("htmlbody"));
 		var that = this;
-		var i = 0;
+		var i = 1;
+		
+		var bodytext = $("<div id='body-text'></div>")
 		
 		text.each(function(el){
 			if ($(text[el]).is("p")){
 		    var commentView = new Topaz.Views.CommentsShow({
 		      article: that.model,
-					paragraph: $(text[el]),
+					paragraph: $(text[el]).text(),
+					comments: that.model.comments(),
 					id: i
 		    });
-				
-				that.$el.append(commentView.render().$el)
+
+				bodytext.append(commentView.render().$el);
 				i++;
 			}
 		});
+		
+		this.$el.append(bodytext);
+		
 	}
 });
