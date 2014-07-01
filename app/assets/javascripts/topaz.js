@@ -8,17 +8,14 @@ window.Topaz = {
 		Topaz.Collections.users = new Topaz.Collections.Users();
 		window.currentUser = new Topaz.Models.User({id: window.currentUserId});
 		
-		window.currentUser.fetch({success: function(){		
-			Topaz.Collections.users.fetch({success: function(){
-				Topaz.Collections.articles.fetch({success: function(){
-					new Topaz.Routers.Router({
-			    	$contentEl: $("#content"),
-						$sidebarEl: $(".sidebar")
-			    });
-			    Backbone.history.start();
-				}});
-			}});
-		}
+		$.when(window.currentUser.fetch(),
+		Topaz.Collections.users.fetch(),
+		Topaz.Collections.articles.fetch()).done(function(){
+			new Topaz.Routers.Router({
+	    	$contentEl: $("#content"),
+				$sidebarEl: $(".sidebar")
+	    });
+	    Backbone.history.start();
 		});
   }
 };
@@ -64,9 +61,10 @@ $(document).ready(function(){
 	        $(this).animate({'color': "white"}, 'fast');
 	    }
 	);
-	
-	$('.comment-button').click(function(){
-		$(".comment-box").not($(this).siblings()).hide();
-		$(this).siblings(".comment-box").fadeToggle("fast");
-	});
+
+	/* rails only */
+	// $('.comment-button').click(function(){
+	// 	$(".comment-box").not($(this).siblings()).hide();
+	// 	$(this).siblings(".comment-box").fadeToggle("fast");
+	// });
 });

@@ -8,7 +8,8 @@ Topaz.Views.CommentsShow = Backbone.View.extend({
 		this.id = options.id;
 	},
 	events: {
-		"submit form": "submit"
+		"submit form": "submit",
+		"click .comment-button": "reveal"
 	},
 	render: function(){
 		var renderedContent = this.template({
@@ -22,5 +23,21 @@ Topaz.Views.CommentsShow = Backbone.View.extend({
 	},
 	submit: function(event){
     event.preventDefault();
+		var formData = $(event.currentTarget).serializeJSON();
+    var newComment = new Topaz.Models.Comment(formData["comment"]);
+		newComment.urlRoot = "/api/articles/" + this.article.get("id") + "/comments";
+		var that = this;
+
+    newComment.save({}, {
+      success: function () {
+				that.comments.push(newComment);
+				that.render();
+      }
+    });
+		
+	},
+	reveal: function(event){
+		$(".comment-box").not($(event.currentTarget).siblings()).hide();
+		$(event.currentTarget).siblings(".comment-box").fadeToggle("fast");
 	}
 });
