@@ -23,7 +23,7 @@ class Api::ArticlesController < ApplicationController
     @article = current_user.articles.new(self.article_params)
 
     if @article.save
-      render json: @article.hashify
+      render partial: "api/articles/article", locals: { article: @article }
       # redirect_to @article
     else
       # flash.now[:errors] = @article.errors.full_messages
@@ -49,7 +49,7 @@ class Api::ArticlesController < ApplicationController
   def update
     @article = Article.find(params[:id])
     if @article.update_attributes(self.article_params)
-      render json: @article.hashify
+      render partial: "api/articles/article", locals: { article: @article }
     else
       render json: @article.errors, status: :unprocessable_entity      
     end

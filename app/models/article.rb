@@ -31,6 +31,10 @@ class Article < ActiveRecord::Base
     Article.hashify(self)
   end
   
+  def htmlbody
+    simple_format(h self.body)
+  end
+  
   def taglist=(tagstring)
     tags_to_add = tagstring.split(" ").uniq
                             .map { |tag| tag.strip.downcase }
