@@ -42,7 +42,6 @@ class User < ActiveRecord::Base
   def self.hashify(user)
     jsonuser = JSON.parse(user.to_json)
     jsonuser[:votes] = user.votes.map(&:article_id)
-    jsonuser[:favorites] = user.favorites.map(&:id)
     jsonuser
   end
   

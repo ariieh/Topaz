@@ -50,7 +50,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	    	success: function(){
 					var newCollection = new Topaz.Collections.Articles();
 					
-					window.currentUser.get("favorites").forEach(function(fav){
+					window.currentUser.get("votes").forEach(function(fav){
 						newCollection.add(Topaz.Collections.articles.where({id: fav}));
 					});
 					
@@ -141,11 +141,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	
 	_swapContentView: function(view){
 		if (this.currentContentView){
-			if (this.currentContentView.subviews){
-				this.currentContentView.subviews.forEach(function(subview){
-					subview.remove();
-				});
-			}
+			this._removeSubviews(this.currentContentView);
 			this.currentContentView.remove();
 		}
 		this.$contentEl.html(view.render().$el);
@@ -153,8 +149,18 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	},
 	
 	_swapSidebarView: function(view){
-		if (this.currentSidebarView) this.currentSidebarView.remove();
+		if (this.currentSidebarView){
+			this._removeSubviews(this.currentSidebarView);
+			this.currentSidebarView.remove();
+		};
 		this.$sidebarEl.html(view.render().$el);
 		this.currentSidebarView = view;
+	},
+	_removeSubviews: function(view){
+		if (view.subviews){
+			view.subviews.forEach(function(subview){
+				subview.remove();
+			});
+		}
 	}
 });
