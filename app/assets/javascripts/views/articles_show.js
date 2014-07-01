@@ -15,8 +15,9 @@ Topaz.Views.ArticlesShow = Backbone.View.extend({
 				user: that.user,
 				currentUser: currentUser
 			});
-			that.$el.html(renderedContent);	  	
-	  });		
+			that.$el.html(renderedContent);
+	  });
+		// this.addSubviews();
 		return this;
 	},
 	favorite: function(event) {
@@ -28,6 +29,24 @@ Topaz.Views.ArticlesShow = Backbone.View.extend({
 			url: Topaz.Collections.articles.url + "/" + this.model.get("id") + "/votes",
 			success: function(response){
 				that.model.set({votecount: response});
+			}
+		});
+	},
+	addSubviews: function(){
+		var text = $(this.model.get("body"));
+		var that = this;
+		var i = 0;
+		
+		text.each(function(el){
+			if ($(text[el]).is("p")){
+		    var commentView = new Topaz.Views.CommentsShow({
+		      article: that.model,
+					paragraph: $(text[el]),
+					id: i
+		    });
+				
+				that.$el.append(commentView.render().$el)
+				i++;
 			}
 		});
 	}
