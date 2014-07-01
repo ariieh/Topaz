@@ -337,6 +337,10 @@ nav .search-bar:focus {
   padding: 30px;
 }
 
+.article-show-container{
+	position: relative;
+}
+
 .page h2{
   margin-top: 0;
 }
@@ -439,8 +443,16 @@ nav .search-bar:focus {
 	font-size: 10px;
 }
 
+.taglist{
+	position: absolute;
+	bottom: -20px;
+	display: block;
+	clear: both;
+}
+
 .favorite-button{
-  position: relative;
+  position: absolute;
+	bottom: -100px;
   display: inline-block;
 	border: 0px;
 	margin-bottom: 25px;
@@ -465,7 +477,8 @@ nav .search-bar:focus {
 }
 
 .disabled-favorite-button{
-  position: relative;
+  position: absolute;
+	bottom: -100px;
   display: inline-block;
 	border: 0px;
 	margin-bottom: 25px;
@@ -517,10 +530,6 @@ form.sign input[type=text], form.sign input[type=password] {
 form.sign input[type=text]:focus, form.sign input[type=password]:focus {
   box-shadow: 0 0 5px $fly-blue;
   border: 1px solid $fly-blue;
-}
-
-a .tag{
-	padding-right: 5px;
 }
 
 /* sidebar */

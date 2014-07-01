@@ -122,7 +122,14 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	},
 	
 	_swapContentView: function(view){
-		if (this.currentContentView) this.currentContentView.remove();
+		if (this.currentContentView){
+			if (this.currentContentView.subviews){
+				this.currentContentView.subviews.forEach(function(subview){
+					subview.remove();
+				});
+			}
+			this.currentContentView.remove();
+		}
 		this.$contentEl.html(view.render().$el);
 		this.currentContentView = view;
 	},

@@ -5,8 +5,10 @@
 	<img src="<%= article.escape("photo_url") %>"></img>
 <% } %>
 
-<i class="fa fa-tags"></i>
-<%= article.escape("taglist") %>
+<div class="taglist">
+	<i class="fa fa-tags"></i>
+	<%= article.escape("taglist") %>
+</div>
 
 <% if(window.currentUserId){ %>
   

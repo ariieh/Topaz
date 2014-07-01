@@ -2,7 +2,9 @@ Topaz.Views.ArticlesShow = Backbone.View.extend({
 	initialize: function(options){
 		this.user = options.user;
 		this.listenTo(this.model,"sync add change remove",this.render);
+		this.subviews = [];
 	},
+	className: "article-show-container",
 	events: {
 		"click button": "favorite"
 	},
@@ -46,7 +48,7 @@ Topaz.Views.ArticlesShow = Backbone.View.extend({
 					comments: that.model.comments().where({p_id: i, article_id: that.model.get("id")}),
 					id: i
 		    });
-
+				that.subviews.push(commentView);
 				bodytext.append(commentView.render().$el);
 				i++;
 			}
