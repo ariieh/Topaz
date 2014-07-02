@@ -1,10 +1,11 @@
-Topaz.Views.UsersShow = Backbone.View.extend({
+Topaz.Views.SearchShow = Backbone.View.extend({
 	initialize: function(options){
+		this.data = options.data;
 	},
-	template: JST["users/show"],
+	template: JST["search/show"],
 	render: function(){
 		var renderedContent = this.template({
-			user: this.model
+			data: this.data
 		});
 		this.$el.html(renderedContent);
 		return this;

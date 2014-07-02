@@ -9,9 +9,7 @@ Topaz.Views.ArticlesShow = Backbone.View.extend({
 		"click button": "favorite"
 	},
 	template: JST["articles/show"],
-	render: function(){
-		var that = this;
-		
+	render: function(){		
 		var renderedContent = this.template({
 			article: this.model,
 			user: this.user

@@ -123,7 +123,6 @@ nav .search-bar:focus {
   border: 1px solid $select-color;
 }
 
-
 .group:after{
 	content: "";
 	display: block;
@@ -197,6 +196,16 @@ nav .search-bar:focus {
 
   left: 83%;
   margin-left: -10px;
+}
+
+/* search results */
+.search-results{
+	display: block;
+	list-style: none;
+}
+
+.search-results > li{
+	margin-bottom: 10px;
 }
 
 /* tagbar */

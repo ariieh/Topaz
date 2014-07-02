@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get "favorites" => "static_pages#empty", as: :static_pages_empty
   get "welcome" => "static_pages#welcome", as: :static_pages_welcome
   get "about" => "static_pages#about", as: :static_pages_about
+  
   get "notifications/:id" => "notifications#url_path", as: :notifications
   get "/auth/facebook/callback", to: "sessions#facebook_login"
   get "/api/articles/favorites" => "api/articles#favorites", as: :favorites
@@ -27,6 +28,8 @@ Rails.application.routes.draw do
   resource :session
   
   namespace :api, defaults: { format: :json } do
+    get :search, to: 'static_pages#search', as: :search
+    
     shallow do
       resources :users do
         resources :articles, only: [:index]

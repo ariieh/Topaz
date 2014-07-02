@@ -5,7 +5,8 @@
 	<% end %>
 	
 	<ul class="group">
-		<li><input class="search-bar" placeholder="Search" type="text"></li>
+		<li class="search-li">
+		</li>
 		<li><i class="fa fa-search"></i></li>
   	<% if signed_in? %>
   		<li>
@@ -61,3 +62,10 @@
 		</li>
 	</ul>
 </nav>
+
+<script>
+	$(document).ready(function(){
+		var searchView = new Topaz.Views.SearchForm();
+		$(".search-li").html(searchView.render().$el);
+	});
+</script>

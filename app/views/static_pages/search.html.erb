@@ -1,0 +1,9 @@
+<h2>Search</h2>
+
+<%= paginate @results %>
+<ul>
+  <% @results.map(&:searchable).each do |result| %>
+  	<li><%= result %></li>
+  <% end %>
+</ul>
+<%= paginate @results %>

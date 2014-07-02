@@ -16,17 +16,17 @@ class Api::UsersController < ApplicationController
   def index
     @users = User.all.to_a
     
-    @users.each_with_index do |user, index|
-      @users[index] = user.hashify
-    end
-
-    render json: @users
+    # @users.each_with_index do |user, index|
+    #   @users[index] = user.hashify
+    # end
+    render :index
   end
   
   def show
     @user = User.find(params[:id])
-    render json: @user.hashify
+    # render json: @user.hashify
     # @user = User.find(params[:id])
+    render partial: "api/users/user", locals: { user: @user }
   end
   
 end

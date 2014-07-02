@@ -22,6 +22,7 @@ Topaz.Views.ArticlesForm = Backbone.View.extend({
     }, {
       success: function () {
         Topaz.Collections.articles.add(newArticle);
+				Backbone.history.navigate("/articles/" + newArticle.get("id"), {trigger: true});
       }
     });
 		

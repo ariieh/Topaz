@@ -129,6 +129,10 @@ Topaz.Routers.Router = Backbone.Router.extend({
     this._swapContentView(showView);
 	},
 	
+	search: function(){
+		
+	},
+	
 	_showFirst: function(collection){
 		var article = collection.first();
     var user = Topaz.Collections.users.getOrFetch(article.get("author_id"));

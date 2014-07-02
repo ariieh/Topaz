@@ -11,7 +11,7 @@ window.Topaz = {
 		$.when(window.currentUser.fetch(),
 		Topaz.Collections.users.fetch(),
 		Topaz.Collections.articles.fetch()).done(function(){
-			new Topaz.Routers.Router({
+			Topaz.Routers.router = new Topaz.Routers.Router({
 	    	$contentEl: $("#content"),
 				$sidebarEl: $(".sidebar")
 	    });

@@ -33,6 +33,8 @@ group :development do
   gem "letter_opener"
 end
 
+gem 'pg_search'
+gem 'kaminari'
 gem "nokogiri", '1.6.1'
 gem 'paperclip', github: 'thoughtbot/paperclip'
 gem "aws-sdk"

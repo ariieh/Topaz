@@ -1,6 +1,9 @@
 require 'bcrypt'
 
 class User < ActiveRecord::Base
+  include PgSearch
+  multisearchable against: :username
+  
   attr_reader :password
   
   validates :username, :email, :password_digest, presence: true
