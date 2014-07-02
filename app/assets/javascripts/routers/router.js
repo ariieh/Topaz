@@ -122,11 +122,28 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	},
 	
 	usersShow: function(id){
-    var user = Topaz.Collections.users.getOrFetch(id);
+    var that = this;
+		var user = Topaz.Collections.users.getOrFetch(id);
     var showView = new Topaz.Views.UsersShow({
       model: user
     });
-    this._swapContentView(showView);
+		
+		Topaz.Collections.articles.fetch({
+    	success: function(){
+				var newCollection = new Topaz.Collections.Articles();
+				
+				user.get("articles").forEach(function(article){
+					newCollection.add(Topaz.Collections.articles.where({id: article}));
+				});
+				
+				var indexView = new Topaz.Views.ArticlesIndex({
+		      collection: newCollection
+		    });
+
+		    that._swapSidebarView(indexView);
+		    that._swapContentView(showView);
+    	}
+    });
 	},
 	
 	search: function(){
