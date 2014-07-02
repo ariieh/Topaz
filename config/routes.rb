@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get "/api/articles/favorites" => "api/articles#favorites", as: :favorites
   get "/api/articles/tag/:id" => "api/articles#tagshow", as: :tag
   
-  root "articles#index"
+  root "articles#backbone"
   
   shallow do
     resources :users do

@@ -1,6 +1,9 @@
 class ArticlesController < ApplicationController
   before_action :check_if_signed_in, only: [:new, :create, :edit, :update, :destroy]
   
+  def latest
+  end
+  
   def index
     redirect_to article_url(Article.last)
   end

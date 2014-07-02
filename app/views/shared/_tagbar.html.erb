@@ -3,14 +3,15 @@
   <span class="tagbar-header">Filters</span>
 	<ul>
   	  <li>
-        <a href="<%= 
+        <!-- <a href="<%#=
           article_url(Article.all
-          .sort_by{ |article| article.votecount }.reverse.first, view:                    "popular", el: nil) %>">
+          .sort_by{ |article| article.votecount }.reverse.first, view:                    "popular", el: nil) %>"> -->
+		<a href="#/articles/popular">
           Popular
         </a>
       </li>
   	  <li>
-        <a href="<%= 
+        <!-- <a href="<%#=
           if signed_in?
             if current_user.favorites.count > 0
                 article_url(current_user.favorites.first,
@@ -21,12 +22,16 @@
           else
             new_session_url
           end
-          %>">
-          Favorited
+          %>"> -->
+		<a href="#/articles/favorites">
+          Favorites
         </a>
       </li>
   	  <li>
-        <a href="<%= article_url(Article.last) %>">Latest</a>
+        <!-- <a href="<%#= article_url(Article.last) %>"> -->
+		<a href="#/articles/latest">
+			Latest
+		</a>
       </li>
 	</ul>
 </div>
@@ -36,9 +41,11 @@
 	<ul>
 	  <% Tag.all.each do |tag| %>
 	    <li>
-        <a href=" <%=
+        <!-- <a href=" <%#=
                     article_url(tag.articles.order(:created_at).reverse.first,
-                    view: "tag", el: tag.name) %> "><%= tag.name.capitalize %>
+                    view: "tag", el: tag.name) %> "> -->
+		<a href="<%= '#/tags/' + tag.id.to_s %>">
+			<%= tag.name.capitalize %>
         </a>
       </li>
 	  <% end %>

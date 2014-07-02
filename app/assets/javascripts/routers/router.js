@@ -4,7 +4,6 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		this.$sidebarEl = options.$sidebarEl
 	},
 	routes: {
-		"index": "articlesIndex",
 		"articles/popular": "articlesIndexPopular",
 		"articles/favorites": "articlesIndexFavorites",
 		"articles/latest": "articlesIndex",
@@ -19,6 +18,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
     var that = this;
 		Topaz.Collections.articles.fetch({
     	success: function(){
+				Topaz.Collections.articles.sortByKey("created_at");
 		    var indexView = new Topaz.Views.ArticlesIndex({
 		      collection: Topaz.Collections.articles
 		    });
@@ -58,7 +58,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 			      collection: newCollection
 			    });
 			    that._swapSidebarView(indexView);
-					that._showFirst(Topaz.Collections.articles);
+					that._showFirst(newCollection);
 	    	}
 	    });
 			

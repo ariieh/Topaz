@@ -16,20 +16,20 @@
   		<li class='notifications-li'>
 		<i class="fa fa-flag"></i>	
         <!-- <i class="fa fa-flag"></i>
-        <% if current_user.notifications.where(read: false).count > 0 %>
+        <%# if current_user.notifications.where(read: false).count > 0 %>
           <span class="badge">
-            <%= current_user.notifications.where(read: false).count %>
+            <%#= current_user.notifications.where(read: false).count %>
           </span>
-        <% end %>
+        <%# end %>
         <div class="notifications">
           <ul>
-            <% current_user.notifications.each do |notification| %>
-              <li class="<%= 'unread' unless notification.read %>">
-                <a href="<%= notifications_url(notification) %>">
-                  <%= notification.message %>
+            <%# current_user.notifications.each do |notification| %>
+              <li class="<%#= 'unread' unless notification.read %>">
+                <a href="<%#= notifications_url(notification) %>">
+                  <%#= notification.message %>
                 </a>
               </li>
-            <% end %>
+            <%# end %>
           </ul>
         </div> -->
       </li>
