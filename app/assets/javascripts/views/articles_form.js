@@ -19,11 +19,16 @@ Topaz.Views.ArticlesForm = Backbone.View.extend({
 		var formData = $form.serializeJSON();
     var newArticle = new Topaz.Models.Article(formData["article"]);
 
-    newArticle.save({ photo: this.photo
-    }, {
+		this.model.set(formData["article"]);
+		
+		var that = this;
+    this.model.save({ photo: this.photo }, {
       success: function () {
-        Topaz.Collections.articles.add(newArticle);
-				Backbone.history.navigate("/articles/" + newArticle.get("id"), {trigger: true});
+				if (Topaz.Collections.articles.where({name: that.model.get("id")}).length === 0){
+	        Topaz.Collections.articles.add(that.model);					
+				}
+				
+				Backbone.history.navigate("/articles/" + that.model.get("id"), {trigger: true});
       }
     });
 		
