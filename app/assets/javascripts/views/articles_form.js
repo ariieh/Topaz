@@ -3,7 +3,8 @@ Topaz.Views.ArticlesForm = Backbone.View.extend({
 	initialize: function(options){
 	},
 	events: {
-		"submit form": "submit"
+		"submit form": "submit",
+		"change input[type='file']": "handleFiles"
 	},
 	render: function(){
 		var renderedContent = this.template({
@@ -12,13 +13,13 @@ Topaz.Views.ArticlesForm = Backbone.View.extend({
 		this.$el.html(renderedContent);
 		return this;
 	},
-	submit: function(event){
+	submit: function(event){		
     event.preventDefault();
-		
-		var formData = $(event.currentTarget).serializeJSON();
+		var $form = $(event.currentTarget);
+		var formData = $form.serializeJSON();
     var newArticle = new Topaz.Models.Article(formData["article"]);
 
-    newArticle.save({
+    newArticle.save({ photo: this.photo
     }, {
       success: function () {
         Topaz.Collections.articles.add(newArticle);
@@ -26,13 +27,15 @@ Topaz.Views.ArticlesForm = Backbone.View.extend({
       }
     });
 		
+	},
+	handleFiles: function(event) {
+	  var that = this;
+		var files = event.currentTarget.files;
+		var file = files[0];
+	  var reader = new FileReader();
+	  reader.onload = function(e) {
+	  	that.photo = e.target.result;
+	  }
+	  reader.readAsDataURL(file);
 	}
-	// handle_files: function(files, callback) {
-	//   var file = files[0];
-	//   var reader = new FileReader();
-	//   reader.onload = function(e) {
-	//   	callback(e.target.result);
-	//   }
-	//   reader.readAsDataURL(file);
-	// }
 });

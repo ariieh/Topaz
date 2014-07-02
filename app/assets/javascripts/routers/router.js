@@ -12,7 +12,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		"articles/:id": "articlesShow",
 		"articles/:id/edit": "articlesEdit",
 		"users/:id": "usersShow",
-		"articles/tag/:id": "tagsShow"
+		"tags/:id": "tagsShow"
 	},
 	
 	articlesIndex: function(){
