@@ -29,7 +29,6 @@ window.Topaz = {
 };
 
 $(document).ready(function(){
-  Topaz.initialize();
   jQuery("abbr.timeago").timeago();
 	
 	var selectColor = "#e74c3c";

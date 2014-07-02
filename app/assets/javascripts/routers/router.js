@@ -4,6 +4,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		this.$sidebarEl = options.$sidebarEl
 	},
 	routes: {
+		"": "articlesIndex",
 		"articles/popular": "articlesIndexPopular",
 		"articles/favorites": "articlesIndexFavorites",
 		"articles/latest": "articlesIndex",

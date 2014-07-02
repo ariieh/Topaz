@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :check_if_signed_in, only: [:new, :create, :edit, :update, :destroy]
   
-  def latest
+  def backbone
   end
   
   def index

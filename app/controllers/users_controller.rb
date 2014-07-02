@@ -9,7 +9,7 @@ class UsersController < ApplicationController
       Notification.create(notification_type: 1, user_id: @user.id, url: static_pages_welcome_url)
       DailyBrief.welcome_email(@user).deliver
       sign_in @user
-      redirect_to @user
+      redirect_to root_url
     else
       flash.now[:error] = @user.errors.full_messages
       render :new

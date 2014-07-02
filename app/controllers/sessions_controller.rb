@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     
     if @user
       sign_in @user
-      redirect_to @user
+      redirect_to root_url
     else
       flash.now[:error] = ["Invalid credentials"]
       render :new
@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
     request.env['omniauth.auth'][:info][:email]
     )
     sign_in @user
-    redirect_to @user
+    redirect_to root_urls
   end
   
   def destroy
