@@ -31,6 +31,7 @@ Topaz.Views.CommentsShow = Backbone.View.extend({
     newComment.save({}, {
       success: function () {
 				that.comments.push(newComment);
+				window.currentUser.fetch();
 				that.render();
       }
     });

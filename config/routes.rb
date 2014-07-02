@@ -44,6 +44,7 @@ Rails.application.routes.draw do
   
     resources :votes, only: [:index, :create]
     resources :comments
+    resources :notifications
     resources :tags, only: [:create]
     resource :session
   end

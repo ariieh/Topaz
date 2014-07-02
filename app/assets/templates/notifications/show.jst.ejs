@@ -1,0 +1,19 @@
+<% var count = currentUser.notifications().where({read: false}).length %>
+
+<% if (count > 0){ %>
+  <span class="badge">
+    <%= count %>
+  </span>
+<% } %>
+
+<div class="notifications">
+  <ul>
+    <% currentUser.notifications().models.forEach(function(notification){ %>
+      <li class=<% if(!notification.get("read")){%><%= 'unread' %><% } %>>
+        <a id="<%= notification.get("id") %>" href="#<%= notification.get("url") %>">
+          <%= notification.get("message") %>
+        </a>
+      </li>
+	<% });  %>
+  </ul>
+</div>

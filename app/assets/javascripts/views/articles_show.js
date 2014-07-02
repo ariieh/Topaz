@@ -34,6 +34,7 @@ Topaz.Views.ArticlesShow = Backbone.View.extend({
 				} else {
 					window.currentUser.set({votes: [that.model.id]});
 				}
+				window.currentUser.fetch();
 				that.model.set({votecount: response});
 			}
 		});

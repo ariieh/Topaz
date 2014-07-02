@@ -16,6 +16,14 @@ window.Topaz = {
 				$sidebarEl: $(".sidebar")
 	    });
 	    Backbone.history.start();
+			
+			var searchView = new Topaz.Views.SearchForm();
+			$(".search-li").html(searchView.render().$el);
+			
+			if (window.currentUserId){
+				var notificationView = new Topaz.Views.NotificationShow();
+				$(".notifications-li").append(notificationView.render().$el);
+			}
 		});
   }
 };

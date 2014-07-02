@@ -6,11 +6,16 @@
 	
 	<ul class="group">
 		<li class="search-li">
+			<!-- <form id="search-form">
+				 <input class="search-bar"
+				 		name="query" placeholder="Search" type="text">
+			</form> -->
 		</li>
 		<li><i class="fa fa-search"></i></li>
   	<% if signed_in? %>
-  		<li>
-        <i class="fa fa-flag"></i>
+  		<li class='notifications-li'>
+		<i class="fa fa-flag"></i>	
+        <!-- <i class="fa fa-flag"></i>
         <% if current_user.notifications.where(read: false).count > 0 %>
           <span class="badge">
             <%= current_user.notifications.where(read: false).count %>
@@ -23,10 +28,10 @@
                 <a href="<%= notifications_url(notification) %>">
                   <%= notification.message %>
                 </a>
-              </li>            
+              </li>
             <% end %>
           </ul>
-        </div>
+        </div> -->
       </li>
   	<% end %>
 		<li><i class="fa fa-twitter"></i></li>
@@ -62,10 +67,3 @@
 		</li>
 	</ul>
 </nav>
-
-<script>
-	$(document).ready(function(){
-		var searchView = new Topaz.Views.SearchForm();
-		$(".search-li").html(searchView.render().$el);
-	});
-</script>
