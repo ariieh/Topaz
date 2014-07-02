@@ -2,13 +2,20 @@ Topaz.Views.ArticlesSnippet = Backbone.View.extend({
 	initialize: function(){
 		this.listenTo(this.model,"change",this.render);
 	},
+	events: {
+		"submit .delete-form": "destroy"
+	},
   template: JST["articles/snippet"],
   tagName: "li",
   render: function () {
     var renderedContent = this.template({ article: this.model });
     this.$el.html(renderedContent);
     return this;
-  }
+  },
+	destroy: function(){
+		event.preventDefault();
+		this.model.destroy();
+	}
 });
 
 Topaz.Views.ArticlesIndex = Backbone.View.extend({

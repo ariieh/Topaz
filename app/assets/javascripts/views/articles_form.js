@@ -17,7 +17,6 @@ Topaz.Views.ArticlesForm = Backbone.View.extend({
     event.preventDefault();
 		var $form = $(event.currentTarget);
 		var formData = $form.serializeJSON();
-    var newArticle = new Topaz.Models.Article(formData["article"]);
 
 		this.model.set(formData["article"]);
 		
@@ -31,7 +30,6 @@ Topaz.Views.ArticlesForm = Backbone.View.extend({
 				Backbone.history.navigate("/articles/" + that.model.get("id"), {trigger: true});
       }
     });
-		
 	},
 	handleFiles: function(event) {
 	  var that = this;

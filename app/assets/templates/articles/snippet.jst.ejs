@@ -10,7 +10,7 @@
 </div>
 
 <% if (article.get("author_id") === window.currentUserId){ %>
-  <form>
+  <form class="delete-form">
     <input class="delete-button" type="submit" value="Delete">
   </form>
   <a class="edit-link" href="<%= "#/articles/" + article.escape("id") + "/edit"%>">Edit</a><br>

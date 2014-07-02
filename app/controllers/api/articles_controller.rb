@@ -64,8 +64,8 @@ class Api::ArticlesController < ApplicationController
   end
   
   def destroy
-    # current_user.articles.find(params[:id]).destroy
-    # redirect_to current_user
+    current_user.articles.find(params[:id]).destroy
+    head :ok
   end
   
   def votecount

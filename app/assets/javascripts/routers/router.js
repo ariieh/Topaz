@@ -121,7 +121,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
     });
     this._swapContentView(editView);
 	},
-	
+		
 	usersShow: function(id){
     var that = this;
 		var user = Topaz.Collections.users.getOrFetch(id);
@@ -145,10 +145,6 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		    that._swapContentView(showView);
     	}
     });
-	},
-	
-	search: function(){
-		
 	},
 	
 	_showFirst: function(collection){
