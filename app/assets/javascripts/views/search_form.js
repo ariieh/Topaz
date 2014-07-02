@@ -2,7 +2,7 @@ Topaz.Views.SearchForm = Backbone.View.extend({
 	initialize: function(options){
 	},
 	events: {
-		"submit form": "search"
+		"keyup .search-bar": "search"
 	},
 	template: JST["search/form"],
 	render: function(){
