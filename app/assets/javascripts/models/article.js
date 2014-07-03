@@ -14,5 +14,13 @@ Topaz.Models.Article = Backbone.Model.extend({
 			});
 		}
 		return this._comments;
+	},
+	time: function(){
+		var time = this.get("created_at");
+		var date = time.slice(0,10);
+		var hours = parseInt(time.slice(11,13));
+		var minutes = parseInt(time.slice(14,16));
+		var ampm = hours > 11 ? "pm" : "am";
+		return date + " at " + (((hours + 11) % 12) + 1) + ":" + minutes + ampm;
 	}
 });

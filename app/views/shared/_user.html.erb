@@ -7,27 +7,21 @@
 <%= auth_token %>  
 
 <label>
-	Username<br>
-	<input type="text" name="user[username]">
+	Username
 </label>
-
-<br><br>
+	<input type="text" name="user[username]">
 
 <% if action == "sign_up" %>
 	<label>
-		Email<br>
-		<input type="text" name="user[email]">
+		Email
 	</label>
-
-	<br><br>
+		<input type="text" name="user[email]">
 <% end %>
 
 <label>
-	Password<br>
-	<input type="password" name="user[password]">
+	Password
 </label>
-
-<br><br>
+	<input type="password" name="user[password]">
 
 <% if action == "sign_up" %>
   <input type="submit" value="Sign Up">
@@ -35,5 +29,5 @@
   <input type="submit" value="Sign In">
 <% end %>
 </form>
-<br><br><br>
+<br>
 <a class="twitter-link" href="/auth/facebook"><%= image_tag("fb-login.png") %></a>

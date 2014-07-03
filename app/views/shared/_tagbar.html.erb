@@ -44,7 +44,7 @@
         <!-- <a href=" <%#=
                     article_url(tag.articles.order(:created_at).reverse.first,
                     view: "tag", el: tag.name) %> "> -->
-		<a href="<%= '#/tags/' + tag.id.to_s %>">
+		<a href="<%= '#/tags/' + tag.name %>">
 			<%= tag.name.capitalize %>
         </a>
       </li>

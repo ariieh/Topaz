@@ -42,7 +42,7 @@ class Api::ArticlesController < ApplicationController
   end
   
   def tagshow
-    @articles = Tag.find(params[:id]).articles
+    @articles = Tag.find_by_name(params[:name]).articles
     render :index
   end
   

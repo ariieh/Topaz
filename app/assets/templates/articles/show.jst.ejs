@@ -1,5 +1,6 @@
 <h2><%= article.escape("title") %></h2>
-<h4>author: <a href="<%= "#/users/" + article.escape("author_id") %>"><%= user.escape("username") %></a>, submitted <%= jQuery.timeago(article.get("created_at")) %></h4>
+
+<h4>author: <a href="<%= "#/users/" + article.escape("author_id") %>"><%= user.escape("username") %></a>, submitted <%= article.time() %></h4>
 
 <% if (article.escape("photo_url") !== "/photos/big/missing.png" ){ %>
 	<img src="<%= article.escape("photo_url") %>"></img>
@@ -7,14 +8,16 @@
 
 <div class="taglist">
 	<i class="fa fa-tags"></i>
-	<%= article.escape("taglist") %>
+	<% article.get("taglist").forEach(function(tag){ %>
+		<a href=<%= "#/tags/" + tag %>><%= tag %></a>
+	<% }); %>
 </div>
 
 <% if(window.currentUserId){ %>
   
     <% if (window.currentUser.get("votes") && window.currentUser.get("votes").indexOf(article.get("id")) !== -1){ %>
-      <button class="disabled-favorite-button" disabled>Favorite</button>
+      <button class="fav disabled-favorite-button" disabled>Favorite</button>
     <% } else { %>
-      <button class="favorite-button">Favorite</button>
+      <button class="fav favorite-button">Favorite</button>
     <% } %>
 <% } %>

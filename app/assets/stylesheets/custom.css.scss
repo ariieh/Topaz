@@ -6,6 +6,16 @@ html, body, header, main, footer, nav, a, ul, li, section, p, small {
   font: inherit;
 }
 
+label{
+	display: block;
+	padding-bottom: 5px;
+}
+
+input, textarea{
+	display: block;
+	margin-bottom: 20px;
+}
+
 input[type="submit"]{
   outline: 0;
 }
@@ -545,6 +555,7 @@ form.sign input[type=text]:focus, form.sign input[type=password]:focus {
   height: 100%;
   overflow: auto;
   font-family: sans-serif;
+  box-shadow: inset -10px 0 5px -5px hsla(0,0,0,.1);
 }
 
 .sidebar > ul > li{
@@ -554,6 +565,7 @@ form.sign input[type=text]:focus, form.sign input[type=password]:focus {
 
 .sidebar > ul > li:hover{
   background: rgb(252,252,252);
+  box-shadow: inset -10px 0 5px -5px hsla(0,0,0,.1);
 }
 
 .sidebar .delete-button{
@@ -582,7 +594,7 @@ form.sign input[type=text]:focus, form.sign input[type=password]:focus {
   font-style: italic;
   font-size: 13px;
   color: rgb(178,178,178);
-	padding-bottom: 10px;
+	padding-bottom: 5px;
 }
 
 .fa-thumbs-o-up{

@@ -1,31 +1,22 @@
 <form id="article-form" enctype="multipart/form-data">
 
 	<label>
-		Title<br>
+		Title
+	</label>
 		<input type="text" name="article[title]" value="<%= article.escape("title") %>">
-	</label>
-
-	<br><br>
 
 	<label>
-		Image<br>
+		Image
+	</label>
 		<input type="file">
-	</label>
-
-	<br><br>
 
 	<label>
-		Body<br>
-		<textarea name="article[body]" cols="70" rows="20"><%= article.escape("body") %></textarea>
+		Body
 	</label>
-
-
-	<br><br>
+		<textarea name="article[body]" cols="70" rows="20"><%= article.escape("body") %></textarea>
 
   <input type="text" name="article[taglist]" placeholder="Add some tags" value="<%= article.escape("taglist") %>">
   
-  <br><br>
-
 <% if (article.escape("title").length === 0){ %>
   <input type="submit" value="Create Article">
 <% } else { %>

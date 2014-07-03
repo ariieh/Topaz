@@ -14,8 +14,8 @@ Topaz.Views.NotificationShow = Backbone.View.extend({
 		return this;
 	},
 	click: function(event){
-		event.preventDefault();
 		var notification = currentUser.notifications().where({id: parseInt($(event.currentTarget).attr("id"))})[0];
 		notification.save({read: true});
+		this.render();
 	}
 });

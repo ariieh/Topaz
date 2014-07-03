@@ -12,7 +12,8 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		"articles/:id": "articlesShow",
 		"articles/:id/edit": "articlesEdit",
 		"users/:id": "usersShow",
-		"tags/:id": "tagsShow"
+		"tags/:name": "tagsShow",
+		"about": "about"
 	},
 	
 	articlesIndex: function(){
@@ -80,10 +81,10 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		}
 	},
 	
-	tagsShow: function(id){
+	tagsShow: function(name){
 		var that = this;
 		$.ajax({
-			url: Topaz.Collections.articles.url + "/tag/" + id,
+			url: Topaz.Collections.articles.url + "/tag/" + name,
 			success: function(data){
 				var collection = new Topaz.Collections.Articles(data);
 		    var indexView = new Topaz.Views.ArticlesIndex({
@@ -104,6 +105,19 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	},
 	
 	articlesShow: function(id){
+		if (!this.currentSidebarView){ 
+	    var that = this;
+			Topaz.Collections.articles.fetch({
+	    	success: function(){
+					Topaz.Collections.articles.sortByKey("created_at");
+			    var indexView = new Topaz.Views.ArticlesIndex({
+			      collection: Topaz.Collections.articles
+			    });
+			    that._swapSidebarView(indexView);
+	    	}
+	    });
+		}
+		
     var article = Topaz.Collections.articles.getOrFetch(id);
     var user = Topaz.Collections.users.getOrFetch(article.get("author_id"));
 		
@@ -145,6 +159,11 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		    that._swapContentView(showView);
     	}
     });
+	},
+	
+	about: function(){
+		var aboutView = new Topaz.Views.About();
+    this._swapContentView(aboutView);
 	},
 	
 	_showFirst: function(collection){

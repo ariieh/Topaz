@@ -39,14 +39,14 @@ class Article < ActiveRecord::Base
   end
   
   def taglist=(tagstring)
-    tags_to_add = tagstring.split(" ").uniq
+    tags_to_add = tagstring.split(/\W+/).uniq
                             .map { |tag| tag.strip.downcase }
                             .map { |tag| Tag.find_or_create_by(name: tag) }
     self.tags = tags_to_add
   end
   
   def taglist
-    self.tags.map{ |tag| tag.name }.join(" ")
+    self.tags.map{ |tag| tag.name }
   end
   
   def votecount

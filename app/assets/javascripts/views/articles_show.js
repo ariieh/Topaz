@@ -1,7 +1,7 @@
 Topaz.Views.ArticlesShow = Backbone.View.extend({
 	initialize: function(options){
 		this.user = options.user;
-		this.listenTo(this.model, "sync add change remove", this.render);
+		// this.listenTo(this.model, "sync add change remove", this.render);
 		this.subviews = [];
 	},
 	className: "article-show-container",
@@ -22,6 +22,8 @@ Topaz.Views.ArticlesShow = Backbone.View.extend({
 	favorite: function(event) {
 		event.preventDefault();
 		var that = this;
+		$("button.fav").removeClass("favorite-button");
+		$("button.fav").addClass("disabled-favorite-button");
 		
 		$.ajax({
 			type: "post",
@@ -35,7 +37,7 @@ Topaz.Views.ArticlesShow = Backbone.View.extend({
 					window.currentUser.set({votes: [that.model.id]});
 				}
 				window.currentUser.fetch();
-				that.model.set({votecount: response});
+				that.model.set({votecount: response});	
 			}
 		});
 	},
