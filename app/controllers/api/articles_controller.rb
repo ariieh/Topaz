@@ -4,7 +4,24 @@ class Api::ArticlesController < ApplicationController
   def index
     @page = params[:page]
     
-    @articles = Article.order(params[:key] => :desc).page(params[:page])
+    if params[:key] == "created_at"
+      @articles = Article.order(params[:key] => :desc).page(params[:page])
+    elsif params[:key] == "votecount"
+      query = <<-SQL
+        SELECT articles.*
+        FROM articles JOIN votes ON articles.id = votes.article_id
+        GROUP BY articles.id
+        ORDER BY COUNT(*) DESC
+      SQL
+      
+      @articles = Kaminari.paginate_array(Article.find_by_sql(query)).page(params[:page])
+    elsif params[:key] == "favorites"
+      @articles = current_user.favorites.page(params[:page])
+    elsif params[:key] == "tag"
+      @articles = Tag.find_by_name(params[:name]).articles.page(params[:page])
+    else
+      @articles = Article.order("created_at" => :desc).page(params[:page])
+    end
     # @articles.each_with_index do |article, index|
     #   @articles[index] = article.hashify
     # end
@@ -44,7 +61,7 @@ class Api::ArticlesController < ApplicationController
   end
   
   def tagshow
-    @articles = Tag.find_by_name(params[:name]).articles
+    @articles = Tag.find_by_name(params[:name]).articles.page(params[:page])
     render :index
   end
   

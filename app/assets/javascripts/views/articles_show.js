@@ -22,8 +22,8 @@ Topaz.Views.ArticlesShow = Backbone.View.extend({
 	favorite: function(event) {
 		event.preventDefault();
 		var that = this;
-		$("button.fav").removeClass("favorite-button");
-		$("button.fav").addClass("disabled-favorite-button");
+		$(event.currentTarget).removeClass("favorite-button");
+		$(event.currentTarget).addClass("disabled-favorite-button");
 		
 		$.ajax({
 			type: "post",

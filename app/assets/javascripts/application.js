@@ -18,7 +18,7 @@
 //= require jquery.ba-outside-events.min
 //= require jquery.timeago
 //= require jquery.bum-smack
-//= require underscore
+//= require underscore-min
 //= require backbone
 //= require topaz
 //= require_tree ../templates

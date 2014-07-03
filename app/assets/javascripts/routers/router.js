@@ -21,9 +21,10 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		Topaz.Collections.articles.fetch({
 			data: {page: 1, key: "created_at"},
     	success: function(){
-				Topaz.Collections.articles.sortByKey("created_at");
+				// Topaz.Collections.articles.sortByKey("created_at");
 		    var indexView = new Topaz.Views.ArticlesIndex({
-		      collection: Topaz.Collections.articles
+		      collection: Topaz.Collections.articles,
+					key: "created_at"
 		    });
 		    that._swapSidebarView(indexView);
 				// that._showFirst(Topaz.Collections.articles);
@@ -40,13 +41,20 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	articlesIndexPopular: function(){
     var that = this;
 		Topaz.Collections.articles.fetch({
+			data: {page: 1, key: "votecount"},
     	success: function(){
 				Topaz.Collections.articles.sortByKey("votecount");
 		    var indexView = new Topaz.Views.ArticlesIndex({
-		      collection: Topaz.Collections.articles
+		      collection: Topaz.Collections.articles,
+					key: "votecount"
 		    });
 		    that._swapSidebarView(indexView);
-				that._showFirst(Topaz.Collections.articles);
+				// that._showFirst(Topaz.Collections.articles);
+				
+		    var showIndexView = new Topaz.Views.ArticlesShowIndex({
+		      collection: Topaz.Collections.articles
+		    });
+		    that._swapContentView(showIndexView);
     	}
     });
 	},
@@ -54,23 +62,29 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	articlesIndexFavorites: function(){
 		var that = this;
 		if (window.currentUserId){
-			
+
 			Topaz.Collections.articles.fetch({
+				data: {page: 1, key: "favorites"},
 	    	success: function(){
-					var newCollection = new Topaz.Collections.Articles();
-					
-					window.currentUser.get("votes").forEach(function(fav){
-						newCollection.add(Topaz.Collections.articles.where({id: fav}));
-					});
+					// var newCollection = new Topaz.Collections.Articles();
+					//
+					// window.currentUser.get("votes").forEach(function(fav){
+					// 	newCollection.add(Topaz.Collections.articles.where({id: fav}));
+					// });
 					
 					var indexView = new Topaz.Views.ArticlesIndex({
-			      collection: newCollection
+			      collection: Topaz.Collections.articles,
+						key: "favorites"
 			    });
 			    that._swapSidebarView(indexView);
-					that._showFirst(newCollection);
+					// that._showFirst(Topaz.Collections.articles);
+				
+			    var showIndexView = new Topaz.Views.ArticlesShowIndex({
+			      collection: Topaz.Collections.articles
+			    });
+			    that._swapContentView(showIndexView);
 	    	}
 	    });
-			
 			
 			// $.ajax({
 			// 	url: Topaz.Collections.articles.url + "/favorites",
@@ -89,18 +103,43 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	},
 	
 	tagsShow: function(name){
-		var that = this;
-		$.ajax({
-			url: Topaz.Collections.articles.url + "/tag/" + name,
-			success: function(data){
-				var collection = new Topaz.Collections.Articles(data);
+    var that = this;
+		Topaz.Collections.articles.fetch({
+			data: {page: 1, key: "tag", name: name},
+    	success: function(){
 		    var indexView = new Topaz.Views.ArticlesIndex({
-		      collection: collection
+		      collection: Topaz.Collections.articles,
+					key: "tag",
+					name: name
 		    });
 		    that._swapSidebarView(indexView);
-				that._showFirst(collection);
-			}
-		});
+				// that._showFirst(Topaz.Collections.articles);
+				
+		    var showIndexView = new Topaz.Views.ArticlesShowIndex({
+		      collection: Topaz.Collections.articles
+		    });
+		    that._swapContentView(showIndexView);
+    	}
+    });
+		
+		
+		// var that = this;
+		// $.ajax({
+		// 	url: Topaz.Collections.articles.url + "/tag/" + name,
+		// 	success: function(data){
+		// 		var collection = new Topaz.Collections.Articles(data);
+		//     var indexView = new Topaz.Views.ArticlesIndex({
+		//       collection: collection
+		//     });
+		//     that._swapSidebarView(indexView);
+		// 		// that._showFirst(collection);
+		//
+		//     var showIndexView = new Topaz.Views.ArticlesShowIndex({
+		//       collection: collection
+		//     });
+		//     that._swapContentView(showIndexView);
+		// 	}
+		// });
 	},
 	
 	articlesNew: function(){

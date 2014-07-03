@@ -22,7 +22,7 @@ end
 
 # test seed
 100.times do |num|
-  u1.articles.create!(title: "test article #{num}", body: "test body")
+  u1.articles.create!(title: "test article #{num}", body: "test body", created_at: "2014-05-05 12:00")
 end
 
 a1 = u1.articles.create!(title: "Google’s latest empire-building tactic: cheap phones",
@@ -129,7 +129,8 @@ b2.tags.create!(name: "humor")
 b2.taglist = "humor tech"
 
 [a1,a2,a3,b1,b2].each do |article|
-  num = (1..52).to_a.sample
+  num = (11..52).to_a.sample
+  
   User.all.each_with_index do |user, index|
     next if user.id == 1 || user.id == 2
     Vote.create!(user_id: user.id, article_id: article.id)
@@ -139,4 +140,11 @@ end
 
 (Article.all - [a1,a2,a3,b1,b2]).each do |article|
   article.taglist = ["Tech","Google","Mobile", "Computing", "Lifehack", "Science", "Humor"].sample;
+  num = (0..10).to_a.sample
+  User.all.each_with_index do |user, index|
+    unless user.id == 1 || user.id == 2
+      Vote.create!(user_id: user.id, article_id: article.id)
+    end
+    break if num == index
+  end
 end

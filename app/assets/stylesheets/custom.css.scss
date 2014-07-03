@@ -6,6 +6,10 @@ html, body, header, main, footer, nav, a, ul, li, section, p, small {
   font: inherit;
 }
 
+button{
+	outline: 0;
+}
+
 label{
 	display: block;
 	padding-bottom: 5px;
@@ -358,7 +362,7 @@ nav .search-bar:focus {
 
 .article-show-container{
 	position: relative;
-	margin-bottom: 40px;
+	margin-bottom: 110px;
 }
 
 .page h2{
@@ -573,6 +577,7 @@ form.sign input[type=text]:focus, form.sign input[type=password]:focus {
 	background: none;
 	border: none;
 	padding: 0;
+	margin: 0;
 	color: black;
 	font-family: sans-serif;
 	font-size: 13px;

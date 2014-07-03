@@ -23,6 +23,8 @@ Topaz.Views.ArticlesIndex = Backbone.View.extend({
 		this.listenTo(this.collection, "sync remove", this.render);
 		this.listenTo(this.collection, "add", this.add);
 		this.subviews = [];
+		this.key = options.key;
+		this.name = options.name;
 	},
 	tagName: "ul",
 	template: JST["articles/index"],
@@ -63,7 +65,7 @@ Topaz.Views.ArticlesIndex = Backbone.View.extend({
       if (that.collection.page_number < that.collection.total_pages) {
 	      console.log("fetch mode!");
         that.collection.fetch({
-          data: { page: that.collection.page_number + 1, key: "created_at" },
+          data: { page: that.collection.page_number + 1, key: that.key, name: that.name },
           remove: false,
           wait: true,
           success: function () {

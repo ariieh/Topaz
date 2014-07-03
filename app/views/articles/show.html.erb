@@ -48,7 +48,7 @@
     <%= auth_token %>
 
     <% if current_user.votes &&
-       current_user.votes.map(&:article_id).include?(@article.id) %>
+       current_user.votes.pluck(:article_id).include?(@article.id) %>
       <input type="submit" class="disabled-favorite-button" value="Favorite" disabled>
     <% else %>
       <input type="submit" class="favorite-button" value="Favorite">

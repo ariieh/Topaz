@@ -46,7 +46,7 @@ class Article < ActiveRecord::Base
   end
   
   def taglist
-    self.tags.map{ |tag| tag.name }
+    self.tags.pluck(:name)
   end
   
   def votecount
