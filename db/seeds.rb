@@ -20,6 +20,11 @@ for i in 1..50 do
   u.save!
 end
 
+# test seed
+100.times do |num|
+  u1.articles.create!(title: "test article #{num}", body: "test body")
+end
+
 a1 = u1.articles.create!(title: "Google’s latest empire-building tactic: cheap phones",
 body: 
 "Here’s the thing about those cheap sub-$100 smartphones that nobody tells you: They’re awful. Many of them use ageing hardware to run old versions of Android. People tend to use them like regular phones—except to surf Facebook when they’ve got a Wi-Fi connection.
@@ -123,11 +128,15 @@ b1.tags.create!(name: "science")
 b2.tags.create!(name: "humor")
 b2.taglist = "humor tech"
 
-Article.all.each do |article|
+[a1,a2,a3,b1,b2].each do |article|
   num = (1..52).to_a.sample
   User.all.each_with_index do |user, index|
     next if user.id == 1 || user.id == 2
     Vote.create!(user_id: user.id, article_id: article.id)
     break if num == index
   end
+end
+
+(Article.all - [a1,a2,a3,b1,b2]).each do |article|
+  article.taglist = ["Tech","Google","Mobile", "Computing", "Lifehack", "Science", "Humor"].sample;
 end

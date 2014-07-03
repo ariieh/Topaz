@@ -10,7 +10,7 @@ window.Topaz = {
 		
 		$.when(window.currentUser.fetch(),
 		Topaz.Collections.users.fetch(),
-		Topaz.Collections.articles.fetch()).done(function(){
+		Topaz.Collections.articles.fetch({data: {page: 1, key: "created_at"} })).done(function(){
 			Topaz.Routers.router = new Topaz.Routers.Router({
 	    	$contentEl: $("#content"),
 				$sidebarEl: $(".sidebar")
@@ -25,6 +25,7 @@ window.Topaz = {
 				$(".notifications-li").append(notificationView.render().$el);
 			}
 		});
+		
   }
 };
 

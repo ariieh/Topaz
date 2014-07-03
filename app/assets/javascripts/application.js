@@ -17,7 +17,7 @@
 //= require jquery.color-2.1.2.min
 //= require jquery.ba-outside-events.min
 //= require jquery.timeago
-//= require jquery.iframe-transport
+//= require jquery.bum-smack
 //= require underscore
 //= require backbone
 //= require topaz

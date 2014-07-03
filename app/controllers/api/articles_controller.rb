@@ -2,7 +2,9 @@ class Api::ArticlesController < ApplicationController
   before_action :check_if_signed_in, only: [:new, :create, :edit, :update, :destroy]
   
   def index
-    @articles = Article.all
+    @page = params[:page]
+    
+    @articles = Article.order(params[:key] => :desc).page(params[:page])
     # @articles.each_with_index do |article, index|
     #   @articles[index] = article.hashify
     # end

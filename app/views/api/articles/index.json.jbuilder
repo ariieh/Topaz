@@ -1,1 +1,6 @@
-json.array! @articles, partial: "api/articles/article", as: :article
+json.articles do
+	json.array! @articles, partial: "api/articles/article", as: :article
+end
+
+json.page_number @page
+json.total_pages @articles.total_pages

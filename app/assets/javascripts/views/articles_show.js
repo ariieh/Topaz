@@ -1,6 +1,6 @@
 Topaz.Views.ArticlesShow = Backbone.View.extend({
 	initialize: function(options){
-		this.user = options.user;
+		this.user = Topaz.Collections.users.getOrFetch(this.model.get("author_id"));;
 		// this.listenTo(this.model, "sync add change remove", this.render);
 		this.subviews = [];
 	},
@@ -16,7 +16,7 @@ Topaz.Views.ArticlesShow = Backbone.View.extend({
 		});
 		
 		this.$el.html(renderedContent);
-		this.addSubviews();
+		if (window.currentUserId) this.addSubviews();
 		return this;
 	},
 	favorite: function(event) {

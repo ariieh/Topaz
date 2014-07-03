@@ -4,6 +4,11 @@ Topaz.Collections.Articles = Backbone.Collection.extend({
 	},
 	model: Topaz.Models.Article,
 	url: "/api/articles",
+	parse: function(response){
+    this.page_number = parseInt(response.page_number);
+    this.total_pages = parseInt(response.total_pages);
+    return response.articles;
+	},
   getOrFetch: function (id) {
     var articles = this;
     var article;
