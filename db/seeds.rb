@@ -6,6 +6,70 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+tags = ["Tech","Google","Mobile", "Computing", "Lifehack", "Science", "Humor"]
+
+title_first_half = [
+  "Amazon's strategy in streaming television",
+  "China's version of PayPal",
+  "Goldman Sachs' short-term outlook",
+  "The reason behind the universal appeal of tattoos",
+  "A billion-dollar smartphone factory in Vietnam",
+  "Pakistan's national airline",
+  "Japan's military power",
+  "Angela Merkel",
+  "Facebook's social experiment",
+  "Mario Draghi's idea of richer ECB communication",
+  "The decline of the Hollywood comedy",
+  "Mobile advertising",
+  "US media ad spending",
+  "The frothiest segment of the US beer market",
+  "The head of one of the biggest US military intelligence agencies",
+  "Mumbai's brand new $700-million metro",
+  "A Chinese billionaire",
+  "America's intellectual and future capital"
+]
+
+title_second_half = [
+  "is beginning to take shape",
+  "is mounting one of the biggest challenges to Chinese banks",
+  "is not looking pretty",
+  "signals growth is rebounding",
+  "is massively increasing ice cream costs",
+  "has appeal to right-wing nationalists",
+  "is growing hostile to the insular nature of the presidency",
+  "moves markets like Mario Draghi",
+  "is completely justified in feeling cranky",
+  "is a little tired"
+  "is gloomy about the economy",
+  "is already using Facebook to track your mood",
+  "can find you",
+  "completely misses a systemic problem that Vancouver faces",
+  "affects the long term prospects of this great city",
+  "is looking for a place to park its money",
+  "is mostly determined by a simple factor"
+]
+
+titles = []
+
+while titles.length < 100
+  title = "#{title_first_half.sample} #{title_second_half.sample}"
+  titles.push(title) unless titles.include? title
+end
+
+paragraphs = [
+  "In the same way that observing the behavior of some subatomic particles changes the behavior of those particles (called the observer effect), watching the tweets and posts of targets can create an environment where people tweet less. You poison your own well by drawing from it. That happens on an individual level in terms of specific human targets but also on a larger, societal level.",
+  "The thing that never sits quite right with post scarcity economics, though, at least the very little that I’ve read, is that it’s always sort of an all or nothing affair: you either don’t have enough of anything or you have enough of everything. Thinking of this as a mental exercise is kind of fun, I think, but in reality it seems to me that getting from point A — a scarcity economy — to point B — post scarcity — is going to be a long, complicated journey as some things become more abundant in some places, while other things are still scarce.",
+  "Sometimes swaddled in silvery capes or attended to by ghostly minders, the android-like devices call to mind the Victorian mothers who would hide underneath blankets to keep their toddlers from squirming during portraits. Collected together, the Google-camera selfies are at turns unsettling, revealing, and absurd—unintentionally upstaging the art they’re meant to quietly document.",
+  "In January, police were called in and 15 people were injured after hundreds of construction workers clashed with security guards at a Samsung smartphone factory in the northern province of Thai Nguyen. The fight was allegedly triggered either by a dispute over whether a worker could bring in their own meals, or over a employee who was late to work. In either case it resulted in guards beating a man unconscious with clubs, according to local media reports, and workers throwing bricks and stones, and setting shipping containers on fire.",
+  "British journalists are in a tizzy this morning. It started yesterday, when James Ball of the Guardian wrote a gently seething comment piece about notices his paper received from Google, warning it that six articles would no longer be listed on the search engine’s European sites. This was followed by a post from the BBC’s economics editor, Robert Peston, who complained that Google had removed “this example of my journalism.",
+  "From New Zealand’s Maori people to Angeleno gangsters, most cultures incorporate some form of tattooing. But “where the skin is too dark to tattoo, there is scarification,” Rainier said. When he would visit African societies that practice scarification, and he would ask locals who they thought was the most beautiful woman or the most handsome man, they would inevitably point to the most scarred.",
+  "The truth is that the decline of the comedy is a trend that has been under way for a while now. Hollywood’s reluctance to make comedies is also explained by declining DVD sales, itself caused by growth in streaming services like Netflix (which are commissioning their own original content, including comedy television).",
+  "Facebook has always “manipulated” the results shown in its users’ News Feeds by filtering and personalizing for relevance. But this weekend, the social giant seemed to cross a line, when it announced that it engineered emotional responses two years ago in an “emotional contagion” experiment, published in the Proceedings of the National Academy of Sciences (PNAS).",
+  "The mobile advertising market has grown rapidly over the years, but it’s still a sliver of overall ad spending—5.7% of the $171 billion total ad market in the US last year, according to eMarketer. This despite the fact that Americans spend an ever-growing amount of time on their phones—about 19% of total media consumption time last year, also via eMarketer.",
+  "The increase in production is mostly due to small local or regional breweries.  Craft breweries such as Bell’s near Kalamazoo, Michigan, and Lagunitas in Petaluma, California, have more than doubled their shipments over five years, while major brands are generally flat though. Of course, some of those small craft brewers end up stocking up a corporate giant’s liquor cabinet.",
+  "With the flood of new connected services and devices on the market, knowing how future users might hook them together or find unexpected new uses is a challenge, no matter what Silicon Valley’s confident young bucks may tell us. A service called IFTTT is giving us an interesting peek into the practical, clever and slightly weird ways people want to use the Internet of Things (IoT).",
+  "It took eight years and Rs 4,321 crore (about $720 million) to build the Mumbai Metro. But less than a month after starting operations, the newest mass transit system in India’s financial capital—built by a consortium led by billionaire Anil Ambani’s Reliance Infrastructure—has spectacularly failed in the face of Mumbai’s legendary monsoon rains."]
+
 u1 = User.new(username: "arieh", email: "arieh.smith@gmail.com")
 u1.password = "stuffy"
 u1.save!
@@ -14,18 +78,17 @@ u2 = User.new(username: "conz", email: "conz@conz.com")
 u2.password = "stuffy"
 u2.save!
 
-for i in 1..50 do
-  u = User.new(username: i.to_s, email: "#{i.to_s}@example.com")
+for i in 3..52 do
+  u = User.new(username: "User #{i}", email: "#{i.to_s}@example.com")
   u.password = "stuffy"
   u.save!
 end
 
-# test seed
 100.times do |num|
-  u1.articles.create!(title: "test article #{num}", body: "test body", created_at: "2014-05-05 12:00")
+  u1.articles.create!(title: titles.pop, body: "#{paragraphs.sample}\n#{paragraphs.sample}\n#{paragraphs.sample}", created_at: "2014-05-05 12:00")
 end
 
-a1 = u1.articles.create!(title: "Google’s latest empire-building tactic: cheap phones",
+a1 = u1.articles.create!(title: "Google's latest empire-building tactic: cheap phones",
 body: 
 "Here’s the thing about those cheap sub-$100 smartphones that nobody tells you: They’re awful. Many of them use ageing hardware to run old versions of Android. People tend to use them like regular phones—except to surf Facebook when they’ve got a Wi-Fi connection.
 
@@ -139,7 +202,7 @@ b2.taglist = "humor tech"
 end
 
 (Article.all - [a1,a2,a3,b1,b2]).each do |article|
-  article.taglist = ["Tech","Google","Mobile", "Computing", "Lifehack", "Science", "Humor"].sample;
+  article.taglist = tags.sample;
   num = (0..10).to_a.sample
   User.all.each_with_index do |user, index|
     unless user.id == 1 || user.id == 2
