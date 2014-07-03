@@ -16,7 +16,7 @@ Topaz.Views.ArticlesShow = Backbone.View.extend({
 		});
 		
 		this.$el.html(renderedContent);
-		if (window.currentUserId) this.addSubviews();
+		this.addSubviews();
 		return this;
 	},
 	favorite: function(event) {

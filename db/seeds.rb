@@ -39,7 +39,7 @@ title_second_half = [
   "is growing hostile to the insular nature of the presidency",
   "moves markets like Mario Draghi",
   "is completely justified in feeling cranky",
-  "is a little tired"
+  "is a little tired",
   "is gloomy about the economy",
   "is already using Facebook to track your mood",
   "can find you",
@@ -85,7 +85,7 @@ for i in 3..52 do
 end
 
 100.times do |num|
-  u1.articles.create!(title: titles.pop, body: "#{paragraphs.sample}\n#{paragraphs.sample}\n#{paragraphs.sample}", created_at: "2014-05-05 12:00")
+  u1.articles.create!(title: titles.pop, body: "#{paragraphs.sample}\n\n#{paragraphs.sample}\n\n#{paragraphs.sample}", created_at: "2014-05-05 12:00")
 end
 
 a1 = u1.articles.create!(title: "Google's latest empire-building tactic: cheap phones",
