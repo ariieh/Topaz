@@ -61,16 +61,11 @@ Topaz.Views.ArticlesIndex = Backbone.View.extend({
 		var page = $("section.page");
 		
     if(page[0].scrollHeight - page.scrollTop() <= page.outerHeight()){
-      console.log("hit bottom!");
       if (that.collection.page_number < that.collection.total_pages) {
-	      console.log("fetch mode!");
         that.collection.fetch({
           data: { page: that.collection.page_number + 1, key: that.key, name: that.name },
           remove: false,
-          wait: true,
-          success: function () {
-            console.log("successfully fetched page " + that.collection.page_number);
-          }
+          wait: true
         });
       }	
     }

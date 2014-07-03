@@ -6,7 +6,7 @@
         <!-- <a href="<%#=
           article_url(Article.all
           .sort_by{ |article| article.votecount }.reverse.first, view:                    "popular", el: nil) %>"> -->
-		<a href="#/articles/popular">
+		<a href="/#/articles/popular">
           Popular
         </a>
       </li>
@@ -23,13 +23,13 @@
             new_session_url
           end
           %>"> -->
-		<a href="#/articles/favorites">
+		<a href="/#/articles/favorites">
           Favorites
         </a>
       </li>
   	  <li>
         <!-- <a href="<%#= article_url(Article.last) %>"> -->
-		<a href="#/articles/latest">
+		<a href="/#/articles/latest">
 			Latest
 		</a>
       </li>
@@ -44,7 +44,7 @@
         <!-- <a href=" <%#=
                     article_url(tag.articles.order(:created_at).reverse.first,
                     view: "tag", el: tag.name) %> "> -->
-		<a href="<%= '#/tags/' + tag.name %>">
+		<a href="/#/tags/<%= tag.name %>">
 			<%= tag.name.capitalize %>
         </a>
       </li>

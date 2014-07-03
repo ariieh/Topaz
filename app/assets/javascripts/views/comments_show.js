@@ -28,7 +28,7 @@ Topaz.Views.CommentsShow = Backbone.View.extend({
 		newComment.urlRoot = "/api/articles/" + this.article.get("id") + "/comments";
 		var that = this;
 
-    newComment.save({}, {
+    newComment.save({p_id: this.id}, {
       success: function () {
 				that.comments.push(newComment);
 				window.currentUser.fetch();
