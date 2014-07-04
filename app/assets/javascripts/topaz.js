@@ -107,6 +107,12 @@ $(document).ready(function(){
 		} else {
 		  $(".search-bar").fadeOut("fast");
 		}
+		
+		if(!$(event.target).is('.comment-button') &&
+			 !$(event.target).is('.comment-count') &&
+			 !$(event.target).is('i.fa-comment')){
+			  $(".comment-box").fadeOut("fast");
+		}
 	});
 
 	$('nav .fa, .logo a').hover(

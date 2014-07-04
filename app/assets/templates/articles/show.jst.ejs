@@ -6,6 +6,8 @@
 	<img src="<%= article.escape("photo_url") %>"></img>
 <% } %>
 
+<div id='body-text'></div>
+
 <div class="taglist">
 	<i class="fa fa-tags"></i>
 	<% article.get("taglist").forEach(function(tag){ %>

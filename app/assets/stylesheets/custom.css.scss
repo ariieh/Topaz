@@ -395,8 +395,7 @@ nav .search-bar:focus {
 }
 
 .article-show-container{
-	position: relative;
-	margin-bottom: 110px;
+	margin-bottom: 10px;
 }
 
 .page h2{
@@ -502,16 +501,10 @@ nav .search-bar:focus {
 }
 
 .taglist{
-	position: absolute;
-	bottom: -20px;
-	display: block;
-	clear: both;
+	padding-bottom: 10px;
 }
 
 .favorite-button, .disabled-favorite-button{
-  position: absolute;
-	left: 0px;
-	bottom: -100px;
   display: inline-block;
 	border: 0px;
 	margin-bottom: 25px;
