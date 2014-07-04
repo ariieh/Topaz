@@ -108,9 +108,8 @@ $(document).ready(function(){
 		  $(".search-bar").fadeOut("fast");
 		}
 		
-		if(!$(event.target).is('.comment-button') &&
-			 !$(event.target).is('.comment-count') &&
-			 !$(event.target).is('i.fa-comment')){
+		if(!$(event.target).closest('.comment-button').length &&
+		   !$(event.target).closest('.comment-box').length){
 			  $(".comment-box").fadeOut("fast");
 		}
 	});

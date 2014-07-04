@@ -10,7 +10,7 @@
   <ul>
     <% currentUser.notifications().models.forEach(function(notification){ %>
       <li class=<% if(!notification.get("read")){%><%= 'unread' %><% } %>>
-        <a id="<%= notification.get("id") %>" href="#/<%= notification.get("url").split("/").slice(3).join("/") %>">
+        <a id="<%= notification.get("id") %>" href="<%= notification.linkUrl() %>">
           <%= notification.get("message") %>
         </a>
       </li>

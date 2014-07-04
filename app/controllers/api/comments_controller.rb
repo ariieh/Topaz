@@ -7,7 +7,7 @@ class Api::CommentsController < ApplicationController
     @comment.author_id = current_user.id
     
     if @comment.save
-      Notification.create(notification_type: 2, user_id: @article.author.id, url: article_url(@article))
+      Notification.create(notification_type: 2, user_id: @article.author.id, article_id: @article.id)
       render partial: "api/comments/comment", locals: { comment: @comment }
     else
       # flash[:errors] = @comment.errors.full_messages

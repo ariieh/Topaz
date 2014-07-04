@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     
     if @user.save
-      Notification.create(notification_type: 1, user_id: @user.id, url: static_pages_welcome_url)
+      Notification.create(notification_type: 1, user_id: @user.id, article_id: nil)
       DailyBrief.welcome_email(@user).deliver
       sign_in @user
       redirect_to root_url
