@@ -4,9 +4,10 @@ class Api::ArticlesController < ApplicationController
   def index
     @page = params[:page]
     
-    if params[:key] == "created_at"
+    case params[:key]
+    when "created_at"
       @articles = Article.order(params[:key] => :desc).page(params[:page])
-    elsif params[:key] == "votecount"
+    when "votecount"
       query = <<-SQL
         SELECT articles.*
         FROM articles JOIN votes ON articles.id = votes.article_id
@@ -15,13 +16,12 @@ class Api::ArticlesController < ApplicationController
       SQL
       
       @articles = Kaminari.paginate_array(Article.find_by_sql(query)).page(params[:page])
-    elsif params[:key] == "favorites"
-      @articles = current_user.favorites.page(params[:page])
-    elsif params[:key] == "tag"
-      @articles = Tag.find_by_name(params[:name]).articles.page(params[:page])
-    elsif params[:key] == "user"
-      @articles = User.find(params[:id].to_i).articles.page(params[:page])
-      @articles = @articles.per(Article.count)
+    when "favorites"
+      @articles = current_user.favorites.order("created_at" => :desc).page(params[:page])
+    when "tag"
+      @articles = Tag.find_by_name(params[:name]).articles.order("created_at" => :desc).page(params[:page])
+    when "user"
+      @articles = User.find(params[:id].to_i).articles.order("created_at" => :desc).page(params[:page]).per(Article.count)
     else
       @articles = Article.order("created_at" => :desc).page(params[:page])
     end
