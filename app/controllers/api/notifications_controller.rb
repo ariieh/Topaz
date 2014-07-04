@@ -11,9 +11,9 @@ class Api::NotificationsController < ApplicationController
     render partial: "api/notifications/notification", locals: { notification: @notification }
   end
   
-  protected
+  private
   
   def notification_params
-    self.params.permit(:read)
+    params.permit(:read)
   end
 end

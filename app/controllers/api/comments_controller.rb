@@ -20,9 +20,9 @@ class Api::CommentsController < ApplicationController
     render partial: "api/comments/comment", locals: { comment: @comment }
   end
   
-  protected
+  private
   
   def comment_params
-    self.params.permit(:text, :p_id)
+    params.permit(:text, :p_id)
   end  
 end

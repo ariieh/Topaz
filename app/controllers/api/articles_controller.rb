@@ -104,9 +104,9 @@ class Api::ArticlesController < ApplicationController
     render json: @article.votecount    
   end
   
-  protected
+  private
   
   def article_params
-    self.params.permit(:title, :body, :taglist, :photo)
+    params.permit(:title, :body, :taglist, :photo)
   end
 end
