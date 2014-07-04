@@ -265,6 +265,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		}
 		this.$contentEl.html(view.render().$el);
 		this.currentContentView = view;
+		$('section.page').animate({scrollTop: 0}, "fast");
 		Topaz.pageLoaderHide();
 		Topaz.scrollLoaderHide();
 	},
