@@ -260,6 +260,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		this.$contentEl.html(view.render().$el);
 		this.currentContentView = view;
 		Topaz.pageLoaderHide();
+		Topaz.scrollLoaderHide();
 	},
 	
 	_swapSidebarView: function(view){

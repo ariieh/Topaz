@@ -5,6 +5,7 @@ Topaz.Views.ArticlesShow = Backbone.View.extend({
 		this.subviews = [];
 	},
 	className: "article-show-container",
+	id: function(){ return "article-" + this.model.get("id") },
 	events: {
 		"click button": "favorite"
 	},
