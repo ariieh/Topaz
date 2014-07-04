@@ -61,33 +61,27 @@ $(document).ready(function(){
 	
 	var selectColor = "#e74c3c";
 	
-	$("nav .fa-tasks").click(function() {
-	  $(".notifications").fadeOut("fast");
-	  $(".search-bar").fadeOut("fast");
-	  $(".menu-bar").fadeToggle("fast");
-	});
   
-	$("nav .fa-flag").click(function() {
-	  $(".menu-bar").fadeOut("fast");
-	  $(".search-bar").fadeOut("fast");
-	  $(".notifications").fadeToggle("fast");
+	$("body").click(function(event) { 
+		if($(event.target).is('i.fa-tasks')) {
+		  $(".menu-bar").fadeToggle("fast");
+		} else {
+			$(".menu-bar").fadeOut("fast");
+		}
+		
+		if($(event.target).is('i.fa-flag')) {
+		  $(".notifications").fadeToggle("fast");
+		} else {
+			$(".notifications").fadeOut("fast");
+		}
+		
+		if($(event.target).is('i.fa-search')) {
+		  $(".search-bar").fadeToggle("fast");
+		} else {
+		  $(".search-bar").fadeOut("fast");
+		}
 	});
-	
-	$("nav .fa-search").click(function() {
-	  $(".menu-bar").fadeOut("fast");
-	  $(".notifications").fadeOut("fast");
-	  $(".search-bar").fadeToggle("fast");
-	});
-  
-  // buggy
-  // $(".fa-flag").bind("clickoutside", function(event){
-  //   $(".notifications").fadeOut("fast");
-  // });
-  //
-  // $(".fa-tasks").bind("clickoutside", function(event){
-  //   $(".menu-bar").fadeOut("fast");
-  // });
-	
+
 	$('nav .fa, .logo a').hover(
 	    function() {
 	        $(this).animate({'color': selectColor}, 'fast');
@@ -98,8 +92,8 @@ $(document).ready(function(){
 	);
 
 	/* rails only */
-	$('.comment-button').click(function(){
-		$(".comment-box").not($(this).siblings()).hide();
-		$(this).siblings(".comment-box").fadeToggle("fast");
-	});
+	// $('.comment-button').click(function(){
+	// 	$(".comment-box").not($(this).siblings()).hide();
+	// 	$(this).siblings(".comment-box").fadeToggle("fast");
+	// });
 });
