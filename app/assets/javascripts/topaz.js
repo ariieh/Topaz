@@ -104,7 +104,7 @@ $(document).ready(function(){
 		
 		if($(event.target).is('i.fa-search')) {
 		  $(".search-bar").fadeToggle("fast");
-		} else {
+		} else if (!$(event.target).is('.search-bar')) {
 		  $(".search-bar").fadeOut("fast");
 		}
 		
