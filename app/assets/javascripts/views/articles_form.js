@@ -14,7 +14,7 @@ Topaz.Views.ArticlesForm = Backbone.View.extend({
 		return this;
 	},
 	submit: function(event){
-		Topaz.loaderShow();
+		Topaz.pageLoaderShow();
     event.preventDefault();
 		var $form = $(event.currentTarget);
 		var formData = $form.serializeJSON();
@@ -27,7 +27,7 @@ Topaz.Views.ArticlesForm = Backbone.View.extend({
 				if (Topaz.Collections.articles.where({id: that.model.get("id")}).length === 0){
 	        Topaz.Collections.articles.add(that.model);
 				}
-				Topaz.loaderHide();
+				Topaz.pageLoaderHide();
 				Backbone.history.navigate("/users/" + window.currentUserId, {trigger: true});
       }
     });

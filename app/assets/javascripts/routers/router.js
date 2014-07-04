@@ -17,7 +17,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	},
 	
 	articlesIndex: function(){
-		Topaz.loaderShow();
+		Topaz.pageLoaderShow();
     var that = this;
 		Topaz.Collections.articles.fetch({
 			data: {page: 1, key: "created_at"},
@@ -40,7 +40,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	},
 	
 	articlesIndexPopular: function(){
-		Topaz.loaderShow();
+		Topaz.pageLoaderShow();
     var that = this;
 		Topaz.Collections.articles.fetch({
 			data: {page: 1, key: "votecount"},
@@ -62,7 +62,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	},
 	
 	articlesIndexFavorites: function(){
-		Topaz.loaderShow();
+		Topaz.pageLoaderShow();
 		var that = this;
 		if (window.currentUserId){
 
@@ -106,7 +106,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	},
 	
 	tagsShow: function(name){
-		Topaz.loaderShow();
+		Topaz.pageLoaderShow();
     var that = this;
 		Topaz.Collections.articles.fetch({
 			data: {page: 1, key: "tag", name: name},
@@ -187,7 +187,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	},
 		
 	usersShow: function(id){
-		Topaz.loaderShow();
+		Topaz.pageLoaderShow();
     var that = this;
 		var user = Topaz.Collections.users.getOrFetch(id);
 		var id = user.get("id");
@@ -259,7 +259,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		}
 		this.$contentEl.html(view.render().$el);
 		this.currentContentView = view;
-		Topaz.loaderHide();
+		Topaz.pageLoaderHide();
 	},
 	
 	_swapSidebarView: function(view){
@@ -269,7 +269,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		};
 		this.$sidebarEl.html(view.render().$el);
 		this.currentSidebarView = view;
-		Topaz.loaderHide();
+		Topaz.pageLoaderHide();		
 	},
 	_removeSubviews: function(view){
 		if (view.subviews){

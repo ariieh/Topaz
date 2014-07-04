@@ -27,7 +27,7 @@ window.Topaz = {
 		});
 		
   },
-	loaderShow: function(){
+	pageLoaderShow: function(){
 		var opts = {
 		  lines: 13, // The number of lines to draw
 		  length: 100, // The length of each line
@@ -48,11 +48,39 @@ window.Topaz = {
 		};
 		
 		$("#page-modal").addClass("visible");
-		Topaz.spinner = (Topaz.spinner || new Spinner(opts).spin());
-		$("#page-modal").append(Topaz.spinner.el);
+		Topaz.pageSpinner = (Topaz.pageSpinner || new Spinner(opts).spin());
+		$("#page-modal").append(Topaz.pageSpinner.el);
 	},
-	loaderHide: function(){
+	pageLoaderHide: function(){
 		$("#page-modal").removeClass("visible");
+	},
+	
+	scrollLoaderShow: function(){
+		var opts = {
+		  lines: 13, // The number of lines to draw
+		  length: 30, // The length of each line
+		  width: 10, // The line thickness
+		  radius: 25, // The radius of the inner circle
+		  corners: 1, // Corner roundness (0..1)
+		  rotate: 0, // The rotation offset
+		  direction: 1, // 1: clockwise, -1: counterclockwise
+		  color: '#000', // #rgb or #rrggbb or array of colors
+		  speed: 1, // Rounds per second
+		  trail: 52, // Afterglow percentage
+		  shadow: false, // Whether to render a shadow
+		  hwaccel: false, // Whether to use hardware acceleration
+		  className: 'spinner', // The CSS class to assign to the spinner
+		  zIndex: 2e9, // The z-index (defaults to 2000000000)
+		  top: '50%', // Top position relative to parent
+		  left: '50%' // Left position relative to parent
+		};
+		
+		$("#scroll-modal").addClass("visible");
+		Topaz.scrollSpinner = (Topaz.scrollSpinner || new Spinner(opts).spin());
+		$("#scroll-modal").append(Topaz.scrollSpinner.el);
+	},
+	scrollLoaderHide: function(){
+		$("#scroll-modal").removeClass("visible");
 	}
 };
 
@@ -61,7 +89,6 @@ $(document).ready(function(){
 	
 	var selectColor = "#e74c3c";
 	
-  
 	$("body").click(function(event) { 
 		if($(event.target).is('i.fa-tasks')) {
 		  $(".menu-bar").fadeToggle("fast");

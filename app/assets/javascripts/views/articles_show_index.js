@@ -30,6 +30,7 @@ Topaz.Views.ArticlesShowIndex = Backbone.View.extend({
     });
 		this.subviews.push(showView);
 		this.$el.append(showView.render().$el);
+		Topaz.scrollLoaderHide();
 	},
   listenForScroll: function () {
     $("section.page").off("scroll");
@@ -43,6 +44,7 @@ Topaz.Views.ArticlesShowIndex = Backbone.View.extend({
 		
     if(page[0].scrollHeight - page.scrollTop() <= page.outerHeight()){
       if (that.collection.page_number < that.collection.total_pages) {
+				Topaz.scrollLoaderShow();
         that.collection.fetch({
           data: {
 						page: that.collection.page_number + 1,
@@ -54,6 +56,6 @@ Topaz.Views.ArticlesShowIndex = Backbone.View.extend({
           wait: true
         });
       }	
-    }
+    }		
   }
 });
