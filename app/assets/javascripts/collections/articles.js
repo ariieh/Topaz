@@ -9,15 +9,22 @@ Topaz.Collections.Articles = Backbone.Collection.extend({
     this.total_pages = parseInt(response.total_pages);
     return response.articles;
 	},
-  getOrFetch: function (id) {
+  getOrFetch: function (id, callback) {
     var articles = this;
     var article;
     if (article = this.get(id)) {
-      article.fetch();
+      article.fetch({
+      	success: callback
+      });
     } else {
       article = new Topaz.Models.Article({ id: id });
-      article.fetch({ success: function () 
-				{ articles.add(article); }
+      article.fetch({
+				success: function () {
+					callback();
+				},
+				error: function(data){
+					console.log(data);
+				}
 			});
     }
 
