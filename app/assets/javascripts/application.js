@@ -18,6 +18,7 @@
 //= require jquery.ba-outside-events.min
 //= require jquery.timeago
 //= require jquery.bum-smack
+//= require spin
 //= require underscore-min
 //= require backbone
 //= require topaz

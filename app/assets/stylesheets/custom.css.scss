@@ -356,6 +356,26 @@ nav .search-bar:focus {
   border-left: 1px solid rgb(229,229,229);
 }
 
+#page-modal{
+  background: #95a5a6;
+  position: absolute;
+  top: 0;
+  left: 250px;
+  right: 0;
+  height: 100%;
+  overflow: auto;
+  font-family: sans-serif;
+  border-left: 1px solid rgb(229,229,229);
+	opacity: 0;
+	pointer-events: none;
+}
+
+#page-modal.visible{
+	opacity: 0.4;
+	pointer-events: auto;
+}
+
+
 #content{
   padding: 30px;
 }
