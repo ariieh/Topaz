@@ -51,7 +51,7 @@ class Api::ArticlesController < ApplicationController
   end
 
   def create
-    @article = current_user.articles.new(self.article_params)
+    @article = current_user.articles.new(article_params)
 
     if @article.save
       render partial: "api/articles/article", locals: { article: @article }
@@ -79,7 +79,7 @@ class Api::ArticlesController < ApplicationController
   
   def update
     @article = Article.find(params[:id])
-    if @article.update_attributes(self.article_params)
+    if @article.update_attributes(article_params)
       render partial: "api/articles/article", locals: { article: @article }
     else
       render json: @article.errors, status: :unprocessable_entity      

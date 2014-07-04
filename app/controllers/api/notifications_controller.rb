@@ -7,7 +7,7 @@ class Api::NotificationsController < ApplicationController
   
   def update
     @notification = Notification.find(params[:id])
-    @notification.update_attributes(self.notification_params)
+    @notification.update_attributes(notification_params)
     render partial: "api/notifications/notification", locals: { notification: @notification }
   end
   
