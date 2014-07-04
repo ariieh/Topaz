@@ -27,9 +27,9 @@ class Api::ArticlesController < ApplicationController
                       .page(params[:page])
     when "user"
       @articles = User.find(params[:id].to_i)
-                      .articles.order("created_at" => :desc)
+                      .articles
+                      .order("created_at" => :desc)
                       .page(params[:page])
-                      .per(Article.count)
     else
       @articles = Article.order("created_at" => :desc)
                           .page(params[:page])

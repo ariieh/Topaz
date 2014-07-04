@@ -375,7 +375,6 @@ nav .search-bar:focus {
 	pointer-events: auto;
 }
 
-
 #content{
   padding: 30px;
 }
@@ -428,7 +427,6 @@ nav .search-bar:focus {
 #body-text .comment-form input[type="submit"]:hover{
   background: #0b0;
 }
-
 
 #body-text .comment-form input[type="submit"]:active{
   top: 3px;
@@ -532,6 +530,7 @@ nav .search-bar:focus {
 	opacity: 0.5;
 }
 
+/* sign in, sign out */
 input[value="Sign In"], input[value="Sign Up"]{
   position: relative;
   display: inline-block;
@@ -570,6 +569,12 @@ form.sign input[type=text], form.sign input[type=password] {
 form.sign input[type=text]:focus, form.sign input[type=password]:focus {
   box-shadow: 0 0 5px $fly-blue;
   border: 1px solid $fly-blue;
+}
+
+/* user show */
+.new-article{
+	display: block;
+	margin-bottom: 30px;
 }
 
 /* sidebar */

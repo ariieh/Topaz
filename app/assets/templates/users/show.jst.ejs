@@ -2,5 +2,5 @@
 <h3><%= user.escape("email") %></h3>
 
 <% if (user.get("id") === window.currentUserId){ %>
-  <a href="#/articles/new">New article</a>
+  <span class="new-article"><a href="#/articles/new">New article</a></span>
 <% } %>

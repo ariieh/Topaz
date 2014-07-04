@@ -187,6 +187,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	},
 		
 	usersShow: function(id){
+		Topaz.loaderShow();
     var that = this;
 		var user = Topaz.Collections.users.getOrFetch(id);
 		var id = user.get("id");
@@ -195,11 +196,12 @@ Topaz.Routers.Router = Backbone.Router.extend({
     });
 		
 		Topaz.Collections.articles.fetch({
-			data: {key: "user", id: id},
+			data: {page: 1, key: "user", id: id},
     	success: function(){
 		    var indexView = new Topaz.Views.ArticlesIndex({
 		      collection: Topaz.Collections.articles,
-					key: "user"
+					key: "user",
+					id: id
 		    });
 		    that._swapSidebarView(indexView);
 				// var newCollection = new Topaz.Collections.Articles();
@@ -213,7 +215,12 @@ Topaz.Routers.Router = Backbone.Router.extend({
 				// 		    });
 				//
 				// 		    that._swapSidebarView(indexView);
-		    that._swapContentView(showView);
+		    // that._swapContentView(showView);
+		    var showIndexView = new Topaz.Views.ArticlesShowIndex({
+		      collection: Topaz.Collections.articles
+		    });
+		    that._swapContentView(showIndexView);
+				that.$contentEl.prepend(showView.render().$el);
     	}
     });
 	},

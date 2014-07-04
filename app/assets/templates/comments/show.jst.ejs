@@ -1,15 +1,16 @@
 <p><%= paragraph %></p>
 
 <% if (window.currentUserId){ %>
-<div class='comment-button'>
-	<i class='fa fa-comment'>
-		<span class='comment-count'>
-			<%= comments.length %>
-		</span>
-	</i>
-</div>
 
-	<div class='comment-box'>
+	<div class='comment-button'>
+		<i class='fa fa-comment'>
+			<span class='comment-count'>
+				<%= comments.length %>
+			</span>
+		</i>
+	</div>
+
+	<div class='comment-box article-<%= article.get("id") %> paragraph-<%= id %>'>
 	<%= _.map(comments, function(c){return c.get("author") + ": " + c.get("text");}).join("<br>")%>
 	
 		<form class='comment-form'>
@@ -18,5 +19,5 @@
 	    	<input type='submit' value='Add Comment'>
 		 </form>
 	</div>
- </div>
-<% } %> 
+ 
+<% } %>

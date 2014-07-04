@@ -33,6 +33,7 @@ Topaz.Views.CommentsShow = Backbone.View.extend({
 				that.comments.push(newComment);
 				window.currentUser.fetch();
 				that.render();
+				$(".article-"+that.article.get("id")+".paragraph-"+that.id).show();
       }
     });
 		

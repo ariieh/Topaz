@@ -27,7 +27,7 @@ title_first_half = [
   "Mumbai's brand new $700-million metro",
   "A Chinese billionaire",
   "America's intellectual and future capital",
-  "Drunk heir to half of Manhattan",
+  "The drunk heir to half of Manhattan",
   "The new Harry Potter theme park"
 ]
 
