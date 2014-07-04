@@ -277,6 +277,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		};
 		this.$sidebarEl.html(view.render().$el);
 		this.currentSidebarView = view;
+		$('section.sidebar').animate({scrollTop: 0}, "slow");
 		Topaz.pageLoaderHide();		
 	},
 	
