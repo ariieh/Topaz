@@ -26,11 +26,14 @@ title_first_half = [
   "The head of one of the biggest US military intelligence agencies",
   "Mumbai's brand new $700-million metro",
   "A Chinese billionaire",
-  "America's intellectual and future capital"
+  "America's intellectual and future capital",
+  "Drunk heir to half of Manhattan",
+  "The new Harry Potter theme park"
 ]
 
 title_second_half = [
   "is beginning to take shape",
+  "wants to sue everybody",
   "is mounting one of the biggest challenges to Chinese banks",
   "is not looking pretty",
   "signals growth is rebounding",
