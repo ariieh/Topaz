@@ -20,8 +20,7 @@ Topaz.Views.ArticlesSnippet = Backbone.View.extend({
 
 Topaz.Views.ArticlesIndex = Backbone.View.extend({
 	initialize: function(options){
-		this.key = options.key;
-		if (this.key) this.collection.sortByKey(this.key);
+		if (this.key = options.key) this.collection.sortByKey(this.key);
 		this.listenTo(this.collection, "sync remove", this.render);
 		this.listenTo(this.collection, "add", this.add);
 		this.subviews = [];
@@ -34,7 +33,6 @@ Topaz.Views.ArticlesIndex = Backbone.View.extend({
 			articles: this.collection
 		});
 		this.addSubviews();
-    this.listenForScroll();
 		return this;
 	},
 	addSubviews: function(){
@@ -50,28 +48,6 @@ Topaz.Views.ArticlesIndex = Backbone.View.extend({
 			this.$el.append(snippetView.render().$el);
 		}, this);
 	},
-	
-  listenForScroll: function () {
-    $("section.page").off("scroll");
-    $("section.page").on("scroll", _.throttle(this.infiniteScroll.bind(this), 200));
-  },
-
-  infiniteScroll: function () {
-    var articles = Topaz.Collections.articles;
-    var that = this;
-		var page = $("section.page");
-		
-    if(page[0].scrollHeight - page.scrollTop() <= page.outerHeight()){
-      if (that.collection.page_number < that.collection.total_pages) {
-        that.collection.fetch({
-					// no infinite scroll on user show page
-          data: { page: that.collection.page_number + 1, key: that.key, name: that.name },
-          remove: false,
-          wait: true
-        });
-      }	
-    }
-  },
 	
 	add: function(article){
     var snippetView = new Topaz.Views.ArticlesSnippet({

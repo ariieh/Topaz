@@ -8,6 +8,7 @@ Topaz.Views.ArticlesShowIndex = Backbone.View.extend({
   render: function () {
     var renderedContent = this.template({ articles: this.collection });
 		this.addSubviews();
+    this.listenForScroll();
     return this;
   },
 	addSubviews: function(){
@@ -29,5 +30,26 @@ Topaz.Views.ArticlesShowIndex = Backbone.View.extend({
     });
 		this.subviews.push(showView);
 		this.$el.append(showView.render().$el);
-	}
+	},
+  listenForScroll: function () {
+    $("section.page").off("scroll");
+    $("section.page").on("scroll", _.throttle(this.infiniteScroll.bind(this), 200));
+  },
+
+  infiniteScroll: function () {
+    var articles = Topaz.Collections.articles;
+    var that = this;
+		var page = $("section.page");
+		
+    if(page[0].scrollHeight - page.scrollTop() <= page.outerHeight()){
+      if (that.collection.page_number < that.collection.total_pages) {
+        that.collection.fetch({
+					// no infinite scroll on user show page
+          data: { page: that.collection.page_number + 1, key: that.key, name: that.name },
+          remove: false,
+          wait: true
+        });
+      }	
+    }
+  }
 });
