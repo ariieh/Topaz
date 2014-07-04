@@ -155,20 +155,20 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	},
 	
 	articlesShow: function(id){
-		if (!this.currentSidebarView){ 
-	    var that = this;
-			Topaz.Collections.articles.fetch({
-				data: {page: 1, key: "created_at"},
-	    	success: function(){
-					Topaz.Collections.articles.sortByKey("created_at");
-			    var indexView = new Topaz.Views.ArticlesIndex({
-			      collection: Topaz.Collections.articles,
-						key: "created_at"
-			    });
-			    that._swapSidebarView(indexView);
-	    	}
-	    });
-		}
+		// if (!this.currentSidebarView){
+		// 	    var that = this;
+		// 	Topaz.Collections.articles.fetch({
+		// 		data: {page: 1, key: "created_at"},
+		// 	    	success: function(){
+		// 			Topaz.Collections.articles.sortByKey("created_at");
+		// 	    var indexView = new Topaz.Views.ArticlesIndex({
+		// 	      collection: Topaz.Collections.articles,
+		// 				key: "created_at"
+		// 	    });
+		// 	    that._swapSidebarView(indexView);
+		// 	    	}
+		// 	    });
+		// }
 		
     var article = Topaz.Collections.articles.getOrFetch(id);
 		
@@ -223,6 +223,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 				that.$contentEl.prepend(showView.render().$el);
     	}
     });
+		
 	},
 	
 	about: function(){
@@ -256,6 +257,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		if (this.currentContentView){
 			this._removeSubviews(this.currentContentView);
 			this.currentContentView.remove();
+	    $("section.page").off("scroll");
 		}
 		this.$contentEl.html(view.render().$el);
 		this.currentContentView = view;
