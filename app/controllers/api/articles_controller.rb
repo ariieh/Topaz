@@ -19,6 +19,9 @@ class Api::ArticlesController < ApplicationController
       @articles = current_user.favorites.page(params[:page])
     elsif params[:key] == "tag"
       @articles = Tag.find_by_name(params[:name]).articles.page(params[:page])
+    elsif params[:key] == "user"
+      @articles = User.find(params[:id].to_i).articles.page(params[:page])
+      @articles = @articles.per(Article.count)
     else
       @articles = Article.order("created_at" => :desc).page(params[:page])
     end

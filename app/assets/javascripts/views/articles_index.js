@@ -63,6 +63,7 @@ Topaz.Views.ArticlesIndex = Backbone.View.extend({
     if(page[0].scrollHeight - page.scrollTop() <= page.outerHeight()){
       if (that.collection.page_number < that.collection.total_pages) {
         that.collection.fetch({
+					// no infinite scroll on user show page
           data: { page: that.collection.page_number + 1, key: that.key, name: that.name },
           remove: false,
           wait: true

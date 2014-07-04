@@ -21,7 +21,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		Topaz.Collections.articles.fetch({
 			data: {page: 1, key: "created_at"},
     	success: function(){
-				// Topaz.Collections.articles.sortByKey("created_at");
+				Topaz.Collections.articles.sortByKey("created_at");
 		    var indexView = new Topaz.Views.ArticlesIndex({
 		      collection: Topaz.Collections.articles,
 					key: "created_at"
@@ -154,10 +154,12 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		if (!this.currentSidebarView){ 
 	    var that = this;
 			Topaz.Collections.articles.fetch({
+				data: {page: 1, key: "created_at"},
 	    	success: function(){
 					Topaz.Collections.articles.sortByKey("created_at");
 			    var indexView = new Topaz.Views.ArticlesIndex({
-			      collection: Topaz.Collections.articles
+			      collection: Topaz.Collections.articles,
+						key: "created_at"
 			    });
 			    that._swapSidebarView(indexView);
 	    	}
@@ -183,23 +185,30 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	usersShow: function(id){
     var that = this;
 		var user = Topaz.Collections.users.getOrFetch(id);
+		var id = user.get("id");
     var showView = new Topaz.Views.UsersShow({
       model: user
     });
 		
 		Topaz.Collections.articles.fetch({
+			data: {key: "user", id: id},
     	success: function(){
-				var newCollection = new Topaz.Collections.Articles();
-				
-				user.get("articles").forEach(function(article){
-					newCollection.add(Topaz.Collections.articles.where({id: article}));
-				});
-				
-				var indexView = new Topaz.Views.ArticlesIndex({
-		      collection: newCollection
+		    var indexView = new Topaz.Views.ArticlesIndex({
+		      collection: Topaz.Collections.articles,
+					key: "user"
 		    });
-
 		    that._swapSidebarView(indexView);
+				// var newCollection = new Topaz.Collections.Articles();
+				//
+				// user.get("articles").forEach(function(article){
+				// 	newCollection.add(Topaz.Collections.articles.where({id: article}));
+				// });
+				//
+				// var indexView = new Topaz.Views.ArticlesIndex({
+				// 		      collection: newCollection
+				// 		    });
+				//
+				// 		    that._swapSidebarView(indexView);
 		    that._swapContentView(showView);
     	}
     });
