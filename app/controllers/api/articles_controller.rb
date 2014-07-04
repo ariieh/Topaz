@@ -17,13 +17,22 @@ class Api::ArticlesController < ApplicationController
       
       @articles = Kaminari.paginate_array(Article.find_by_sql(query)).page(params[:page])
     when "favorites"
-      @articles = current_user.favorites.order("created_at" => :desc).page(params[:page])
+      @articles = current_user.favorites
+                              .order("created_at" => :desc)
+                              .page(params[:page])
     when "tag"
-      @articles = Tag.find_by_name(params[:name]).articles.order("created_at" => :desc).page(params[:page])
+      @articles = Tag.find_by_name(params[:name])
+                      .articles
+                      .order("created_at" => :desc)
+                      .page(params[:page])
     when "user"
-      @articles = User.find(params[:id].to_i).articles.order("created_at" => :desc).page(params[:page]).per(Article.count)
+      @articles = User.find(params[:id].to_i)
+                      .articles.order("created_at" => :desc)
+                      .page(params[:page])
+                      .per(Article.count)
     else
-      @articles = Article.order("created_at" => :desc).page(params[:page])
+      @articles = Article.order("created_at" => :desc)
+                          .page(params[:page])
     end
     # @articles.each_with_index do |article, index|
     #   @articles[index] = article.hashify
