@@ -174,6 +174,10 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	    var showView = new Topaz.Views.ArticlesShow({
 	      model: article
 	    });
+			if (that.currentSidebarView){
+				that._removeSubviews(that.currentSidebarView);
+				that.currentSidebarView.remove();
+			}
 	    that._swapContentView(showView);
     });
 		
@@ -277,7 +281,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		};
 		this.$sidebarEl.html(view.render().$el);
 		this.currentSidebarView = view;
-		$('section.sidebar').animate({scrollTop: 0}, "slow");
+		$('section.sidebar').animate({scrollTop: 0}, "fast");
 		Topaz.pageLoaderHide();		
 	},
 	
