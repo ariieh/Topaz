@@ -33,6 +33,17 @@ group :development do
   gem "letter_opener"
 end
 
+group :test do
+  gem 'guard-rspec'
+  gem 'faker'
+  gem 'shoulda-matchers', require: false
+end
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
+
 gem 'pg_search'
 gem 'kaminari'
 gem "nokogiri", '1.6.1'
