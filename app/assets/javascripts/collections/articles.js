@@ -29,7 +29,11 @@ Topaz.Collections.Articles = Backbone.Collection.extend({
     return a > b ? -1 : a < b ? 1 : 0;
 	},
 	sortByKey: function(key){
-		this.sortKey = key;
+		if (key === "user" || key === "tag"){
+			this.sortKey = "created_at";
+		} else {
+			this.sortKey = key;
+		}
 		this.sort();
 	}
 });

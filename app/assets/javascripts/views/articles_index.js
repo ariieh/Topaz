@@ -20,10 +20,11 @@ Topaz.Views.ArticlesSnippet = Backbone.View.extend({
 
 Topaz.Views.ArticlesIndex = Backbone.View.extend({
 	initialize: function(options){
+		this.key = options.key;
+		if (this.key) this.collection.sortByKey(this.key);
 		this.listenTo(this.collection, "sync remove", this.render);
 		this.listenTo(this.collection, "add", this.add);
 		this.subviews = [];
-		this.key = options.key;
 		this.name = options.name;
 	},
 	tagName: "ul",

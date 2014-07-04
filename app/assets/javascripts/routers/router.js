@@ -21,7 +21,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		Topaz.Collections.articles.fetch({
 			data: {page: 1, key: "created_at"},
     	success: function(){
-				Topaz.Collections.articles.sortByKey("created_at");
+				// Topaz.Collections.articles.sortByKey("created_at");
 		    var indexView = new Topaz.Views.ArticlesIndex({
 		      collection: Topaz.Collections.articles,
 					key: "created_at"
@@ -43,7 +43,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		Topaz.Collections.articles.fetch({
 			data: {page: 1, key: "votecount"},
     	success: function(){
-				Topaz.Collections.articles.sortByKey("votecount");
+				// Topaz.Collections.articles.sortByKey("votecount");
 		    var indexView = new Topaz.Views.ArticlesIndex({
 		      collection: Topaz.Collections.articles,
 					key: "votecount"
