@@ -35,11 +35,11 @@ end
 
 group :test do
   gem 'guard-rspec'
-  gem 'faker'
   gem 'shoulda-matchers', require: false
 end
 
 group :development, :test do
+  gem 'faker'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
 end
