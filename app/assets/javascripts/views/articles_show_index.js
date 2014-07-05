@@ -13,6 +13,7 @@ Topaz.Views.ArticlesShowIndex = Backbone.View.extend({
     var renderedContent = this.template({ articles: this.collection });
 		this.addSubviews();
     this.listenForScroll();
+		if(this.query) $("section.main").highlight(this.query);
     return this;
   },
 	addSubviews: function(){

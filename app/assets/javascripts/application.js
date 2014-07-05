@@ -16,7 +16,7 @@
 //= require underscore
 //= require jquery.color-2.1.2.min
 //= require jquery.timeago
-//= require jquery.bum-smack
+//= require jquery.highlight
 //= require spin
 //= require underscore-min
 //= require backbone

@@ -12,6 +12,6 @@ Topaz.Views.SearchForm = Backbone.View.extend({
 	},
 	search: function(event){
 		var formData = $(event.currentTarget).serializeJSON();
-		Topaz.Routers.router.search(formData.query);
+		Topaz.Routers.router.search(formData.query);		
 	}
 });
