@@ -44,8 +44,8 @@ h4{
 
 p{ 
 	padding-bottom: 15px; 
-  font-family: 'Rosario', sans-serif;
-	font-size: 18px;
+  font-family: "PT Serif",Georgia,serif;
+	font-size: 17px;
 	color: rgb(64,64,64);
 	line-height: 150%;
 }
@@ -601,6 +601,12 @@ form.sign input[type=text]:focus, form.sign input[type=password]:focus {
   overflow: auto;
   font-family: sans-serif;
   box-shadow: inset -10px 0 5px -5px hsla(0,0,0,.1);
+}
+
+.sidebar a{
+	font-family: "PT Serif", Georgia, serif;
+	font-size: 15px;
+	color: rgb(94,94,94);
 }
 
 .sidebar > ul > li{
