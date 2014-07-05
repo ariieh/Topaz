@@ -4,6 +4,7 @@ Topaz.Views.ArticlesShowIndex = Backbone.View.extend({
 		this.listenTo(this.collection, "add", this.add);
 		this.subviews = [];
 		this.name = options.name;
+		this.key = options.key;
 		this.id = options.id;
 		this.query = options.query;
 	},

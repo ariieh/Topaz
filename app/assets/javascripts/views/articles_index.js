@@ -24,7 +24,6 @@ Topaz.Views.ArticlesIndex = Backbone.View.extend({
 		this.listenTo(this.collection, "sync remove", this.render);
 		this.listenTo(this.collection, "add", this.add);
 		this.subviews = [];
-		this.name = options.name;
 	},
 	tagName: "ul",
 	template: JST["articles/index"],

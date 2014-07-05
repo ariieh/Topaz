@@ -33,7 +33,8 @@ Topaz.Routers.Router = Backbone.Router.extend({
 				// that._showFirstX(Topaz.Collections.articles);
 				
 		    var showIndexView = new Topaz.Views.ArticlesShowIndex({
-		      collection: Topaz.Collections.articles
+		      collection: Topaz.Collections.articles,
+					key: "created_at"
 		    });
 		    that._swapContentView(showIndexView);
     	}
@@ -55,7 +56,8 @@ Topaz.Routers.Router = Backbone.Router.extend({
 				// that._showFirst(Topaz.Collections.articles);
 				
 		    var showIndexView = new Topaz.Views.ArticlesShowIndex({
-		      collection: Topaz.Collections.articles
+		      collection: Topaz.Collections.articles,
+					key: "votecount"
 		    });
 		    that._swapContentView(showIndexView);
     	}
@@ -84,7 +86,8 @@ Topaz.Routers.Router = Backbone.Router.extend({
 					// that._showFirst(Topaz.Collections.articles);
 				
 			    var showIndexView = new Topaz.Views.ArticlesShowIndex({
-			      collection: Topaz.Collections.articles
+			      collection: Topaz.Collections.articles,
+						key: "favorites"
 			    });
 			    that._swapContentView(showIndexView);
 	    	}
@@ -114,14 +117,15 @@ Topaz.Routers.Router = Backbone.Router.extend({
     	success: function(){
 		    var indexView = new Topaz.Views.ArticlesIndex({
 		      collection: Topaz.Collections.articles,
-					key: "tag",
-					name: name
+					key: "tag"
 		    });
 		    that._swapSidebarView(indexView);
 				// that._showFirst(Topaz.Collections.articles);
 				
 		    var showIndexView = new Topaz.Views.ArticlesShowIndex({
-		      collection: Topaz.Collections.articles
+		      collection: Topaz.Collections.articles,
+					key: "tag",
+					name: name
 		    });
 		    that._swapContentView(showIndexView);
     	}
@@ -209,8 +213,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
     	success: function(){
 		    var indexView = new Topaz.Views.ArticlesIndex({
 		      collection: Topaz.Collections.articles,
-					key: "user",
-					id: id
+					key: "user"
 		    });
 		    that._swapSidebarView(indexView);
 				// var newCollection = new Topaz.Collections.Articles();
@@ -226,7 +229,9 @@ Topaz.Routers.Router = Backbone.Router.extend({
 				// 		    that._swapSidebarView(indexView);
 		    // that._swapContentView(showView);
 		    var showIndexView = new Topaz.Views.ArticlesShowIndex({
-		      collection: Topaz.Collections.articles
+		      collection: Topaz.Collections.articles,
+					key: "user",
+					id: id
 		    });
 		    that._swapContentView(showIndexView);
 				that.$contentEl.prepend(showView.render().$el);
@@ -236,13 +241,17 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	},
 	
 	search: function(query){
+		var modalColor = $("#page-modal").css("background");
+		$("#page-modal").css({"background":"transparent"});
 		Topaz.pageLoaderShow();
+		
     var that = this;
 		Topaz.Collections.articles.fetch({
 			data: {page: 1, key: "search", query: query},
     	success: function(){
 		    var indexView = new Topaz.Views.ArticlesIndex({
-		      collection: Topaz.Collections.articles
+		      collection: Topaz.Collections.articles,
+					key: "search"
 		    });
 		    that._swapSidebarView(indexView);
 				
@@ -254,6 +263,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		    that._swapContentView(showIndexView);
     	}
     });
+		
 	},
 	
 	about: function(){
@@ -288,6 +298,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 			this._removeSubviews(this.currentContentView);
 			this.currentContentView.remove();
 	    $("section.page").off("scroll");
+			$("#page-modal").css({"background":"#95a5a6"});			
 		}
 		this.$contentEl.html(view.render().$el);
 		this.currentContentView = view;
