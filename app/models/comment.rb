@@ -1,6 +1,6 @@
 class Comment < ActiveRecord::Base
-  include PgSearch
-  multisearchable against: [:text, :author]
+  # include PgSearch
+  # multisearchable against: [:text, :author]
   
   validates :text, :author, :article, presence: true
   

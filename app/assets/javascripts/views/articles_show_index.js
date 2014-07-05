@@ -3,6 +3,9 @@ Topaz.Views.ArticlesShowIndex = Backbone.View.extend({
 		this.listenTo(this.collection, "sync remove", this.render);
 		this.listenTo(this.collection, "add", this.add);
 		this.subviews = [];
+		this.name = options.name;
+		this.id = options.id;
+		this.query = options.query;
 	},
   template: JST["articles/showindex"],
   render: function () {
@@ -45,16 +48,17 @@ Topaz.Views.ArticlesShowIndex = Backbone.View.extend({
     if(page[0].scrollHeight - page.scrollTop() <= page.outerHeight()){
       if (that.collection.page_number < that.collection.total_pages) {
 				Topaz.scrollLoaderShow();
-        that.collection.fetch({
-          data: {
-						page: that.collection.page_number + 1,
-						key: that.key,
-						name: that.name,
-						id: that.id
-					},
-          remove: false,
-          wait: true
-        });
+	        that.collection.fetch({
+	          data: {
+							page: that.collection.page_number + 1,
+							key: that.key,
+							query: that.query,
+							name: that.name,
+							id: that.id
+						},
+	          remove: false,
+	          wait: true
+	        });
       }	
     }		
   }

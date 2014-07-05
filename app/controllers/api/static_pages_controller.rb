@@ -5,11 +5,13 @@ class Api::StaticPagesController < ApplicationController
   
   def search
     if !params[:query].blank?
-      @results = PgSearch.multisearch(params[:query]).includes(:searchable)
+      @results = PgSearch.multisearch(params[:query])
+                          .includes(:searchable)
     else
-      @results = PgSearch::Document.all
+      @results = PgSearch::Document.all      
     end
     
-    render partial: "api/search/results", locals: { results: @results.map(&:searchable) }
+    @articles = Kaminari.paginate_array(@results.map(&:searchable)).page(params[:page]).per(5)
+    render "api/articles/index"# , locals: { articles: @results.map(&:searchable) }
   end
 end

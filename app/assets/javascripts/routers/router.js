@@ -13,6 +13,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		"articles/:id/edit": "articlesEdit",
 		"users/:id": "usersShow",
 		"tags/:name": "tagsShow",
+		"search?query=:query":"search",
 		"about": "about"
 	},
 	
@@ -232,6 +233,27 @@ Topaz.Routers.Router = Backbone.Router.extend({
     	}
     });
 		
+	},
+	
+	search: function(query){
+		Topaz.pageLoaderShow();
+    var that = this;
+		Topaz.Collections.articles.fetch({
+			data: {page: 1, key: "search", query: query},
+    	success: function(){
+		    var indexView = new Topaz.Views.ArticlesIndex({
+		      collection: Topaz.Collections.articles
+		    });
+		    that._swapSidebarView(indexView);
+				
+		    var showIndexView = new Topaz.Views.ArticlesShowIndex({
+		      collection: Topaz.Collections.articles,
+					key: "search",
+					query: query
+		    });
+		    that._swapContentView(showIndexView);
+    	}
+    });
 	},
 	
 	about: function(){
