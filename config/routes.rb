@@ -28,7 +28,6 @@ Rails.application.routes.draw do
   resource :session
   
   namespace :api, defaults: { format: :json } do
-    get :search, to: 'static_pages#search', as: :search
     
     shallow do
       resources :users do

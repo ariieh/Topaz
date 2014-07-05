@@ -65,10 +65,9 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	},
 	
 	articlesIndexFavorites: function(){
-		Topaz.pageLoaderShow();
-		var that = this;
 		if (window.currentUserId){
-
+			Topaz.pageLoaderShow();
+			var that = this;
 			Topaz.Collections.articles.fetch({
 				data: {page: 1, key: "favorites"},
 	    	success: function(){
