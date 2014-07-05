@@ -138,10 +138,4 @@ $(document).ready(function(){
     event.preventDefault();
 		Backbone.history.navigate("tags/" + $("#tag-search-bar").val(), {trigger: true});
 	});
-	
-	/* rails only */
-	// $('.comment-button').click(function(){
-	// 	$(".comment-box").not($(this).siblings()).hide();
-	// 	$(this).siblings(".comment-box").fadeToggle("fast");
-	// });
 });

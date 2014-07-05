@@ -23,14 +23,11 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		Topaz.Collections.articles.fetch({
 			data: {page: 1, key: "created_at"},
     	success: function(){
-				// Topaz.Collections.articles.sortByKey("created_at");
 		    var indexView = new Topaz.Views.ArticlesIndex({
 		      collection: Topaz.Collections.articles,
 					key: "created_at"
 		    });
 		    that._swapSidebarView(indexView);
-				// that._showFirst(Topaz.Collections.articles);
-				// that._showFirstX(Topaz.Collections.articles);
 				
 		    var showIndexView = new Topaz.Views.ArticlesShowIndex({
 		      collection: Topaz.Collections.articles,
@@ -47,13 +44,11 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		Topaz.Collections.articles.fetch({
 			data: {page: 1, key: "votecount"},
     	success: function(){
-				// Topaz.Collections.articles.sortByKey("votecount");
 		    var indexView = new Topaz.Views.ArticlesIndex({
 		      collection: Topaz.Collections.articles,
 					key: "votecount"
 		    });
 		    that._swapSidebarView(indexView);
-				// that._showFirst(Topaz.Collections.articles);
 				
 		    var showIndexView = new Topaz.Views.ArticlesShowIndex({
 		      collection: Topaz.Collections.articles,
@@ -70,19 +65,12 @@ Topaz.Routers.Router = Backbone.Router.extend({
 			var that = this;
 			Topaz.Collections.articles.fetch({
 				data: {page: 1, key: "favorites"},
-	    	success: function(){
-					// var newCollection = new Topaz.Collections.Articles();
-					//
-					// window.currentUser.get("votes").forEach(function(fav){
-					// 	newCollection.add(Topaz.Collections.articles.where({id: fav}));
-					// });
-					
+	    	success: function(){					
 					var indexView = new Topaz.Views.ArticlesIndex({
 			      collection: Topaz.Collections.articles,
 						key: "favorites"
 			    });
 			    that._swapSidebarView(indexView);
-					// that._showFirst(Topaz.Collections.articles);
 				
 			    var showIndexView = new Topaz.Views.ArticlesShowIndex({
 			      collection: Topaz.Collections.articles,
@@ -91,18 +79,6 @@ Topaz.Routers.Router = Backbone.Router.extend({
 			    that._swapContentView(showIndexView);
 	    	}
 	    });
-			
-			// $.ajax({
-			// 	url: Topaz.Collections.articles.url + "/favorites",
-			// 	success: function(data){
-			// 		var collection = new Topaz.Collections.Articles(data);
-			//     var indexView = new Topaz.Views.ArticlesIndex({
-			//       collection: collection
-			//     });
-			//     that._swapSidebarView(indexView);
-			// 		that._showFirst(collection);
-			// 	}
-			// });
 		} else {
 			alert("Sign in to see your favorites!");
 		}
@@ -119,7 +95,6 @@ Topaz.Routers.Router = Backbone.Router.extend({
 					key: "tag"
 		    });
 		    that._swapSidebarView(indexView);
-				// that._showFirst(Topaz.Collections.articles);
 				
 		    var showIndexView = new Topaz.Views.ArticlesShowIndex({
 		      collection: Topaz.Collections.articles,
@@ -129,25 +104,6 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		    that._swapContentView(showIndexView);
     	}
     });
-		
-		
-		// var that = this;
-		// $.ajax({
-		// 	url: Topaz.Collections.articles.url + "/tag/" + name,
-		// 	success: function(data){
-		// 		var collection = new Topaz.Collections.Articles(data);
-		//     var indexView = new Topaz.Views.ArticlesIndex({
-		//       collection: collection
-		//     });
-		//     that._swapSidebarView(indexView);
-		// 		// that._showFirst(collection);
-		//
-		//     var showIndexView = new Topaz.Views.ArticlesShowIndex({
-		//       collection: collection
-		//     });
-		//     that._swapContentView(showIndexView);
-		// 	}
-		// });
 	},
 	
 	articlesNew: function(){
@@ -159,20 +115,6 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	},
 	
 	articlesShow: function(id){
-		// if (!this.currentSidebarView){
-		// 	    var that = this;
-		// 	Topaz.Collections.articles.fetch({
-		// 		data: {page: 1, key: "created_at"},
-		// 	    	success: function(){
-		// 			Topaz.Collections.articles.sortByKey("created_at");
-		// 	    var indexView = new Topaz.Views.ArticlesIndex({
-		// 	      collection: Topaz.Collections.articles,
-		// 				key: "created_at"
-		// 	    });
-		// 	    that._swapSidebarView(indexView);
-		// 	    	}
-		// 	    });
-		// }
 		var that = this;
     var article = Topaz.Collections.articles.getOrFetch(id, function(){
 	    var showView = new Topaz.Views.ArticlesShow({
@@ -215,18 +157,6 @@ Topaz.Routers.Router = Backbone.Router.extend({
 						key: "user"
 			    });
 			    that._swapSidebarView(indexView);
-					// var newCollection = new Topaz.Collections.Articles();
-					//
-					// user.get("articles").forEach(function(article){
-					// 	newCollection.add(Topaz.Collections.articles.where({id: article}));
-					// });
-					//
-					// var indexView = new Topaz.Views.ArticlesIndex({
-					// 		      collection: newCollection
-					// 		    });
-					//
-					// 		    that._swapSidebarView(indexView);
-			    // that._swapContentView(showView);
 			    var showIndexView = new Topaz.Views.ArticlesShowIndex({
 			      collection: Topaz.Collections.articles,
 						key: "user",
@@ -271,28 +201,6 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		var aboutView = new Topaz.Views.About();
     this._swapContentView(aboutView);
 	},
-	
-	// _showFirst: function(collection){
-	// 	var article = collection.first();
-	//     var showView = new Topaz.Views.ArticlesShow({
-	//       model: article
-	//     });
-	//     this._swapContentView(showView);
-	// },
-	//
-	// _showFirstX: function(collection){
-	// 	for (var i = 0; i < 10; i++){
-	// 		var article = collection.at(i);
-	//     var showView = new Topaz.Views.ArticlesShow({
-	//       model: article
-	//     });
-	// 		if (i === 0){
-	// 	    this._swapContentView(showView);
-	// 		} else {
-	// 			this.$contentEl.append(showView.render().$el);
-	// 		}
-	// 	}
-	// },
 	
 	_swapContentView: function(view){
 		if (this.currentContentView){

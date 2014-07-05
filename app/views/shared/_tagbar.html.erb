@@ -3,32 +3,16 @@
   <span class="tagbar-header">Filters</span>
 	<ul>
   	  <li>
-        <!-- <a href="<%#=
-          article_url(Article.all
-          .sort_by{ |article| article.votecount }.reverse.first, view:                    "popular", el: nil) %>"> -->
 		<a href="/#articles/popular">
           Popular
         </a>
       </li>
   	  <li>
-        <!-- <a href="<%#=
-          if signed_in?
-            if current_user.favorites.count > 0
-                article_url(current_user.favorites.first,
-                            view: "favorite", el: nil)
-              else
-                static_pages_empty_url
-              end
-          else
-            new_session_url
-          end
-          %>"> -->
 		<a href="/#articles/favorites">
           Favorites
         </a>
       </li>
   	  <li>
-        <!-- <a href="<%#= article_url(Article.last) %>"> -->
 		<a href="/#articles/latest">
 			Latest
 		</a>
