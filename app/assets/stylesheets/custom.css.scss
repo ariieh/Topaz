@@ -401,7 +401,11 @@ nav .search-bar:focus {
 }
 
 .article-show-container{
-	margin-bottom: 10px;
+	padding-top: 10px;
+}
+
+.article-show-container:first-child{
+	padding-top: 0px;
 }
 
 .page h2{
