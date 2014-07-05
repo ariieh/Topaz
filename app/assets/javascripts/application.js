@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.scrollTo.min
 //= require jquery.serializeJSON
 //= require underscore
 //= require jquery.color-2.1.2.min

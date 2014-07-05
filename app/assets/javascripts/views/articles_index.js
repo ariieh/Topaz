@@ -3,7 +3,8 @@ Topaz.Views.ArticlesSnippet = Backbone.View.extend({
 		this.listenTo(this.model, "change", this.render);
 	},
 	events: {
-		"submit .delete-form": "destroy"
+		"submit .delete-form": "destroy",
+		"click a.scroll": "scroll"
 	},
   template: JST["articles/snippet"],
   tagName: "li",
@@ -15,6 +16,10 @@ Topaz.Views.ArticlesSnippet = Backbone.View.extend({
 	destroy: function(){
 		event.preventDefault();
 		this.model.destroy();
+	},
+	scroll: function(event){
+		event.preventDefault();
+		$('section.page').scrollTo('#article-'+$(event.currentTarget).attr("id"), {duration:200});		
 	}
 });
 
