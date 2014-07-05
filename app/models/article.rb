@@ -4,8 +4,12 @@ include ActionView::Helpers::TextHelper
 
 class Article < ActiveRecord::Base
   include PgSearch
-  multisearchable against: [:title, :body, :author]
-  
+  pg_search_scope :search,
+                  :against => {:title => "A", :body => "B"},
+                  :using => {
+                    :tsearch => {:prefix => true}
+                  }
+
   validates :title, :body, :author, presence: true
   validates :title, uniqueness: { scope: :author_id }
   

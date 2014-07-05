@@ -32,13 +32,11 @@ class Api::ArticlesController < ApplicationController
                       .page(params[:page])
     when "search"
       if !params[:query].blank?
-        @results = PgSearch.multisearch(params[:query])
-                            .includes(:searchable)
+        @results = Article.search(params[:query])
       else
-        @results = PgSearch::Document.all      
+        @results = Article.all      
       end
-    
-      @articles = Kaminari.paginate_array(@results.map(&:searchable)).page(params[:page]).per(5)
+      @articles = @results.page(params[:page]).per(5)
     else
       @articles = Article.order("created_at" => :desc)
                           .page(params[:page])
