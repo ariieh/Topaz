@@ -6,7 +6,7 @@
         <!-- <a href="<%#=
           article_url(Article.all
           .sort_by{ |article| article.votecount }.reverse.first, view:                    "popular", el: nil) %>"> -->
-		<a href="/#/articles/popular">
+		<a href="/#articles/popular">
           Popular
         </a>
       </li>
@@ -23,13 +23,13 @@
             new_session_url
           end
           %>"> -->
-		<a href="/#/articles/favorites">
+		<a href="/#articles/favorites">
           Favorites
         </a>
       </li>
   	  <li>
         <!-- <a href="<%#= article_url(Article.last) %>"> -->
-		<a href="/#/articles/latest">
+		<a href="/#articles/latest">
 			Latest
 		</a>
       </li>
@@ -39,13 +39,13 @@
 <div id="tag-div">
   <span class="tagbar-header">Tags</span>
 	<ul>
-	  <li><a href="/#/tags/tech">Tech</a></li>
-	  <li><a href="/#/tags/google">Google</a></li>
-	  <li><a href="/#/tags/mobile">Mobile</a></li>
-	  <li><a href="/#/tags/computing">Computing</a></li>
-	  <li><a href="/#/tags/lifehack">Lifehack</a></li>
-	  <li><a href="/#/tags/science">Science</a></li>
-	  <li><a href="/#/tags/humor">Humor</a></li>
+	  <li><a href="/#tags/tech">Tech</a></li>
+	  <li><a href="/#tags/google">Google</a></li>
+	  <li><a href="/#tags/mobile">Mobile</a></li>
+	  <li><a href="/#tags/computing">Computing</a></li>
+	  <li><a href="/#tags/lifehack">Lifehack</a></li>
+	  <li><a href="/#tags/science">Science</a></li>
+	  <li><a href="/#tags/humor">Humor</a></li>
   	</ul>
 	<i id="tagbar-search-icon" class="fa fa-search"></i>
 	<form id="tag-search-form">

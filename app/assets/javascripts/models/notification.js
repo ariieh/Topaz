@@ -3,13 +3,13 @@ Topaz.Models.Notification = Backbone.Model.extend({
 	linkUrl: function(){
 		switch(this.get("notification_type")){
 		case 1:
-			return "/#/welcome";
+			return "/#welcome";
 			break;
 		case 2:
-			return "/#/articles/" + this.get("article_id");
+			return "/#articles/" + this.get("article_id");
 			break;
 		case 3:
-			return "/#/articles/" + this.get("article_id");
+			return "/#articles/" + this.get("article_id");
 			break;
 		}
 	}
