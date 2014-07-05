@@ -46,13 +46,14 @@ window.Topaz = {
 		  top: '50%', // Top position relative to parent
 		  left: '50%' // Left position relative to parent
 		};
-		
-		$("#page-modal").addClass("visible");
+		$("#page-modal").fadeTo("fast", 0.8);
 		Topaz.pageSpinner = (Topaz.pageSpinner || new Spinner(opts).spin());
-		$("#page-modal").append(Topaz.pageSpinner.el);
+		$("#page-modal").append(Topaz.pageSpinner.el);		
 	},
 	pageLoaderHide: function(){
-		$("#page-modal").removeClass("visible");
+		$("#page-modal").fadeOut("fast", function(){
+			$("#page-modal").css({"background":"#95a5a6"});
+		});
 	},
 	
 	scrollLoaderShow: function(){
@@ -75,12 +76,12 @@ window.Topaz = {
 		  left: '50%' // Left position relative to parent
 		};
 		
-		$("#scroll-modal").addClass("visible");
+		$("#scroll-modal").fadeTo("fast", 0.8);
 		Topaz.scrollSpinner = (Topaz.scrollSpinner || new Spinner(opts).spin());
 		$("#scroll-modal").append(Topaz.scrollSpinner.el);
 	},
 	scrollLoaderHide: function(){
-		$("#scroll-modal").removeClass("visible");
+		$("#scroll-modal").fadeOut("fast");
 	}
 };
 

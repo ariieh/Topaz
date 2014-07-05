@@ -371,11 +371,6 @@ nav .search-bar:focus {
 	pointer-events: none;
 }
 
-#page-modal.visible{
-	opacity: 0.6;
-	pointer-events: auto;
-}
-
 #scroll-modal{
 	background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0)), color-stop(100%,rgba(255,255,255,1))); /* Chrome,Safari4+ */
@@ -391,11 +386,6 @@ nav .search-bar:focus {
   height: 150px;
 	opacity: 0;
 	pointer-events: none;
-}
-
-#scroll-modal.visible{
-	opacity: 0.6;
-	pointer-events: auto;
 }
 
 #content{

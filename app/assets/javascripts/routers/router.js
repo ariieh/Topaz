@@ -240,7 +240,6 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	},
 	
 	search: function(query){
-		var modalColor = $("#page-modal").css("background");
 		$("#page-modal").css({"background":"transparent"});
 		Topaz.pageLoaderShow();
 		
@@ -259,7 +258,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 					key: "search",
 					query: query
 		    });
-		    that._swapContentView(showIndexView);
+		    that._swapContentView(showIndexView);				
     	}
     });
 		
@@ -297,7 +296,6 @@ Topaz.Routers.Router = Backbone.Router.extend({
 			this._removeSubviews(this.currentContentView);
 			this.currentContentView.remove();
 	    $("section.page").off("scroll");
-			$("#page-modal").css({"background":"#95a5a6"});			
 		}
 		this.$contentEl.html(view.render().$el);
 		this.currentContentView = view;
