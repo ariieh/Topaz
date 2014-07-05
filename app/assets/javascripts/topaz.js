@@ -103,10 +103,16 @@ $(document).ready(function(){
 			$(".notifications").fadeOut("fast");
 		}
 		
-		if($(event.target).is('i.fa-search')) {
+		if($(event.target).is('nav .fa-search')) {
 		  $(".search-bar").fadeToggle("fast");
 		} else if (!$(event.target).is('.search-bar')) {
 		  $(".search-bar").fadeOut("fast");
+		}
+		
+		if($(event.target).is('#tag-div .fa-search')) {
+		  $("#tag-search-bar").fadeToggle("fast");
+		} else if (!$(event.target).is('#tag-search-bar')) {
+		  $("#tag-search-bar").fadeOut("fast");
 		}
 		
 		if(!$(event.target).closest('.comment-button').length &&
@@ -123,7 +129,12 @@ $(document).ready(function(){
 	        $(this).animate({'color': "white"}, 'fast');
 	    }
 	);
-
+	
+	$("#tag-search-form").submit( function(event){
+    event.preventDefault();
+		Backbone.history.navigate("tags/" + $("#tag-search-bar").val(), {trigger: true});
+	});
+	
 	/* rails only */
 	// $('.comment-button').click(function(){
 	// 	$(".comment-box").not($(this).siblings()).hide();

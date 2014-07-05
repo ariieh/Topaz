@@ -1,5 +1,5 @@
 $select-color: #e74c3c;
-$fly-blue: rgb(22,141,217);
+$fly-blue: #168dd9;
 
 /* global */
 html, body, header, main, footer, nav, a, ul, li, section, p, small {
@@ -275,6 +275,34 @@ nav .search-bar:focus {
 .tagbar .tagbar-header{
 	color: rgb(127,127,127);
 	padding-bottom: 5px;
+}
+
+.tagbar #tag-div{
+	position: relative;
+}
+
+#tagbar-search-icon{
+	position: absolute;
+	top: 6px;
+	left: 45px;
+	color: white;
+}
+
+#tagbar-search-icon:hover{
+	color: $fly-blue;
+}
+
+#tag-search-bar{
+	margin: 0;
+	position: absolute;
+	top: 4px;
+	left: 65px;
+	background: transparent;
+	outline: 0;
+	border: 1px solid rgb(127,127,127);
+	padding: 1px;
+	color: white;
+	display: none;
 }
 
 /* alerts */

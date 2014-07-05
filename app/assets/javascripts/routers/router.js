@@ -200,42 +200,45 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	usersShow: function(id){
 		Topaz.pageLoaderShow();
     var that = this;
+		
 		var user = Topaz.Collections.users.getOrFetch(id, function(){
 			var id = user.get("id");
 	    var showView = new Topaz.Views.UsersShow({
 	      model: user
 	    });
+			
+			Topaz.Collections.articles.fetch({
+				data: {page: 1, key: "user", id: id},
+	    	success: function(){
+			    var indexView = new Topaz.Views.ArticlesIndex({
+			      collection: Topaz.Collections.articles,
+						key: "user"
+			    });
+			    that._swapSidebarView(indexView);
+					// var newCollection = new Topaz.Collections.Articles();
+					//
+					// user.get("articles").forEach(function(article){
+					// 	newCollection.add(Topaz.Collections.articles.where({id: article}));
+					// });
+					//
+					// var indexView = new Topaz.Views.ArticlesIndex({
+					// 		      collection: newCollection
+					// 		    });
+					//
+					// 		    that._swapSidebarView(indexView);
+			    // that._swapContentView(showView);
+			    var showIndexView = new Topaz.Views.ArticlesShowIndex({
+			      collection: Topaz.Collections.articles,
+						key: "user",
+						id: id
+			    });
+			    that._swapContentView(showIndexView);
+					that.$contentEl.prepend(showView.render().$el);
+	    	}
+	    });
+			
 		});
 		
-		Topaz.Collections.articles.fetch({
-			data: {page: 1, key: "user", id: id},
-    	success: function(){
-		    var indexView = new Topaz.Views.ArticlesIndex({
-		      collection: Topaz.Collections.articles,
-					key: "user"
-		    });
-		    that._swapSidebarView(indexView);
-				// var newCollection = new Topaz.Collections.Articles();
-				//
-				// user.get("articles").forEach(function(article){
-				// 	newCollection.add(Topaz.Collections.articles.where({id: article}));
-				// });
-				//
-				// var indexView = new Topaz.Views.ArticlesIndex({
-				// 		      collection: newCollection
-				// 		    });
-				//
-				// 		    that._swapSidebarView(indexView);
-		    // that._swapContentView(showView);
-		    var showIndexView = new Topaz.Views.ArticlesShowIndex({
-		      collection: Topaz.Collections.articles,
-					key: "user",
-					id: id
-		    });
-		    that._swapContentView(showIndexView);
-				that.$contentEl.prepend(showView.render().$el);
-    	}
-    });
 		
 	},
 	

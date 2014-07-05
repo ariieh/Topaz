@@ -50,7 +50,7 @@ gem "nokogiri", '1.6.1'
 gem 'paperclip', github: 'thoughtbot/paperclip'
 gem "aws-sdk"
 gem "figaro"
-
+gem "activerecord-import"
 gem 'bcrypt'
 
 gem 'jquery-turbolinks'

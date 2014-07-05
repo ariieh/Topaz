@@ -39,16 +39,17 @@
 <div id="tag-div">
   <span class="tagbar-header">Tags</span>
 	<ul>
-	  <% Tag.all.each do |tag| %>
-	    <li>
-        <!-- <a href=" <%#=
-                    article_url(tag.articles.order(:created_at).reverse.first,
-                    view: "tag", el: tag.name) %> "> -->
-		<a href="/#/tags/<%= tag.name %>">
-			<%= tag.name.capitalize %>
-        </a>
-      </li>
-	  <% end %>
+	  <li><a href="/#/tags/tech">Tech</a></li>
+	  <li><a href="/#/tags/google">Google</a></li>
+	  <li><a href="/#/tags/mobile">Mobile</a></li>
+	  <li><a href="/#/tags/computing">Computing</a></li>
+	  <li><a href="/#/tags/lifehack">Lifehack</a></li>
+	  <li><a href="/#/tags/science">Science</a></li>
+	  <li><a href="/#/tags/humor">Humor</a></li>
   	</ul>
+	<i id="tagbar-search-icon" class="fa fa-search"></i>
+	<form id="tag-search-form">
+	 <input id="tag-search-bar" name="query" placeholder="Find by tag" type="text">
+	</form>
 </div>
 </section>
