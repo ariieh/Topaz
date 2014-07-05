@@ -106,13 +106,17 @@ $(document).ready(function(){
 		if($(event.target).is('nav .fa-search')) {
 		  $(".search-bar").fadeToggle("fast");
 		} else if (!$(event.target).is('.search-bar')) {
-		  $(".search-bar").fadeOut("fast");
+		  $(".search-bar").fadeOut("fast", function(){
+			  $(".search-bar").val("");
+		  });
 		}
 		
 		if($(event.target).is('#tag-div .fa-search')) {
 		  $("#tag-search-bar").fadeToggle("fast");
 		} else if (!$(event.target).is('#tag-search-bar')) {
-		  $("#tag-search-bar").fadeOut("fast");
+		  $("#tag-search-bar").fadeOut("fast", function(){
+			  $("#tag-search-bar").val("");
+		  });
 		}
 		
 		if(!$(event.target).closest('.comment-button').length &&

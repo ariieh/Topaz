@@ -6,7 +6,7 @@ class Api::ArticlesController < ApplicationController
     
     case params[:key]
     when "created_at"
-      @articles = Article.order(params[:key] => :desc).page(params[:page])
+      @articles = Article.order(params[:key] => :desc).page(@page)
     when "votecount"
       query = <<-SQL
         SELECT articles.*
@@ -15,38 +15,44 @@ class Api::ArticlesController < ApplicationController
         ORDER BY COUNT(*) DESC
       SQL
       
-      @articles = Kaminari.paginate_array(Article.find_by_sql(query)).page(params[:page])
+      @articles = Kaminari.paginate_array(Article.find_by_sql(query)).page(@page)
     when "favorites"
       @articles = current_user.favorites
                               .order("created_at" => :desc)
-                              .page(params[:page])
+                              .page(@page)
     when "tag"
-      @articles = Tag.find_by_name(params[:name])
-                      .articles
-                      .order("created_at" => :desc)
-                      .page(params[:page])
+      if (@tag = Tag.find_by_name(params[:name]))
+        @articles = @tag.articles
+                        .order("created_at" => :desc)
+                        .page(@page)
+      end
     when "user"
       @articles = User.find(params[:id].to_i)
                       .articles
                       .order("created_at" => :desc)
-                      .page(params[:page])
+                      .page(@page)
     when "search"
       if !params[:query].blank?
         @results = Article.search(params[:query])
       else
         @results = Article.all      
       end
-      @articles = @results.page(params[:page]).per(5)
+      
+      @articles = @results.page(@page).per(5)
     else
       @articles = Article.order("created_at" => :desc)
-                          .page(params[:page])
+                          .page(@page)
     end
     # @articles.each_with_index do |article, index|
     #   @articles[index] = article.hashify
     # end
     #render json: @articles
     # redirect_to article_url(Article.last)
-    render :index
+    if @articles
+      render :index
+    else
+      @articles = Kaminari.paginate_array([]).page(@page)
+    end
   end
   
   def favorites
