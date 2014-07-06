@@ -46,10 +46,12 @@ Topaz.Views.ArticlesForm = Backbone.View.extend({
 	  var reader = new FileReader();
 	  reader.onload = function(e) {
 	  	that.photo = e.target.result;
+	    $("#image-preview").attr("src", that.photo);
 	  }
 	  reader.readAsDataURL(file);
 	},
 	handleTitle: function(event){
+		$("input[name='article[title]']").removeClass("error");
 		$('#title-preview').css({"display": "inline-block"})
 		$('#title-preview').html($(event.currentTarget).val());
 		
@@ -57,7 +59,8 @@ Topaz.Views.ArticlesForm = Backbone.View.extend({
 			$('#title-preview').css({"display": "none"})
 		}
 	},
-	handleBody: function(event){		
+	handleBody: function(event){
+		$("textarea[name='article[body]']").removeClass("error");
 		$('#body-preview').css({"display": "inline-block"});
 		
 		var $form = $("#article-form");

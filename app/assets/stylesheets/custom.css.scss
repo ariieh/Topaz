@@ -31,17 +31,10 @@ h1{
 	margin-top: 0;
 }
 
-h2, #title-preview{
+h2{
 	font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
 	font-size: 26px;
 	margin-bottom: 5px;
-}
-
-#title-preview{
-	display: none;
-	background: #ecf0f1;
-	margin-bottom: 10px;
-	padding: 5px;
 }
 
 h4{
@@ -59,16 +52,6 @@ p{
 	line-height: 150%;
 }
 
-#body-preview{
-	display: none;
-	background: #ecf0f1;
-	margin-bottom: 5px;
-	padding: 5px;
-}
-
-#body-preview p:last-child{
-	padding-bottom: 0px;
-}
 
 .highlight {
 	background-color: #fff2a8;
@@ -404,6 +387,31 @@ nav .search-bar:focus {
 	background: #ecf0f1;
 	cursor: pointer;
 }
+
+/* previews */
+#title-preview{
+	font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+	font-size: 26px;
+	display: none;
+	background: #ecf0f1;
+	margin-bottom: 10px;
+	padding: 5px;
+}
+
+#body-preview{
+	display: none;
+	background: #ecf0f1;
+	margin-bottom: 5px;
+	padding: 5px;
+}
+
+#body-preview p:last-child{
+	padding-bottom: 0px;
+}
+
+#image-preview{
+	margin-bottom: 10px;
+}
 	
 /* main */
 .main{
@@ -432,6 +440,7 @@ nav .search-bar:focus {
   background: #95a5a6;
   border: 0;
 	opacity: 0;
+	pointer-events: none;
 }
 
 /* alerts */
@@ -591,7 +600,21 @@ nav .search-bar:focus {
 }
 
 .taglist{
-	padding-bottom: 10px;
+	padding-bottom: 15px;
+}
+
+.taglist a{
+	background: #ecf0f1;
+	padding: 5px;
+	margin: 5px;
+	color: black;
+	-moz-box-shadow: 0 0 1px #888;
+	-webkit-box-shadow: 0 0 1px#888;
+	box-shadow: 0 0 1px #888;
+}
+
+.taglist a:hover{
+	color: #27ae60;
 }
 
 .favorite-button, .disabled-favorite-button{
@@ -670,10 +693,35 @@ form.sign input[type=text]:focus, form.sign input[type=password]:focus {
 }
 
 /* user show */
-.new-article{
-	display: block;
-	margin-bottom: 30px;
+.new-article a{
+	color: white;
+  padding: 10px 20px;
+	font-size: 15px;
+  font-weight: bold;
 }
+
+.new-article{
+  position: relative;
+	display: inline-block;
+	border: 0px;
+	margin-bottom: 30px;
+	padding: 10px 0px;
+  background: #2980b9;
+  color: white;
+  box-shadow: 0 3px 0 0 #2c3e50;
+  border-radius: 3px;
+}
+
+.new-article:hover{
+  background: #3498db;
+}
+
+.new-article:active {
+  top: 3px;
+  box-shadow: none;
+  background: #2980b9;
+}
+
 
 /* sidebar */
 .sidebar{
