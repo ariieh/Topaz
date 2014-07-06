@@ -39,5 +39,19 @@ module Topaz
         :request_specs => true
       g.fixture_replacement :factory_girl, :dir => "spec/factories"
     end
+    
+    if ENV["REDISTOGO_URL"]
+      config = RedisDemoApp::Application.config
+      uri = URI.parse(ENV["REDISTOGO_URL"])
+
+      config.cache_store = [
+        :redis_store, {
+          :host => uri.host,
+          :port => uri.port,
+          :password => uri.password,
+          :namespace => "cache"
+        }
+      ]
+    end
   end
 end

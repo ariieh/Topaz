@@ -57,7 +57,7 @@ gem 'jquery-turbolinks'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'uuidtools'
-
+gem 'redis-rails'
 gem 'backbone-on-rails'
 
 # Use ActiveModel has_secure_password
