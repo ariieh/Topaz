@@ -552,14 +552,11 @@ ari_articles_hash = [
   body: 
   "I'm sitting here trying to think of something meaningful to write on the penultimate eve of the demo of the final version of this website. I don't know, guys. Maybe they're right. Maybe I shouldn't. Maybe this is just some stupid crap we threw together for Employers' Eyes Only. Gotta look professional and all.
   
-  But you know what? I can't drop this that easy. You don't just go and do something that turns you into a web developer overnight and also happens to completely change your life and then just give it an [Irish goodbye](http://www.slate.com/articles/life/a_fine_whine/2013/07/ghosting_the_irish_goodbye_the_french_leave_stop_saying_goodbye_at_parties.html) and ghost outta there. We laughed. We cried. We programmed. And we got drunk. Jesus, man, these people. No, we need to crack a bottle[;](https://www.youtube.com/watch?v=M94ii6MVilw) maybe some of that [Santana DVX](https://www.youtube.com/watch?v=xGcxhmiPtko).
+  But you know what? I can't drop this that easy. You don't just go and do something that turns you into a legit web developer overnight and also happens to completely change your life and then just give it an [Irish goodbye](http://www.slate.com/articles/life/a_fine_whine/2013/07/ghosting_the_irish_goodbye_the_french_leave_stop_saying_goodbye_at_parties.html) and ghost outta there. We laughed. We cried. We programmed. And we got drunk. Jesus, man, these people. No, we need to crack a bottle[;](https://www.youtube.com/watch?v=M94ii6MVilw) maybe some of that [Santana DVX](https://www.youtube.com/watch?v=xGcxhmiPtko).
   
   In other news, you know it was July 4th yesterday? And my folks just went and set off some fireworks. So I guess I feel kinda like doing that now. If I wasn't compelled to code some more. In fact, I think I'm gonna go code some more right now.
   
-  But hey, what the hell, right? At least I've written something nice and personal. Speaking of which, can't place it but this article is still missing something. Humm. Oh yeah! Couple things, actually. I just finished up implementing some swank Markdown styling and I feel like showing off. [This girl](#users/2), man. She's *wild*. I think I'm in **love**.",
-
-  photo: "https://s3.amazonaws.com/TopazProd/photo.JPG",
-  taglist: "",
+  But hey, what the hell, right? At least I've written something nice and personal. Speaking of which, can't place it but this article is still missing something. Humm. Oh yeah! Couple things, actually. I just finished up implementing some swank Markdown styling and I feel like showing off. [This girl](#users/2), man. She's *wild*. Maybe it's the lack of sleep, maybe it's the bleary eyes, maybe it's the [code](http://hackertyper.net/), but man, I think I'm in **love**.",
   created_at: "2014-07-06 00:00:00"},
   
   {title: "Spotify hasn’t gone public yet, but it is hosting practice earnings calls",
@@ -672,7 +669,6 @@ ari_articles_hash = [
   photo: "http://img.qz.com/2014/05/chile.jpg?w=1160",
   taglist: "politics business"}
 ]
-
 
 starting_time = Time.new(2014, 05, 31, 2, 2, 2, "+02:00")
 users_id = User.pluck(:id)
