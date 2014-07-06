@@ -57,23 +57,4 @@ class Article < ActiveRecord::Base
   def votecount
     self.votes.count
   end
-  
-  
-  def self.votecount_cache
-    Rails.cache.fetch("votecount_cache") do
-      votecount_force
-    end
-  end
-  
-  def self.votecount_force
-    query = <<-SQL
-      SELECT articles.*
-      FROM articles JOIN votes ON articles.id = votes.article_id
-      GROUP BY articles.id
-      ORDER BY COUNT(*) DESC
-    SQL
-    
-    @articles = Kaminari.paginate_array(Article.find_by_sql(query)).page(@page)
-  end
-  
 end
