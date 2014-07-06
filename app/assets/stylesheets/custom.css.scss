@@ -52,7 +52,6 @@ p{
 	line-height: 150%;
 }
 
-
 .highlight {
 	background-color: #fff2a8;
 	border-radius: 5px;
@@ -409,6 +408,23 @@ nav .search-bar:focus {
 	padding-bottom: 0px;
 }
 
+#body-preview ul{
+	padding: 5px; 
+  font-family: "PT Serif",Georgia,serif;
+	font-size: 17px;
+	color: rgb(64,64,64);
+	line-height: 150%;
+	list-style-position: inside;
+}
+
+#body-preview ul > li{
+  margin: 0px;
+  padding: 0px;
+  text-indent: -1em;
+  margin-left: 1em;
+}
+
+
 #image-preview{
 	margin-bottom: 10px;
 }
@@ -597,6 +613,22 @@ nav .search-bar:focus {
 	top: 7px;
 	color: black;
 	font-size: 10px;
+}
+
+#body-text ul{
+	padding: 5px; 
+  font-family: "PT Serif",Georgia,serif;
+	font-size: 17px;
+	color: rgb(64,64,64);
+	line-height: 150%;
+	list-style-position: inside;
+}
+
+#body-text ul > li{
+  margin: 0px;
+  padding: 0px;
+  text-indent: -1em;
+  margin-left: 1em;
 }
 
 .taglist{

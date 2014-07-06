@@ -31,6 +31,8 @@ function insertMetachars(sStartTag, sEndTag) {
 		<i class="fa fa-bold" onclick=insertMetachars('**','**')></i>
 		<i class="fa fa-italic" onclick=insertMetachars('*','*')></i>
 		<i class="fa fa-external-link" onclick="var newURL=prompt('Enter the full URL for the link');if(newURL){insertMetachars('[',']('+newURL+')');}"></i>
+		<i class="fa fa-list-ul" onclick=insertMetachars('\n*&#09;','\n')></i>
+		<i class="fa fa-paragraph" onclick=insertMetachars('\n\n','\n\n')></i>
 	</div>
 		
 		<textarea id="text-editor" name="article[body]" cols="70" rows="20"><%= article.escape("body") %></textarea>
