@@ -54,13 +54,13 @@ class Api::ArticlesController < ApplicationController
     render json: @articles
   end
 
-  def create
+  def create    
     @article = current_user.articles.new(article_params)
 
     if @article.save
       render partial: "api/articles/article", locals: { article: @article }
     else
-      render json: @article.errors, status: :unprocessable_entity      
+      render json: @article.errors.full_messages, status: :unprocessable_entity
     end
   end
   

@@ -24,9 +24,9 @@ window.Topaz = {
 				var notificationView = new Topaz.Views.NotificationShow();
 				$(".notifications-li").append(notificationView.render().$el);
 			}
-		});
-		
+		});	
   },
+	
 	pageLoaderShow: function(){
 		var opts = {
 		  lines: 13, // The number of lines to draw
@@ -50,6 +50,7 @@ window.Topaz = {
 		Topaz.pageSpinner = (Topaz.pageSpinner || new Spinner(opts).spin());
 		$("#page-modal").append(Topaz.pageSpinner.el);		
 	},
+	
 	pageLoaderHide: function(){
 		$("#page-modal").fadeOut("fast", function(){
 			$("#page-modal").css({"background":"#95a5a6"});
@@ -79,8 +80,42 @@ window.Topaz = {
 		Topaz.scrollSpinner = (Topaz.scrollSpinner || new Spinner(opts).spin());
 		$("#scroll-modal").append(Topaz.scrollSpinner.el);
 	},
+	
 	scrollLoaderHide: function(){
 		$("#scroll-modal").fadeOut("fast");
+	},
+	
+	flashFormErrors: function(errors){
+		$("input[name='article[title]']").removeClass("error");
+		$("textarea[name='article[body]']").removeClass("error");
+		
+		$("#page-modal").empty();
+		$("#page-modal").fadeTo("fast", 0.8);
+		alerts = $("<ul id='alerts'></ul>");
+		
+		errors.forEach(function(error){
+			alerts.append("<li>"+error+"</li>");
+		});
+		
+		$("#page-modal").append(alerts);
+		
+		window.setTimeout(function(){
+			Topaz.pageLoaderHide();
+			$("#page-modal").empty();
+			$('section.page').animate({scrollTop: 0}, "fast");
+			
+			errors.forEach(function(error){
+				error = error.toLowerCase();
+				
+				if (error.indexOf("title") !== -1){
+					$("input[name='article[title]']").addClass("error");
+				}
+				
+				if (error.indexOf("body") !== -1){
+					$("textarea[name='article[body]']").addClass("error");
+				}
+			});
+		}, 1000)
 	}
 };
 
@@ -132,7 +167,6 @@ $(document).ready(function(){
 	        $(this).animate({'color': "white"}, 'fast');
 	    }
 	);
-		
 	
 	$("#tag-search-form").submit( function(event){
     event.preventDefault();

@@ -29,7 +29,11 @@ Topaz.Views.ArticlesForm = Backbone.View.extend({
 				}
 				Topaz.pageLoaderHide();
 				Backbone.history.navigate("users/" + window.currentUserId, {trigger: true});
-      }
+      },
+			error: function(model, response){
+				Topaz.flashFormErrors($.parseJSON(response.responseText));
+      },
+			wait: true
     });
 	},
 	handleFiles: function(event) {
