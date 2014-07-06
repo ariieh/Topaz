@@ -41,7 +41,7 @@ module Topaz
     end
     
     if ENV["REDISTOGO_URL"]
-      config = RedisDemoApp::Application.config
+      config = Topaz::Application.config
       uri = URI.parse(ENV["REDISTOGO_URL"])
 
       config.cache_store = [
@@ -49,7 +49,8 @@ module Topaz
           :host => uri.host,
           :port => uri.port,
           :password => uri.password,
-          :namespace => "cache"
+          :namespace => "cache",
+          :expires_in => 3.minutes
         }
       ]
     end

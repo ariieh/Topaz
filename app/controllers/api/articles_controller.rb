@@ -1,21 +1,15 @@
 class Api::ArticlesController < ApplicationController
   before_action :check_if_signed_in, only: [:new, :create, :edit, :update, :destroy]
   
+  
   def index
     @page = params[:page]
     
     case params[:key]
     when "created_at"
-      @articles = Article.order(params[:key] => :desc).page(@page)
+      @articles = Article.order(params[:key] => :desc).page(params[:page])
     when "votecount"
-      query = <<-SQL
-        SELECT articles.*
-        FROM articles JOIN votes ON articles.id = votes.article_id
-        GROUP BY articles.id
-        ORDER BY COUNT(*) DESC
-      SQL
-      
-      @articles = Kaminari.paginate_array(Article.find_by_sql(query)).page(@page)
+      @articles = Article.votecount_cache
     when "favorites"
       @articles = current_user.favorites
                               .order("created_at" => :desc)
