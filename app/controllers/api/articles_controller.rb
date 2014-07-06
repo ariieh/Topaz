@@ -94,6 +94,11 @@ class Api::ArticlesController < ApplicationController
     render json: @article.votecount    
   end
   
+  def htmlbody
+    puts params
+    render json: Article.htmlbody(params[:body]).to_json
+  end
+  
   private
   
   def article_params

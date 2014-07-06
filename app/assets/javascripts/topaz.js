@@ -172,4 +172,5 @@ $(document).ready(function(){
     event.preventDefault();
 		Backbone.history.navigate("tags/" + $("#tag-search-bar").val(), {trigger: true});
 	});
+	
 });

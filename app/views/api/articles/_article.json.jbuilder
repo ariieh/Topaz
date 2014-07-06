@@ -4,4 +4,4 @@ json.comments article.comments, partial: 'api/comments/comment', as: :comment
 json.votecount article.votecount
 json.taglist article.taglist
 json.photo_url article.photo.url(:big)
-json.htmlbody article.htmlbody
+json.htmlbody Article.htmlbody(article.body)

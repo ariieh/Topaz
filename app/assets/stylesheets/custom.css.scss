@@ -31,10 +31,17 @@ h1{
 	margin-top: 0;
 }
 
-h2{
+h2, #title-preview{
 	font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
 	font-size: 26px;
 	margin-bottom: 5px;
+}
+
+#title-preview{
+	display: none;
+	background: #ecf0f1;
+	margin-bottom: 10px;
+	padding: 5px;
 }
 
 h4{
@@ -50,6 +57,17 @@ p{
 	font-size: 17px;
 	color: rgb(64,64,64);
 	line-height: 150%;
+}
+
+#body-preview{
+	display: none;
+	background: #ecf0f1;
+	margin-bottom: 5px;
+	padding: 5px;
+}
+
+#body-preview p:last-child{
+	padding-bottom: 0px;
 }
 
 .highlight {

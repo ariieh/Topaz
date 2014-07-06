@@ -37,10 +37,10 @@ class Article < ActiveRecord::Base
   def hashify
     Article.hashify(self)
   end
-  
-  def htmlbody
+    
+  def self.htmlbody(body)
     @markdown ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(escape_html: true), autolink: true, tables: true)
-    @markdown.render(self.body)
+    @markdown.render(body)
   end
   
   def taglist=(tagstring)

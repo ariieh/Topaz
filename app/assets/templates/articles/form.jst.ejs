@@ -15,6 +15,7 @@ function insertMetachars(sStartTag, sEndTag) {
 		<i class="fa fa-header"></i>Title
 	</label>
 		<input type="text" name="article[title]" value="<%= article.escape("title") %>">
+		<div id="title-preview"></div>
 
 	<label>
 		<i class="fa fa-file-image-o"></i>Image
@@ -31,7 +32,9 @@ function insertMetachars(sStartTag, sEndTag) {
 	</div>
 		
 		<textarea id="text-editor" name="article[body]" cols="70" rows="20"><%= article.escape("body") %></textarea>
-<span class="small">(separate with spaces or commas!)</span>
+		<div id="body-preview"></div>
+		
+<br><br><span class="small">(separate with spaces or commas!)</span>
   <input type="text" name="article[taglist]" placeholder="Add some tags" value="<%= article.escape("taglist") %>">
   
 <% if (article.escape("title").length === 0){ %>

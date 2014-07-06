@@ -4,7 +4,10 @@ Topaz.Views.ArticlesForm = Backbone.View.extend({
 	},
 	events: {
 		"submit form": "submit",
-		"change input[type='file']": "handleFiles"
+		"change input[type='file']": "handleFiles",
+		"keyup input[name='article[title]']": "handleTitle",
+		"keyup #text-editor": "handleBody",
+		"click .text-control i": "handleBody"
 	},
 	render: function(){
 		var renderedContent = this.template({
@@ -45,5 +48,32 @@ Topaz.Views.ArticlesForm = Backbone.View.extend({
 	  	that.photo = e.target.result;
 	  }
 	  reader.readAsDataURL(file);
+	},
+	handleTitle: function(event){
+		$('#title-preview').css({"display": "inline-block"})
+		$('#title-preview').html($(event.currentTarget).val());
+		
+		if ($(event.currentTarget).val().length === 0){
+			$('#title-preview').css({"display": "none"})
+		}
+	},
+	handleBody: function(event){		
+		$('#body-preview').css({"display": "inline-block"});
+		
+		var $form = $("#article-form");
+		var formData = $form.serializeJSON();
+		
+		$.ajax({
+			url: "/api/articles/htmlbody",
+			data: formData.article,
+			success: function(html){
+				$('#body-preview').html(html);
+			}
+		});
+				
+		if ($("#text-editor").val().length === 0){
+			$('#body-preview').css({"display": "none"})
+		}
 	}
+	
 });
