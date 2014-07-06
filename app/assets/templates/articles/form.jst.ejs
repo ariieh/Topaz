@@ -1,20 +1,37 @@
+<script>
+// courtesy of MDN: https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement#Insert_HTML_tags_example
+function insertMetachars(sStartTag, sEndTag) {
+	var bDouble = arguments.length > 1, oMsgInput = document.getElementById("text-editor"), nSelStart = oMsgInput.selectionStart, nSelEnd = oMsgInput.selectionEnd, sOldText = oMsgInput.value;
+	oMsgInput.value = sOldText.substring(0, nSelStart) + (bDouble ? sStartTag + sOldText.substring(nSelStart, nSelEnd) + sEndTag : sStartTag) + sOldText.substring(nSelEnd);
+	oMsgInput.setSelectionRange(bDouble || nSelStart === nSelEnd ? nSelStart + sStartTag.length : nSelStart, (bDouble ? nSelEnd : nSelStart) + sStartTag.length);
+	oMsgInput.focus();
+}
+
+</script>
+
 <form id="article-form" enctype="multipart/form-data">
 
 	<label>
-		Title
+		<i class="fa fa-header"></i>Title
 	</label>
 		<input type="text" name="article[title]" value="<%= article.escape("title") %>">
 
 	<label>
-		Image
+		<i class="fa fa-file-image-o"></i>Image
 	</label>
 		<input type="file">
 
 	<label>
-		Body
+		<i class="fa fa-paragraph"></i>Body <span class="small">(style with <a href="http://daringfireball.net/projects/markdown/">Markdown</a>)</span>
 	</label>
-		<textarea name="article[body]" cols="70" rows="20"><%= article.escape("body") %></textarea>
-
+	<div class="text-control">
+		<i class="fa fa-bold" onclick=insertMetachars('**','**')></i>
+		<i class="fa fa-italic" onclick=insertMetachars('*','*')></i>
+		<i class="fa fa-external-link" onclick="var newURL=prompt('Enter the full URL for the link');if(newURL){insertMetachars('[',']('+newURL+')');}"></i>
+	</div>
+		
+		<textarea id="text-editor" name="article[body]" cols="70" rows="20"><%= article.escape("body") %></textarea>
+<span class="small">(separate with spaces or commas!)</span>
   <input type="text" name="article[taglist]" placeholder="Add some tags" value="<%= article.escape("taglist") %>">
   
 <% if (article.escape("title").length === 0){ %>

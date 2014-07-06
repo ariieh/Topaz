@@ -50,7 +50,7 @@ Topaz.Views.ArticlesShow = Backbone.View.extend({
 			if ($(text[el]).is("p")){
 		    var commentView = new Topaz.Views.CommentsShow({
 		      article: that.model,
-					paragraph: $(text[el]).text(),
+					paragraph: $(text[el]).html(),
 					comments: that.model.comments().where({p_id: i, article_id: that.model.get("id")}),
 					id: i
 		    });

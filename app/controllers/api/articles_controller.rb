@@ -32,27 +32,18 @@ class Api::ArticlesController < ApplicationController
                       .order("created_at" => :desc)
                       .page(@page)
     when "search"
-      if !params[:query].blank?
-        @results = Article.search(params[:query])
-      else
-        @results = Article.all      
-      end
-      
+      @results = params[:query].blank? ? Article.all : Article.search(params[:query])
       @articles = @results.page(@page).per(5)
     else
       @articles = Article.order("created_at" => :desc)
                           .page(@page)
     end
-    # @articles.each_with_index do |article, index|
-    #   @articles[index] = article.hashify
-    # end
-    #render json: @articles
-    # redirect_to article_url(Article.last)
-    if @articles
-      render :index
-    else
+
+    unless @articles
       @articles = Kaminari.paginate_array([]).page(@page)
     end
+    
+    render :index
   end
   
   def favorites
@@ -68,20 +59,13 @@ class Api::ArticlesController < ApplicationController
 
     if @article.save
       render partial: "api/articles/article", locals: { article: @article }
-      # redirect_to @article
     else
-      # flash.now[:errors] = @article.errors.full_messages
-      # render :new
       render json: @article.errors, status: :unprocessable_entity      
     end
   end
   
   def show
     @article = Article.find(params[:id])
-    #render json: @article.hashify
-    # @view = params[:view] || nil
-    # @el = params[:el] || nil
-    # @article = Article.find(params[:id])
     render partial: "api/articles/article", locals: { article: @article }
   end
   
@@ -97,14 +81,6 @@ class Api::ArticlesController < ApplicationController
     else
       render json: @article.errors, status: :unprocessable_entity      
     end
-    
-    # @article = current_user.articles.find(params[:id])
-    # if @article.update_attributes(article_params)
-    #   redirect_to @article
-    # else
-    #   flash.now[:errors] = @article.errors.full_messages
-    #   render :edit
-    # end
   end
   
   def destroy

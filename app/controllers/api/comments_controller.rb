@@ -10,7 +10,6 @@ class Api::CommentsController < ApplicationController
       Notification.create(notification_type: 2, user_id: @article.author.id, article_id: @article.id)
       render partial: "api/comments/comment", locals: { comment: @comment }
     else
-      # flash[:errors] = @comment.errors.full_messages
       render json: @comment.errors
     end
   end

@@ -75,7 +75,6 @@ window.Topaz = {
 		  top: '50%', // Top position relative to parent
 		  left: '50%' // Left position relative to parent
 		};
-		
 		$("#scroll-modal").fadeTo("fast", 0.8);
 		Topaz.scrollSpinner = (Topaz.scrollSpinner || new Spinner(opts).spin());
 		$("#scroll-modal").append(Topaz.scrollSpinner.el);
@@ -90,7 +89,7 @@ $(document).ready(function(){
 	
 	var selectColor = "#e74c3c";
 	
-	$("body").click(function(event) { 
+	$("body").click(function(event) {
 		if($(event.target).is('i.fa-tasks')) {
 		  $(".menu-bar").fadeToggle("fast");
 		} else {
@@ -122,7 +121,7 @@ $(document).ready(function(){
 		if(!$(event.target).closest('.comment-button').length &&
 		   !$(event.target).closest('.comment-box').length){
 			  $(".comment-box").fadeOut("fast");
-		}
+		}		
 	});
 
 	$('nav .fa, .logo a').hover(
@@ -133,6 +132,7 @@ $(document).ready(function(){
 	        $(this).animate({'color': "white"}, 'fast');
 	    }
 	);
+		
 	
 	$("#tag-search-form").submit( function(event){
     event.preventDefault();

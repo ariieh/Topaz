@@ -52,7 +52,7 @@ gem "aws-sdk"
 gem "figaro"
 gem "activerecord-import"
 gem 'bcrypt'
-
+gem 'redcarpet'
 gem 'jquery-turbolinks'
 gem 'omniauth'
 gem 'omniauth-facebook'

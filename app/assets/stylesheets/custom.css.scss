@@ -58,6 +58,11 @@ p{
 	padding: 5px;
 }
 
+.small{
+	font-size: 10px;
+	vertical-align: middle;
+}
+
 a{ text-decoration: none; }
 
 textarea{ resize: none; }
@@ -367,6 +372,21 @@ nav .search-bar:focus {
   top: 3px;
   box-shadow: none;
   background: #0a0;
+}
+
+#article-form label > i{
+	padding-right: 6px;
+	color: #27ae60;
+}
+
+#article-form .text-control i{
+	padding: 10px;
+}
+
+#article-form .text-control i:hover{
+	color: #27ae60;
+	background: #ecf0f1;
+	cursor: pointer;
 }
 	
 /* main */
