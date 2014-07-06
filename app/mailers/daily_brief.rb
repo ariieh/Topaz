@@ -5,7 +5,7 @@ class DailyBrief < ActionMailer::Base
     @url  = new_session_url
     mail(
         to: "#{user.username} <#{user.email}>",
-        from: "Admin <admin@topaz.com>",
+        from: "Admin <admin@topaz.ninja>",
         subject: 'Welcome to Topaz')
   end
   

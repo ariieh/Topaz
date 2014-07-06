@@ -1,3 +1,17 @@
+<% if !flash.empty? %>
+	<% flash.each do |key, value| %>
+		<% value.each do |message| %>
+		<% 
+			next if message.include?("Password is too short") &&
+			value.include?("Password can't be blank")
+		%>
+	
+	      <span id="alert"><%= message %></span>
+		
+	    <% end %>
+	<% end %>
+<% end %>
+
 <h1>Sign Up</h1>
 
 <%= render "shared/user", action: "sign_up" %>

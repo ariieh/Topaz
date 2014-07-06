@@ -17,6 +17,23 @@
 	  <% if signed_in? %>
 		  window.currentUserId = <%= current_user.id %>
 	  <% end %>
+	  	  
+	  window.showModal = function(){
+	    $("#modal").fadeIn("fast");
+	  }
+
+	  window.hideModal = function(){
+	    $("#modal").fadeOut("fast");
+	  }
+	  
+	  <% if !flash.empty? && flash[:errors].include?("Invalid credentials") %>
+	  $(document).ready(function(){
+		  window.showModal();
+		  $(".modal-content").prepend("<span id='alert'>Invalid credentials!</span>");
+		  $(".modal-content").addClass("errors");
+	  });
+	  <% end %>
+	  
   </script>
   
 </head>
@@ -30,13 +47,21 @@
       <%= yield :sidebar %>
     </section>
     <section class="page">
-      <%= render "shared/flash" %>
       <div id="content">
         <%= yield %>
       </div>
     </section>
 	<div id="page-modal"></div>
 	<div id="scroll-modal"></div>
+  </section>
+  
+  <section id="modal" class="modal">
+    <article class="modal-content">
+      <span class="modal-x hide-modal">&times;</span>
+	  <h1>Sign In</h1>
+	  <%= render "shared/user", action: "sign_in" %>
+    </article>
+    <div class="modal-screen hide-modal"></div>
   </section>
 
 </body>

@@ -156,7 +156,16 @@ $(document).ready(function(){
 		if(!$(event.target).closest('.comment-button').length &&
 		   !$(event.target).closest('.comment-box').length){
 			  $(".comment-box").fadeOut("fast");
-		}		
+		}
+		
+		if($(event.target).is('.show-modal')) {
+			window.showModal();
+		}
+		
+		if($(event.target).is('.hide-modal')) {
+			window.hideModal();
+		}
+		
 	});
 
 	$('nav .fa, .logo a').hover(

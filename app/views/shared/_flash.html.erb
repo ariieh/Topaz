@@ -1,5 +1,5 @@
 <% if !flash.empty? %>
-	<ul id="alerts">
+	<ul>
 	<% flash.each do |key, value| %>
 		<% value.each do |message| %>
 		<% 
@@ -8,7 +8,7 @@
 		%>
 	
 	    <li>
-	      <%= message %>
+	      <span id="alert"><%= message %></span>
 	    </li>
 		
 	    <% end %>
