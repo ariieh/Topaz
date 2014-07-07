@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
     request.env['omniauth.auth'][:info][:email]
     )
     sign_in @user
-    redirect_to root_url
+    redirect_to "/#"
   end
   
   def destroy
