@@ -1,7 +1,7 @@
 Topaz.Views.ArticlesForm = Backbone.View.extend({
 	template: JST["articles/form"],
 	initialize: function(options){
-		Topaz.Collections.articles.bind('remove', this.redirectToUsersShow, this);
+		// Topaz.Collections.articles.bind('remove', this.redirectToUsersShow, this);
 	},
 	events: {
 		"submit form": "submit",
@@ -32,7 +32,7 @@ Topaz.Views.ArticlesForm = Backbone.View.extend({
 	        Topaz.Collections.articles.add(that.model);
 				}
 				Backbone.history.navigate("users/" + window.currentUserId, {trigger: true});
-				Topaz.pageLoaderHide();
+				// Topaz.pageLoaderHide();
       },
 			error: function(model, response){
 				Topaz.flashFormErrors($.parseJSON(response.responseText));
