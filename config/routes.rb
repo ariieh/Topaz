@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   get "/auth/facebook/callback", to: "sessions#facebook_login"
   get "/api/articles/favorites" => "api/articles#favorites", as: :favorites
   get "/api/articles/tag/:name" => "api/articles#tagshow", as: :tag
+  
   get "/api/articles/htmlbody" => "api/articles#htmlbody", as: :htmlbody
+  get "/api/articles/body/:id" => "api/articles#body", as: :body
   
   root "articles#backbone"
   

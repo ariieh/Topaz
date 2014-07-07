@@ -22,5 +22,13 @@ Topaz.Models.Article = Backbone.Model.extend({
 		var minutes = time.slice(14,16);
 		var ampm = hours > 11 ? "pm" : "am";
 		return date + " at " + (((hours + 11) % 12) + 1) + ":" + minutes + ampm;
+	},
+	body: function(){
+		$.ajax({
+			url: "/api/articles/body/" + this.get("id"),
+			success: function(response){
+				$("#text-editor").html(response);
+			}
+		});
 	}
 });

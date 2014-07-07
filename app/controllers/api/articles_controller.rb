@@ -95,8 +95,11 @@ class Api::ArticlesController < ApplicationController
   end
   
   def htmlbody
-    puts params
     render json: Article.htmlbody(params[:body]).to_json
+  end
+  
+  def body
+    render json: Article.find(params[:id]).body.to_json
   end
   
   private

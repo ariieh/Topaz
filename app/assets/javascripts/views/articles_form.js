@@ -47,6 +47,7 @@ Topaz.Views.ArticlesForm = Backbone.View.extend({
 	  reader.onload = function(e) {
 	  	that.photo = e.target.result;
 	    $("#image-preview").attr("src", that.photo);
+	    $("#image-preview").show();
 	  }
 	  reader.readAsDataURL(file);
 	},

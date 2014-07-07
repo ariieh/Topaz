@@ -21,7 +21,7 @@ function insertMetachars(sStartTag, sEndTag) {
 		<i class="fa fa-file-image-o"></i>Image
 	</label>
 		<input type="file">
-	<img id="image-preview"></img>
+	<img width="100" height="100" id="image-preview"></img>
 		
 
 	<label>
@@ -35,7 +35,7 @@ function insertMetachars(sStartTag, sEndTag) {
 		<i class="fa fa-paragraph" onclick=insertMetachars('\n\n','\n\n')></i>
 	</div>
 		
-		<textarea id="text-editor" name="article[body]" cols="70" rows="20"><%= article.escape("body") %></textarea>
+		<textarea id="text-editor" name="article[body]" cols="70" rows="20"><%= article.body() %></textarea>
 		<div id="body-preview"></div>
 		
 <br><br><span class="small">(separate with spaces or commas!)</span>

@@ -67,6 +67,17 @@ a{ text-decoration: none; }
 
 textarea{ resize: none; }
 
+/* asteroids */
+canvas{
+//  background:url('background.jpg');
+	position: absolute;
+	z-index: -1;
+}
+.hide{
+  position:absolute;
+  top:-200px;
+}
+
 /* navbar */
 
 nav {
@@ -483,6 +494,7 @@ nav .search-bar:focus {
 
 #image-preview{
 	margin-bottom: 10px;
+	display: none;
 }
 	
 /* main */

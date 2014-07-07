@@ -120,10 +120,40 @@ window.Topaz = {
 };
 
 $(document).ready(function(){
+	var doc = document;
   jQuery("abbr.timeago").timeago();
+	var height = $(window).height();
+	var width = $(window).width();
 	
 	var selectColor = "#e74c3c";
 	
+	$("body").on("keydown", function(event) {	
+		if ( event.ctrlKey && ( event.which === 65 ) ) {
+			if ($('canvas').css({"z-index": "-1"})){
+				$.when(
+					$.getScript( "asteroids/keymaster.js" ),
+					$.getScript( "asteroids/moving_object.js" ),
+					$.getScript( "asteroids/bullet.js" ),
+					$.getScript( "asteroids/asteroids.js" ),
+					$.getScript( "asteroids/ship.js" ),
+					$.getScript( "asteroids/game.js" )
+				).done(function( script, textStatus ) {
+			      var canvas = doc.getElementsByTagName("canvas")[0];
+			      var asteroid = doc.getElementById("asteroid");
+			      var spaceship = doc.getElementById("spaceship");
+			      var missile = doc.getElementById("missile");
+			      $('canvas').css({"z-index": "9999"});
+						$('canvas').attr({"width":width,"height":height});
+			      Topaz.game = new Asteroids.Game(width, height, 15).start(canvas, asteroid, spaceship, missile);
+				 });
+			} else {
+				$('canvas').css({"z-index": "-1"});
+				Topaz.game.stopGame();
+				delete Topaz.game
+			}
+		}
+	});	  
+		
 	$("body").click(function(event) {
 		if($(event.target).is('i.fa-tasks')) {
 		  $(".menu-bar").fadeToggle("fast");
@@ -165,7 +195,7 @@ $(document).ready(function(){
 		
 		if($(event.target).is('.hide-modal')) {
 			window.hideModal();
-		}
+		}		
 		
 	});
 
