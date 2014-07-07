@@ -1,6 +1,7 @@
 Topaz.Views.ArticlesForm = Backbone.View.extend({
 	template: JST["articles/form"],
 	initialize: function(options){
+		Topaz.Collections.articles.bind('remove', this.redirectToUsersShow, this);
 	},
 	events: {
 		"submit form": "submit",
@@ -30,8 +31,8 @@ Topaz.Views.ArticlesForm = Backbone.View.extend({
 				if (Topaz.Collections.articles.where({id: that.model.get("id")}).length === 0){
 	        Topaz.Collections.articles.add(that.model);
 				}
-				Topaz.pageLoaderHide();
 				Backbone.history.navigate("users/" + window.currentUserId, {trigger: true});
+				Topaz.pageLoaderHide();
       },
 			error: function(model, response){
 				Topaz.flashFormErrors($.parseJSON(response.responseText));
@@ -78,6 +79,9 @@ Topaz.Views.ArticlesForm = Backbone.View.extend({
 		if ($("#text-editor").val().length === 0){
 			$('#body-preview').css({"display": "none"})
 		}
+	},
+	redirectToUsersShow: function(){
+		Backbone.history.navigate("users/" + window.currentUserId, {trigger: true});
 	}
 	
 });
