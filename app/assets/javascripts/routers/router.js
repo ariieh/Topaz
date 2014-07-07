@@ -136,7 +136,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	    var editView = new Topaz.Views.ArticlesForm({
 	      model: article
 	    });
-	    this._swapContentView(editView);
+	    that._swapContentView(editView);
     });
 	},
 		

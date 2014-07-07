@@ -159,6 +159,7 @@ $(document).ready(function(){
 		}
 		
 		if($(event.target).is('.show-modal')) {
+			event.preventDefault();
 			window.showModal();
 		}
 		
