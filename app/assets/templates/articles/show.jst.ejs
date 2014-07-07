@@ -1,6 +1,6 @@
 <h2><%= article.escape("title") %></h2>
 
-<h4>author: <a href="<%= "#users/" + article.escape("author_id") %>"><%= user.escape("username") %></a>, submitted <%= article.time() %></h4>
+<h4>author: <a href="<%= "#users/" + article.escape("author_id") %>"><%= article.escape("username") %></a>, submitted <%= article.time() %></h4>
 
 <% if (article.escape("photo_url") !== "/photos/big/missing.png" ){ %>
 	<img src="<%= article.escape("photo_url") %>"></img>

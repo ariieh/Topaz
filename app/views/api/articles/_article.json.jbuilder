@@ -5,3 +5,4 @@ json.votecount article.votecount
 json.taglist article.taglist
 json.photo_url article.photo.url(:big)
 json.htmlbody Article.htmlbody(article.body)
+json.username User.find(article.author_id).username

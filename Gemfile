@@ -59,6 +59,7 @@ gem 'omniauth-facebook'
 gem 'uuidtools'
 gem 'redis-rails'
 gem 'backbone-on-rails'
+gem 'yajl-ruby'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

@@ -3,3 +3,7 @@ $(document).ready(function(){
   Topaz.initialize();
 });
 </script>
+
+<script id="initial-articles" type="text/json">
+	<%= (render template: 'api/articles/index.json.jbuilder').html_safe %>
+</script>

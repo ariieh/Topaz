@@ -2,6 +2,9 @@ class ArticlesController < ApplicationController
   before_action :check_if_signed_in, only: [:new, :create, :edit, :update, :destroy]
   
   def backbone
+    @articles = Article.order("created_at" => :desc).page(1)
+    # @articles_json = render_to_string( template: 'api/articles/index.json.jbuilder')
+    # render html: :backbone
   end
   
   def index

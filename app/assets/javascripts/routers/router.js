@@ -1,7 +1,8 @@
 Topaz.Routers.Router = Backbone.Router.extend({
 	initialize: function(options){
 		this.$contentEl = options.$contentEl,
-		this.$sidebarEl = options.$sidebarEl
+		this.$sidebarEl = options.$sidebarEl,
+		this.isInitial = options.isInitial
 	},
 	routes: {
 		"": "articlesIndex",
@@ -20,22 +21,37 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	articlesIndex: function(){
 		Topaz.pageLoaderShow();
     var that = this;
-		Topaz.Collections.articles.fetch({
-			data: {page: 1, key: "created_at"},
-    	success: function(){
-		    var indexView = new Topaz.Views.ArticlesIndex({
-		      collection: Topaz.Collections.articles,
-					key: "created_at"
-		    });
-		    that._swapSidebarView(indexView);
+		if (this.isInitial){
+			this.isInitial = false;
+	    var indexView = new Topaz.Views.ArticlesIndex({
+	      collection: Topaz.Collections.articles,
+				key: "created_at"
+	    });
+	    that._swapSidebarView(indexView);
+		
+	    var showIndexView = new Topaz.Views.ArticlesShowIndex({
+	      collection: Topaz.Collections.articles,
+				key: "created_at"
+	    });
+	    that._swapContentView(showIndexView);
+		} else {
+			Topaz.Collections.articles.fetch({
+				data: {page: 1, key: "created_at"},
+	    	success: function(){
+			    var indexView = new Topaz.Views.ArticlesIndex({
+			      collection: Topaz.Collections.articles,
+						key: "created_at"
+			    });
+			    that._swapSidebarView(indexView);
 				
-		    var showIndexView = new Topaz.Views.ArticlesShowIndex({
-		      collection: Topaz.Collections.articles,
-					key: "created_at"
-		    });
-		    that._swapContentView(showIndexView);
-    	}
-    });
+			    var showIndexView = new Topaz.Views.ArticlesShowIndex({
+			      collection: Topaz.Collections.articles,
+						key: "created_at"
+			    });
+			    that._swapContentView(showIndexView);
+	    	}
+	    });
+		}
 	},
 	
 	articlesIndexPopular: function(){

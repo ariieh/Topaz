@@ -11,7 +11,8 @@ Topaz.Collections.Users = Backbone.Collection.extend({
     } else {
       user = new Topaz.Models.User({ id: id });
       user.fetch({ success: function () 
-				{ users.add(user); callback();}
+				{ users.add(user);
+					typeof callback === 'function' && callback();}
 			});
     }
 

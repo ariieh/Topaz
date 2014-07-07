@@ -4,16 +4,18 @@ window.Topaz = {
   Views: {},
   Routers: {},
   initialize: function() {
-		Topaz.Collections.articles = new Topaz.Collections.Articles();
+		Topaz.pageLoaderShow();
+		
+		var initialArticles = JSON.parse($('#initial-articles').html()).articles;
+		Topaz.Collections.articles = new Topaz.Collections.Articles(initialArticles);
 		Topaz.Collections.users = new Topaz.Collections.Users();
 		window.currentUser = new Topaz.Models.User({id: window.currentUserId});
 		
-		$.when(window.currentUser.fetch(),
-		Topaz.Collections.users.fetch(),
-		Topaz.Collections.articles.fetch({data: {page: 1, key: "created_at"} })).done(function(){
+		$.when(window.currentUser.fetch()).done(function(){
 			Topaz.Routers.router = new Topaz.Routers.Router({
 	    	$contentEl: $("#content"),
-				$sidebarEl: $(".sidebar")
+				$sidebarEl: $(".sidebar"),
+				isInitial: true
 	    });
 	    Backbone.history.start();
 			
@@ -144,7 +146,7 @@ $(document).ready(function(){
 			      var missile = doc.getElementById("missile");
 			      $('canvas').css({"z-index": "9999"});
 						$('canvas').attr({"width":width,"height":height});
-			      Topaz.game = new Asteroids.Game(width, height, 15).start(canvas, asteroid, spaceship, missile);
+			      Topaz.game = new Asteroids.Game(width, height, 10).start(canvas, asteroid, spaceship, missile);
 				 });
 			} else {
 				$('canvas').css({"z-index": "-1"});

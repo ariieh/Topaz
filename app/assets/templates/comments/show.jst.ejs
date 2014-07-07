@@ -14,7 +14,7 @@
 	<%= _.map(comments, function(c){return c.get("author") + ": " + c.get("text");}).join("<br>")%>
 	
 		<form class='comment-form'>
-	    	<input type='text' name='comment[text]'>
+	    	<textarea name='comment[text]'></textarea>
 			<input type='hidden' name='comment[p_id]' value=1>
 	    	<input type='submit' value='Add Comment'>
 		 </form>

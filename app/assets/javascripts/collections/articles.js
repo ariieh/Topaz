@@ -20,7 +20,7 @@ Topaz.Collections.Articles = Backbone.Collection.extend({
       article = new Topaz.Models.Article({ id: id });
       article.fetch({
 				success: function () {
-					callback();
+					typeof callback === 'function' && callback();
 				},
 				error: function(data){
 					console.log(data);

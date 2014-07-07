@@ -604,14 +604,14 @@ nav .search-bar:focus {
 	position: relative;
 }
 
-#body-text .comment-form input{
+#body-text .comment-form input, #body-text .comment-form textarea{
 	outline: 0;
 	border: 0;
 	margin-bottom: 0;
 }
 
-#body-text .comment-form input[type="text"]{
-	font-size: 15px;
+#body-text .comment-form input[type="text"], #body-text .comment-form textarea{
+	font-size: 12px;
 	width: 100%;
 }
 
