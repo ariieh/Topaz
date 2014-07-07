@@ -60,8 +60,11 @@ window.Topaz = {
 		  left: '50%' // Left position relative to parent
 		};
 		$("#page-modal").fadeTo("fast", 0.8);
-		Topaz.pageSpinner = (Topaz.pageSpinner || new Spinner(opts).spin());
-		$("#page-modal").append(Topaz.pageSpinner.el);		
+		
+		if (!Topaz.pageSpinner){
+			Topaz.pageSpinner = (new Spinner(opts).spin());
+			$("#page-modal").append(Topaz.pageSpinner.el);
+		}
 	},
 	
 	pageLoaderHide: function(){
