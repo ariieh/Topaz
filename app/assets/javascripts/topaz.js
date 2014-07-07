@@ -9,24 +9,35 @@ window.Topaz = {
 		var initialArticles = JSON.parse($('#initial-articles').html()).articles;
 		Topaz.Collections.articles = new Topaz.Collections.Articles(initialArticles);
 		Topaz.Collections.users = new Topaz.Collections.Users();
-		window.currentUser = new Topaz.Models.User({id: window.currentUserId});
 		
-		$.when(window.currentUser.fetch()).done(function(){
-			Topaz.Routers.router = new Topaz.Routers.Router({
-	    	$contentEl: $("#content"),
-				$sidebarEl: $(".sidebar"),
-				isInitial: true
-	    });
-	    Backbone.history.start();
+		if (window.currentUserId){
+			window.currentUser = new Topaz.Models.User({id: window.currentUserId});
+		
+			$.when(window.currentUser.fetch()).done(function(){
+				Topaz.Routers.router = new Topaz.Routers.Router({
+		    	$contentEl: $("#content"),
+					$sidebarEl: $(".sidebar"),
+					isInitial: true
+		    });
+		    Backbone.history.start();
 			
-			var searchView = new Topaz.Views.SearchForm();
-			$(".search-li").html(searchView.render().$el);
+				var searchView = new Topaz.Views.SearchForm();
+				$(".search-li").html(searchView.render().$el);
 			
-			if (window.currentUserId){
 				var notificationView = new Topaz.Views.NotificationShow();
 				$(".notifications-li").append(notificationView.render().$el);
-			}
-		});	
+			});
+			} else {
+				Topaz.Routers.router = new Topaz.Routers.Router({
+		    	$contentEl: $("#content"),
+					$sidebarEl: $(".sidebar"),
+					isInitial: true
+		    });
+		    Backbone.history.start();
+			
+				var searchView = new Topaz.Views.SearchForm();
+				$(".search-li").html(searchView.render().$el);
+		}
   },
 	
 	pageLoaderShow: function(){
