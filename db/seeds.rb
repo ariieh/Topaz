@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 u1 = User.new(username: "arieh", email: "arieh.smith@gmail.com", provider: "facebook", uid: ENV["ARI_FB_UID"])
-u1.password = "stuffy"
+u1.password = ENV["ARI_PASSWORD"]
 u1.save!
 
 u2 = User.new(username: "conz", email: "conz@conz.com")
@@ -19,6 +19,10 @@ for i in 3..103 do
   u.password = "stuffy"
   u.save!
 end
+
+u = User.new(username: "Demo", email: "demo@example.com")
+u.password = "stuffy"
+u.save!
 
 articles_hash = [
 {title: "Google's latest empire-building tactic: cheap phones",
@@ -545,7 +549,117 @@ body:
 13. Having only one spec left on the assessment and not being able to figure out how to pass it.",
 
 photo: "https://s3.amazonaws.com/TopazProd/photo.JPG",
-taglist: "humor tech"}]
+taglist: "humor tech"},
+
+{title: "Spotify hasn’t gone public yet, but it is hosting practice earnings calls",
+body:"How ready is streaming-music service Spotify for an initial public offering? Well, it’s already conducting practice earnings calls.
+
+The privately-held company held one such call to discuss quarterly results as recently as the first week of May with some investors as well as members of the group of bankers—a group that includes Morgan Stanley, Goldman Sachs, and Deutsche Bank —that extended a recent $200 million line of credit, sources tell Quartz.
+
+The so-called “earnings call” was characterized as a “dry run,” or prelude to the sort of post-earnings conference calls public companies regularly use to address additional questions from analysts, the sources said.",
+photo: "http://img.qz.com/2014/06/spotify-and-its-ceo-daniel-ek-are-gearing-up-to-go-public.jpg?w=1160",
+taglist: "business tech mobile"},
+
+{title: "Uh-oh, Yo has major security flaws",
+body:"Yo, the mobile messaging app that quickly rose to popularity this week with a bewilderingly simple premise—the only message it can send is “yo”—has a lot more than that lurking beneath its surface.
+
+At least until several hours ago, Yo exposed all of its users’ phone numbers to anyone with the wherewithal to request them. Several developers demonstrated the issue, which takes advantage of flaws in the way Yo talks to its database.
+
+And that’s not all. Another developer was able to inject a message into the app that appeared to many users.",
+photo: "http://img.qz.com/2014/06/iphone-user.jpg?w=1160",
+taglist: "mobile tech"},
+
+{title: "And now a word from the people invading your privacy",
+body:"Last week, as we reported, Apple made a tiny technical change that could make it more difficult for marketers to spy on you. The company changed a setting that broadcasts an iPhone’s Media Access Control (MAC) address to any Wi-Fi network within range. Businesses use this to identify a phone and figure out how many times its owner has been in a shop and for how long, or where in the shop she is browsing. The change is that in iOS 8, the iPhone’s new operating system due out later this year, your Apple device will broadcast a random “fake” MAC address, which will make tracking somewhat more difficult, unless you actually connect it to a Wi-Fi network.
+
+But Apple’s moves may not be all about consumer protection. The company is meanwhile also pushing retailers to adopt its iBeacon technology, which helps them provide location services and ads to smartphone users via Bluetooth. Making Wi-Fi tracking harder means companies that relied on it are more likely to concentrate their efforts on Bluetooth instead. This would suit Apple nicely, but it worries companies that make their money tracking your movements for retailers. (We have requested comment from Apple, and will update this post if we hear back.)
+
+“Apple is a bit disingenuous when they say they say they are protecting users from being tracked,” says Geary Eppley, head of engineering at Point Inside, a firm that tracks people (see update below) to provide indoor maps and retail analytics to big-box retailers such as Lowes, a hardware store in the United States. “It would be more honest to say that they are protecting users from being tracked by anyone but Apple.”",
+photo: "http://img.qz.com/2014/06/apple-iphone-store-cash.jpg?w=1160",
+taglist: "apple mobile tech business"},
+
+{title: "Amazon’s phone pricing actually is not disruptive at all",
+body:"Amazon had an opportunity to shake up the wireless industry with radical pricing for its new Fire Phone. But it’s actually quite conventional.
+
+The Amazon phone, unveiled today, will cost about the same as most other good smartphones: $199 or $299 with a two-year contract and $649 or $749 unlocked, depending on storage capacity. And its exclusive US carrier partner AT&T isn’t offering anything special, either. (No word yet on international carriers.)
+
+The one carrot Amazon is dangling to potential customers: For a limited time, it will give Fire Phone buyers a free year of its Prime service—a $99 value, which includes free two-day shipping on Amazon orders, video and music streaming, and some free Kindle books. Existing Prime customers can extend existing subscriptions by a year. That’s a nice bonus, and might be enough to convince Amazon devotees to switch phones. But it’s hardly revolutionary.",
+photo: "http://img.qz.com/2014/06/amazon-ceo-jeff-bezos-fire-phone-event.jpg?w=1160",
+taglist: "mobile tech business amazon"},
+
+{title: "Amazon launches a shopping machine and calls it a phone",
+body:"Amazon’s Fire Phone is here: CEO Jeff Bezos unveiled the company’s first smartphone at an event today in Seattle. Details are still rolling in, but Bezos has already made one thing clear: This is a shopping device.
+
+The most interesting feature so far is called Firefly: An image recognition app that can supposedly detect and identify more than 100 million items, ranging from physical products on sale at Amazon—Bezos demonstrated the feature with a Nutella jar, among other products—to songs and phone numbers. The phone has a dedicated Firefly button on its side, meaning that the feature—and your credit card—is always only a tap away.
+
+Amazon is also opening the service to developers so they can build Firefly into their apps. Two examples, via the Verge’s Fire Phone liveblog: Using MyFitnessPal to get nutritional information for food or Vivino to get more information about wine. This could be one way to get companies creating custom apps for the Fire Phone’s app store instead of just porting over their plain Android apps.",
+photo: "http://img.qz.com/2014/06/jeff-bezos-amazon-fire-phone-ap.jpg?w=1160",
+taglist: "mobile tech business amazon"},
+
+{title: "Twitter brought a drone to Cannes so ad execs could take aerial selfies",
+body:"Advertising companies hoping to attract attention at this week’s Cannes Lions advertising festival on the French Riviera have chartered yachts and helicopters, among other excesses. Twitter, meanwhile, has a drone, rigged to take “dronie” (drone + selfie) videos for posting to Twitter’s new @Dronie account.",
+photo: "",
+taglist: "twitter tech mobile business"},
+
+{title: "Twitter doesn’t know enough about its users—so it’s asking them",
+body:"Twitter knows whom you follow. But Twitter does not know why you follow them. So the company doing something fairly straightforward—and, for a tech company with reams of data bout its users, unlikely: It’s asking. Politely.
+
+NT Balanarayan, a reporter with Medianama, an Indian technology blog, writes this week about a survey Twitter asked him to fill out. Balanarayan was given a list of five people he follows and asked, “Why are you following these five individuals?” The options, which do not include “because everybody is following them,” are:
+
+We’re related.
+We’re friends.
+We work together (or did in the past).
+We go to the same school (or did in the past).
+I find their Tweets informative.
+I find their Tweets funny/amusing.
+I’m a fan outside of Twitter
+
+Twitter is also running a 90-minute focus group for Indian tweeters later this month, with a Rs 2,000 ($33.50) gift voucher at a local department store as incentive. It is unclear whether the survey is aimed only at Twitter users in India, or in other markets as well. (Twitter did not respond to a request for comment.)",
+photo: "http://img.qz.com/2014/06/dick-costolo-twitter-ceo.jpg?w=1160",
+taglist: "twitter tech mobile business"},
+
+{title: "London’s cabbies just gave Uber its biggest boost yet—by striking against Uber",
+body:"Some 12,000 black-cab drivers clogged the streets of central London yesterday, June 11, to protest the taxi-booking app Uber.
+
+So what did Londoners do? Well, they downloaded Uber onto their smartphones.
+
+The app jumped 47 points to land at #2 (registration required) on Apple’s UK iOS app store by the end of the strike, according to App Annie, a research and measurement firm. Uber’s UK manager told the Independent that signups for the app jumped 850% , compared with the same day of the week earlier.",
+photo: "",
+taglist: "mobile tech"},
+
+{title: "Investors responded to Hong Kong’s huge pro-democracy protests with a great big “meh”",
+body:"Markets typically dislike mass protests; they portend instability. But though nearly 100,000 Hong Kong residents (according to police; half a million according to the organizers) thronged the streets of the island territory to call for electoral reform yesterday, the stock market—which was closed on July 1 because it was a local holiday—reacted with aplomb today.
+
+Why, if the economic data out of China look promising, would Hong Kong-focused companies outperform mainland firms? Probably, says the New York Times (paywall), because the business world was simply relieved that the July 1 demonstrations and overnight sit-ins were peaceful.",
+photo: "http://img.qz.com/2014/07/hong-kong-protest-market-beijing-china-handover-democracy-hang-seng.jpg?w=1160",
+taglist: "china business"},
+
+{title: "Google killed the web address—so why is it trying to sell you one?",
+body:"When Google released its web browser, Chrome, in 2008, the most striking thing about it was that it merged the web address bar—where you type in qz.com—with the search bar. It called this the “omnibox.” As new domain names rolled out this year, observers wondered what the point was when nobody remembers, let alone types, full web addresses any more. Google has also toyed with the idea of further obscuring the web address in Chrome.
+
+But no matter how much browsers hide the web address, it isn’t going anywhere. Addresses remain fundamental to the architecture of the web. Without them websites would be identified only by a series of numbers. Regular internet users would have no idea where they are on the web, or whether to trust the site. Moreover, the web address is also an essential piece of marketing for any business that needs an internet presence (pretty much all of them).
+
+Little wonder then that Google is getting into the domain-name-retailing game now dominated by the likes of GoDaddy. The web giant yesterday, June 23, launched a beta version of Google Domains, which will eventually allow people to register their domain names with Google. It promises reasonable prices ($12), integration with website builders, and lots of free extra features, including privacy protection and email. Up until now, registering a domain has not felt easy; Google could make it seem easy.",
+photo: "",
+taglist: "google tech"},
+
+{title: "Forget drones: Microsoft’s plan to bring the internet to the world is all about TV",
+body:"Google will spend between $1 billion and $3 billion to put 180 satellites in orbit, from where the company can beam the internet down to unconnected parts of the world, the Wall Street Journal reported this morning. That’s in addition to Google’s other high-tech internet missionaries: balloons floating high in the sky and drones circling overhead. Facebook also has lofty ambitions.
+
+But there may be a simpler way to spread connectivity: Television white space. TV is broadcast using the electro-magnetic spectrum—as is radio, communications and cell phone signal. Each television channel owns one tiny slice of that spectrum, which is regulated by governments. But there are gaps between channels to prevent one from interfering with the next. As the world’s thirst for wireless technologies grows, government regulators are looking at unused broadcast spectrum as a way to ease congestion and spur innovation.
+
+The idea may sound less glamorous than drones, satellites and balloons, but it’s an area where African countries are leading the way, with impressive results. And it has attracted a lot of attention ever since 2010, when the United States’ Federal Communications Commission announced that white space would be available license-free.",
+photo: "http://img.qz.com/2014/06/internet-users-per-100-people-map-worldwide.png?w=1160",
+taglist: "business tech"},
+
+{title: "When net neutrality backfires: Chile just killed free access to Wikipedia and Facebook",
+body:"Net neutrality is a sore subject in the United States. Proponents argue that allowing big companies to pay for faster data transfers to their customers would disadvantage start-up business that cannot afford such payments. They also say consumers could be forced to pay more for access to data-hungry services such as Netflix. Opponents of net neutrality say that those who use the most bandwidth should also be the ones paying the most for it. After all, the tubes that ferry data around the world are not public utilities—they are private business concerns.
+
+A surprising decision in Chile shows what happens when policies of neutrality are applied without nuance. This week, Santiago put an end to the practice, widespread in developing countries, of big companies “zero-rating” access to their services. As Quartz has reported, companies such as Facebook, Google, Twitter and Wikipedia strike up deals with mobile operators around the world to offer a bare-bones version of their service without charging customers for the data.
+
+It is not clear whether operators receive a fee from big companies, but it is clear why these deals are widespread. Internet giants like it because it encourages use of their services in places where consumers shy away from hefty data charges. Carriers like it because Facebook or Twitter serve as a gateway to the wider internet, introducing users to the wonders of the web and encouraging them to explore further afield—and to pay for data. And it’s not just commercial services that use the practice: Wikipedia has been an enthusiastic adopter of zero-rating as a way to spread its free, non-profit encyclopedia.",
+photo: "http://img.qz.com/2014/05/chile.jpg?w=1160",
+taglist: "politics business"}]
 
 ari_articles_hash = [
   {title: "It's finally here, folks.",
@@ -557,119 +671,8 @@ ari_articles_hash = [
   In other news, you know it was July 4th yesterday? And my folks just went and set off some fireworks. So I guess I feel kinda like doing that now. If I wasn't compelled to code some more. In fact, I think I'm gonna go code some more right now.
   
   But hey, what the hell, right? At least I've written something nice and personal. Speaking of which, can't place it but this article is still missing something. Humm. Oh yeah! Couple things, actually. I just finished up implementing some swank Markdown styling and I feel like showing off. [This girl](#users/2), man. She's *wild*. Maybe it's the lack of sleep, maybe it's the bleary eyes, maybe it's the [code](http://hackertyper.net/), but man, I think I'm in **love**.",
-  created_at: "2014-07-06 00:00:00"},
+  created_at: "2014-07-06 00:00:00"}]
   
-  {title: "Spotify hasn’t gone public yet, but it is hosting practice earnings calls",
-  body:"How ready is streaming-music service Spotify for an initial public offering? Well, it’s already conducting practice earnings calls.
-
-  The privately-held company held one such call to discuss quarterly results as recently as the first week of May with some investors as well as members of the group of bankers—a group that includes Morgan Stanley, Goldman Sachs, and Deutsche Bank —that extended a recent $200 million line of credit, sources tell Quartz.
-
-  The so-called “earnings call” was characterized as a “dry run,” or prelude to the sort of post-earnings conference calls public companies regularly use to address additional questions from analysts, the sources said.",
-  photo: "http://img.qz.com/2014/06/spotify-and-its-ceo-daniel-ek-are-gearing-up-to-go-public.jpg?w=1160",
-  taglist: "business tech mobile"},
-
-  {title: "Uh-oh, Yo has major security flaws",
-  body:"Yo, the mobile messaging app that quickly rose to popularity this week with a bewilderingly simple premise—the only message it can send is “yo”—has a lot more than that lurking beneath its surface.
-
-  At least until several hours ago, Yo exposed all of its users’ phone numbers to anyone with the wherewithal to request them. Several developers demonstrated the issue, which takes advantage of flaws in the way Yo talks to its database.
-
-  And that’s not all. Another developer was able to inject a message into the app that appeared to many users.",
-  photo: "http://img.qz.com/2014/06/iphone-user.jpg?w=1160",
-  taglist: "mobile tech"},
-
-  {title: "And now a word from the people invading your privacy",
-  body:"Last week, as we reported, Apple made a tiny technical change that could make it more difficult for marketers to spy on you. The company changed a setting that broadcasts an iPhone’s Media Access Control (MAC) address to any Wi-Fi network within range. Businesses use this to identify a phone and figure out how many times its owner has been in a shop and for how long, or where in the shop she is browsing. The change is that in iOS 8, the iPhone’s new operating system due out later this year, your Apple device will broadcast a random “fake” MAC address, which will make tracking somewhat more difficult, unless you actually connect it to a Wi-Fi network.
-
-  But Apple’s moves may not be all about consumer protection. The company is meanwhile also pushing retailers to adopt its iBeacon technology, which helps them provide location services and ads to smartphone users via Bluetooth. Making Wi-Fi tracking harder means companies that relied on it are more likely to concentrate their efforts on Bluetooth instead. This would suit Apple nicely, but it worries companies that make their money tracking your movements for retailers. (We have requested comment from Apple, and will update this post if we hear back.)
-
-  “Apple is a bit disingenuous when they say they say they are protecting users from being tracked,” says Geary Eppley, head of engineering at Point Inside, a firm that tracks people (see update below) to provide indoor maps and retail analytics to big-box retailers such as Lowes, a hardware store in the United States. “It would be more honest to say that they are protecting users from being tracked by anyone but Apple.”",
-  photo: "http://img.qz.com/2014/06/apple-iphone-store-cash.jpg?w=1160",
-  taglist: "apple mobile tech business"},
-
-  {title: "Amazon’s phone pricing actually is not disruptive at all",
-  body:"Amazon had an opportunity to shake up the wireless industry with radical pricing for its new Fire Phone. But it’s actually quite conventional.
-
-  The Amazon phone, unveiled today, will cost about the same as most other good smartphones: $199 or $299 with a two-year contract and $649 or $749 unlocked, depending on storage capacity. And its exclusive US carrier partner AT&T isn’t offering anything special, either. (No word yet on international carriers.)
-
-  The one carrot Amazon is dangling to potential customers: For a limited time, it will give Fire Phone buyers a free year of its Prime service—a $99 value, which includes free two-day shipping on Amazon orders, video and music streaming, and some free Kindle books. Existing Prime customers can extend existing subscriptions by a year. That’s a nice bonus, and might be enough to convince Amazon devotees to switch phones. But it’s hardly revolutionary.",
-  photo: "http://img.qz.com/2014/06/amazon-ceo-jeff-bezos-fire-phone-event.jpg?w=1160",
-  taglist: "mobile tech business amazon"},
-
-  {title: "Amazon launches a shopping machine and calls it a phone",
-  body:"Amazon’s Fire Phone is here: CEO Jeff Bezos unveiled the company’s first smartphone at an event today in Seattle. Details are still rolling in, but Bezos has already made one thing clear: This is a shopping device.
-
-  The most interesting feature so far is called Firefly: An image recognition app that can supposedly detect and identify more than 100 million items, ranging from physical products on sale at Amazon—Bezos demonstrated the feature with a Nutella jar, among other products—to songs and phone numbers. The phone has a dedicated Firefly button on its side, meaning that the feature—and your credit card—is always only a tap away.
-
-  Amazon is also opening the service to developers so they can build Firefly into their apps. Two examples, via the Verge’s Fire Phone liveblog: Using MyFitnessPal to get nutritional information for food or Vivino to get more information about wine. This could be one way to get companies creating custom apps for the Fire Phone’s app store instead of just porting over their plain Android apps.",
-  photo: "http://img.qz.com/2014/06/jeff-bezos-amazon-fire-phone-ap.jpg?w=1160",
-  taglist: "mobile tech business amazon"},
-
-  {title: "Twitter brought a drone to Cannes so ad execs could take aerial selfies",
-  body:"Advertising companies hoping to attract attention at this week’s Cannes Lions advertising festival on the French Riviera have chartered yachts and helicopters, among other excesses. Twitter, meanwhile, has a drone, rigged to take “dronie” (drone + selfie) videos for posting to Twitter’s new @Dronie account.",
-  photo: "",
-  taglist: "twitter tech mobile business"},
-
-  {title: "Twitter doesn’t know enough about its users—so it’s asking them",
-  body:"Twitter knows whom you follow. But Twitter does not know why you follow them. So the company doing something fairly straightforward—and, for a tech company with reams of data bout its users, unlikely: It’s asking. Politely.
-
-  NT Balanarayan, a reporter with Medianama, an Indian technology blog, writes this week about a survey Twitter asked him to fill out. Balanarayan was given a list of five people he follows and asked, “Why are you following these five individuals?” The options, which do not include “because everybody is following them,” are:
-
-  We’re related.
-  We’re friends.
-  We work together (or did in the past).
-  We go to the same school (or did in the past).
-  I find their Tweets informative.
-  I find their Tweets funny/amusing.
-  I’m a fan outside of Twitter
-
-  Twitter is also running a 90-minute focus group for Indian tweeters later this month, with a Rs 2,000 ($33.50) gift voucher at a local department store as incentive. It is unclear whether the survey is aimed only at Twitter users in India, or in other markets as well. (Twitter did not respond to a request for comment.)",
-  photo: "http://img.qz.com/2014/06/dick-costolo-twitter-ceo.jpg?w=1160",
-  taglist: "twitter tech mobile business"},
-
-  {title: "London’s cabbies just gave Uber its biggest boost yet—by striking against Uber",
-  body:"Some 12,000 black-cab drivers clogged the streets of central London yesterday, June 11, to protest the taxi-booking app Uber.
-
-  So what did Londoners do? Well, they downloaded Uber onto their smartphones.
-
-  The app jumped 47 points to land at #2 (registration required) on Apple’s UK iOS app store by the end of the strike, according to App Annie, a research and measurement firm. Uber’s UK manager told the Independent that signups for the app jumped 850% , compared with the same day of the week earlier.",
-  photo: "",
-  taglist: "mobile tech"},
-
-  {title: "Investors responded to Hong Kong’s huge pro-democracy protests with a great big “meh”",
-  body:"Markets typically dislike mass protests; they portend instability. But though nearly 100,000 Hong Kong residents (according to police; half a million according to the organizers) thronged the streets of the island territory to call for electoral reform yesterday, the stock market—which was closed on July 1 because it was a local holiday—reacted with aplomb today.
-
-  Why, if the economic data out of China look promising, would Hong Kong-focused companies outperform mainland firms? Probably, says the New York Times (paywall), because the business world was simply relieved that the July 1 demonstrations and overnight sit-ins were peaceful.",
-  photo: "http://img.qz.com/2014/07/hong-kong-protest-market-beijing-china-handover-democracy-hang-seng.jpg?w=1160",
-  taglist: "china business"},
-
-  {title: "Google killed the web address—so why is it trying to sell you one?",
-  body:"When Google released its web browser, Chrome, in 2008, the most striking thing about it was that it merged the web address bar—where you type in qz.com—with the search bar. It called this the “omnibox.” As new domain names rolled out this year, observers wondered what the point was when nobody remembers, let alone types, full web addresses any more. Google has also toyed with the idea of further obscuring the web address in Chrome.
-
-  But no matter how much browsers hide the web address, it isn’t going anywhere. Addresses remain fundamental to the architecture of the web. Without them websites would be identified only by a series of numbers. Regular internet users would have no idea where they are on the web, or whether to trust the site. Moreover, the web address is also an essential piece of marketing for any business that needs an internet presence (pretty much all of them).
-
-  Little wonder then that Google is getting into the domain-name-retailing game now dominated by the likes of GoDaddy. The web giant yesterday, June 23, launched a beta version of Google Domains, which will eventually allow people to register their domain names with Google. It promises reasonable prices ($12), integration with website builders, and lots of free extra features, including privacy protection and email. Up until now, registering a domain has not felt easy; Google could make it seem easy.",
-  photo: "",
-  taglist: "google tech"},
-
-  {title: "Forget drones: Microsoft’s plan to bring the internet to the world is all about TV",
-  body:"Google will spend between $1 billion and $3 billion to put 180 satellites in orbit, from where the company can beam the internet down to unconnected parts of the world, the Wall Street Journal reported this morning. That’s in addition to Google’s other high-tech internet missionaries: balloons floating high in the sky and drones circling overhead. Facebook also has lofty ambitions.
-
-  But there may be a simpler way to spread connectivity: Television white space. TV is broadcast using the electro-magnetic spectrum—as is radio, communications and cell phone signal. Each television channel owns one tiny slice of that spectrum, which is regulated by governments. But there are gaps between channels to prevent one from interfering with the next. As the world’s thirst for wireless technologies grows, government regulators are looking at unused broadcast spectrum as a way to ease congestion and spur innovation.
-
-  The idea may sound less glamorous than drones, satellites and balloons, but it’s an area where African countries are leading the way, with impressive results. And it has attracted a lot of attention ever since 2010, when the United States’ Federal Communications Commission announced that white space would be available license-free.",
-  photo: "http://img.qz.com/2014/06/internet-users-per-100-people-map-worldwide.png?w=1160",
-  taglist: "business tech"},
-
-  {title: "When net neutrality backfires: Chile just killed free access to Wikipedia and Facebook",
-  body:"Net neutrality is a sore subject in the United States. Proponents argue that allowing big companies to pay for faster data transfers to their customers would disadvantage start-up business that cannot afford such payments. They also say consumers could be forced to pay more for access to data-hungry services such as Netflix. Opponents of net neutrality say that those who use the most bandwidth should also be the ones paying the most for it. After all, the tubes that ferry data around the world are not public utilities—they are private business concerns.
-
-  A surprising decision in Chile shows what happens when policies of neutrality are applied without nuance. This week, Santiago put an end to the practice, widespread in developing countries, of big companies “zero-rating” access to their services. As Quartz has reported, companies such as Facebook, Google, Twitter and Wikipedia strike up deals with mobile operators around the world to offer a bare-bones version of their service without charging customers for the data.
-
-  It is not clear whether operators receive a fee from big companies, but it is clear why these deals are widespread. Internet giants like it because it encourages use of their services in places where consumers shy away from hefty data charges. Carriers like it because Facebook or Twitter serve as a gateway to the wider internet, introducing users to the wonders of the web and encouraging them to explore further afield—and to pay for data. And it’s not just commercial services that use the practice: Wikipedia has been an enthusiastic adopter of zero-rating as a way to spread its free, non-profit encyclopedia.",
-  photo: "http://img.qz.com/2014/05/chile.jpg?w=1160",
-  taglist: "politics business"}
-]
-
 starting_time = Time.new(2014, 05, 31, 2, 2, 2, "+02:00")
 users_id = User.pluck(:id)
 
@@ -678,6 +681,8 @@ articles_hash.each do |article_data|
   article_data[:author_id] = users_id.sample
   Article.create!(article_data)
 end
+
+Article.last.author_id = User.last.id
 
 conz_articles_hash.each do |article_data|
   article_data[:created_at] = Time.at(starting_time.to_f + rand * (Time.now.to_f - starting_time.to_f))

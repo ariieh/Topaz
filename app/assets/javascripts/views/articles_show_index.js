@@ -42,11 +42,11 @@ Topaz.Views.ArticlesShowIndex = Backbone.View.extend({
     $("section.page").on("scroll", _.throttle(this.infiniteScroll.bind(this), 200));
   },
 
-  infiniteScroll: function () {
+  infiniteScroll: function () {		
     var articles = Topaz.Collections.articles;
     var that = this;
 		var page = $("section.page");
-		
+
     if(page[0].scrollHeight - page.scrollTop() <= page.outerHeight()){
       if (that.collection.page_number < that.collection.total_pages) {
 				Topaz.scrollLoaderShow();
