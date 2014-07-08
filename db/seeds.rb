@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 u1 = User.new(username: "arieh", email: "arieh.smith@gmail.com", provider: "facebook", uid: ENV["ARI_FB_UID"])
-u1.password = ENV["ARI_PASSWORD"]
+u1.password = "stuffy"
 u1.save!
 
 u2 = User.new(username: "conz", email: "conz@conz.com")
@@ -21,7 +21,7 @@ for i in 3..103 do
 end
 
 u = User.new(username: "Demo", email: "demo@example.com")
-u.password = "stuffy"
+u.password = "demopassword"
 u.save!
 
 articles_hash = [
