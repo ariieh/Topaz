@@ -9,13 +9,6 @@
     this.ship = Asteroids.Ship.createShip(dimX, dimY);
     
     this.populateAsteroids(dimX, dimY, numAsteroids);
-    
-    var game = this;
-    this.asteroids.forEach(function(asteroid) {
-      while (asteroid.isCollidedWith(game.ship)){
-        this.populateAsteroids();
-      }
-    });
   }
   
   Game.prototype.populateAsteroids = function(dimX, dimY, numAsteroids){

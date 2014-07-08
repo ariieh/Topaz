@@ -15,10 +15,18 @@
   }
   
   Asteroid.randomAsteroid = function (dimX, dimY){
+		aDimX = dimX * Math.random();
+		aDimY = dimY * Math.random();
+				
+		while ((aDimX < dimX * 0.6) && (aDimX > dimX * 0.4) && (aDimY < dimY * 0.6) && (aDimY > dimY * 0.4)) {
+			aDimX = dimX * Math.random();
+			aDimY = dimY * Math.random();
+		}
+
     return new Asteroid(
       [
-        dimX * Math.random(),
-        dimY * Math.random()
+        aDimX,
+        aDimY
       ],
       [
         ((Math.random()*3)-1),
