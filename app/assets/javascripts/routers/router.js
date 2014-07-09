@@ -14,7 +14,8 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		"users/:id": "usersShow",
 		"tags/:name": "tagsShow",
 		"search?query=:query":"search",
-		"about": "about"
+		"about": "about",
+		"welcome": "welcome"
 	},
 	
 	articlesIndex: function(){
@@ -136,6 +137,11 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	about: function(){
 		var aboutView = new Topaz.Views.About();
     this._swapContentView(aboutView);
+	},
+	
+	welcome: function(){
+		var welcomeView = new Topaz.Views.Welcome();
+    this._swapContentView(welcomeView);
 	},
 	
 	_swapPageView: function(key, tagName, query, userId){
