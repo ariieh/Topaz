@@ -24,17 +24,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		Topaz.Collections.articles.fetch({
 			data: {page: 1, key: "created_at"},
     	success: function(){
-		    var indexView = new Topaz.Views.ArticlesIndex({
-		      collection: Topaz.Collections.articles,
-					key: "created_at"
-		    });
-		    that._swapSidebarView(indexView);
-			
-		    var showIndexView = new Topaz.Views.ArticlesShowIndex({
-		      collection: Topaz.Collections.articles,
-					key: "created_at"
-		    });
-		    that._swapContentView(showIndexView);
+				that._swapPageView("created_at");
     	}
     });
 		
@@ -46,17 +36,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		Topaz.Collections.articles.fetch({
 			data: {page: 1, key: "votecount"},
     	success: function(){
-		    var indexView = new Topaz.Views.ArticlesIndex({
-		      collection: Topaz.Collections.articles,
-					key: "votecount"
-		    });
-		    that._swapSidebarView(indexView);
-				
-		    var showIndexView = new Topaz.Views.ArticlesShowIndex({
-		      collection: Topaz.Collections.articles,
-					key: "votecount"
-		    });
-		    that._swapContentView(showIndexView);
+				that._swapPageView("votecount");				
     	}
     });
 	},
@@ -67,18 +47,8 @@ Topaz.Routers.Router = Backbone.Router.extend({
 			var that = this;
 			Topaz.Collections.articles.fetch({
 				data: {page: 1, key: "favorites"},
-	    	success: function(){					
-					var indexView = new Topaz.Views.ArticlesIndex({
-			      collection: Topaz.Collections.articles,
-						key: "favorites"
-			    });
-			    that._swapSidebarView(indexView);
-				
-			    var showIndexView = new Topaz.Views.ArticlesShowIndex({
-			      collection: Topaz.Collections.articles,
-						key: "favorites"
-			    });
-			    that._swapContentView(showIndexView);
+	    	success: function(){				
+					that._swapPageView("favorites");				
 	    	}
 	    });
 		} else {
@@ -92,18 +62,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		Topaz.Collections.articles.fetch({
 			data: {page: 1, key: "tag", name: name},
     	success: function(){
-		    var indexView = new Topaz.Views.ArticlesIndex({
-		      collection: Topaz.Collections.articles,
-					key: "tag"
-		    });
-		    that._swapSidebarView(indexView);
-				
-		    var showIndexView = new Topaz.Views.ArticlesShowIndex({
-		      collection: Topaz.Collections.articles,
-					key: "tag",
-					name: name
-		    });
-		    that._swapContentView(showIndexView);
+				that._swapPageView("tag", name);				
     	}
     });
 	},
@@ -154,24 +113,11 @@ Topaz.Routers.Router = Backbone.Router.extend({
 			Topaz.Collections.articles.fetch({
 				data: {page: 1, key: "user", id: id},
 	    	success: function(){
-			    var indexView = new Topaz.Views.ArticlesIndex({
-			      collection: Topaz.Collections.articles,
-						key: "user"
-			    });
-			    that._swapSidebarView(indexView);
-			    var showIndexView = new Topaz.Views.ArticlesShowIndex({
-			      collection: Topaz.Collections.articles,
-						key: "user",
-						id: id
-			    });
-			    that._swapContentView(showIndexView);
+					that._swapPageView("user", null, null, id);					
 					that.$contentEl.prepend(showView.render().$el);
 	    	}
 	    });
-			
 		});
-		
-		
 	},
 	
 	search: function(query){
@@ -182,26 +128,31 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		Topaz.Collections.articles.fetch({
 			data: {page: 1, key: "search", query: query},
     	success: function(){
-		    var indexView = new Topaz.Views.ArticlesIndex({
-		      collection: Topaz.Collections.articles,
-					key: "search"
-		    });
-		    that._swapSidebarView(indexView);
-				
-		    var showIndexView = new Topaz.Views.ArticlesShowIndex({
-		      collection: Topaz.Collections.articles,
-					key: "search",
-					query: query
-		    });
-		    that._swapContentView(showIndexView);				
+				that._swapPageView("search", null, query);					
     	}
     });
-		
 	},
 	
 	about: function(){
 		var aboutView = new Topaz.Views.About();
     this._swapContentView(aboutView);
+	},
+	
+	_swapPageView: function(key, tagName, query, userId){
+    var indexView = new Topaz.Views.ArticlesIndex({
+      collection: Topaz.Collections.articles,
+			key: key
+    });
+    this._swapSidebarView(indexView);
+	
+    var showIndexView = new Topaz.Views.ArticlesShowIndex({
+      collection: Topaz.Collections.articles,
+			key: key,
+			name: tagName,
+			query: query,
+			id: userId
+    });
+    this._swapContentView(showIndexView);
 	},
 	
 	_swapContentView: function(view){
