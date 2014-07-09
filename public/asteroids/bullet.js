@@ -63,8 +63,15 @@
     
     if (vel[0] === 0 && vel[1] === 0) { return null; }
     
-    dx = vel[0] * 3;
-    dy = vel[1] * 3;
+		var shipSpeed = Math.pow(vel[0], 2) + Math.pow(vel[1], 2);
+		var bulletSpeed = 1000;
+		var bulletFactor = bulletSpeed / shipSpeed;
+				
+    dx = Math.sqrt(Math.pow(vel[0], 2) * bulletFactor);
+    dy = Math.sqrt(Math.pow(vel[1], 2) * bulletFactor);
+    
+		if (vel[0] < 0) dx = dx * -1;
+		if (vel[1] < 0) dy = dy * -1;
     
     return new Bullet(
       [
