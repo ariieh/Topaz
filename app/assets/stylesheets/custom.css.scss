@@ -759,7 +759,7 @@ nav .search-bar:focus {
 }
 
 /* sign in, sign out */
-input[value="Sign In"], input[value="Sign Up"]{
+input[value="Sign In"], input[value="Sign Up"], #sign-in-button{
   position: relative;
   display: inline-block;
 	border: 0px;
@@ -773,11 +773,11 @@ input[value="Sign In"], input[value="Sign Up"]{
 	font-size: 15px;
 }
 
-input[value="Sign In"]:hover, input[value="Sign Up"]:hover{
+input[value="Sign In"]:hover, input[value="Sign Up"]:hover, #sign-in-button:hover{
   background: #3498db;
 }
 
-input[value="Sign In"]:active, input[value="Sign Up"]:active {
+input[value="Sign In"]:active, input[value="Sign Up"]:active, #sign-in-button:active {
   top: 3px;
   box-shadow: none;
   background: #2980b9;

@@ -9,7 +9,7 @@
 <label>
 	Username
 </label>
-	<input type="text" name="user[username]">
+	<input type="text" id="input-username" name="user[username]">
 
 <% if action == "sign_up" %>
 	<label>
@@ -21,13 +21,21 @@
 <label>
 	Password
 </label>
-	<input type="password" name="user[password]">
+	<input type="password" id="input-password" name="user[password]">
 
 <% if action == "sign_up" %>
   <input type="submit" value="Sign Up">
 <% else %>
   <input type="submit" value="Sign In">
+  <button id="sign-in-button" onclick="fillField()">Demo User</button>
 <% end %>
 </form>
 <br>
 <a class="twitter-link" href="/auth/facebook"><%= image_tag("fb-login.png") %></a>
+
+<script>
+function fillField(){
+	document.getElementById('input-username').value = 'Demo';
+	document.getElementById('input-password').value = 'demopassword';
+}
+</script>

@@ -24,6 +24,8 @@ u = User.new(username: "Demo", email: "demo@example.com")
 u.password = "demopassword"
 u.save!
 
+Notification.create(notification_type: 1, user_id: User.find_by_username("Demo").id, article_id: nil)
+
 articles_hash = [
 {title: "Google's latest empire-building tactic: cheap phones",
 body: 
