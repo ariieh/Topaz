@@ -141,7 +141,7 @@ $(document).ready(function(){
 	
 	$("body").on("keydown", function(event) {	
 		if ( event.ctrlKey && ( event.which === 65 ) ) {
-			if ($('canvas').css({"z-index": "-1"})){
+			if ($('canvas').css("z-index") == -1){
 				$.when(
 					$.getScript( "asteroids/keymaster.js" ),
 					$.getScript( "asteroids/moving_object.js" ),
@@ -156,12 +156,13 @@ $(document).ready(function(){
 			      var missile = doc.getElementById("missile");
 			      $('canvas').css({"z-index": "9999"});
 						$('canvas').attr({"width":width,"height":height});
-			      Topaz.game = new Asteroids.Game(width, height, 10).start(canvas, asteroid, spaceship, missile);
+			      window.game = new Asteroids.Game(width, height, 10);
+						window.game.start(canvas, asteroid, spaceship, missile);
 				 });
 			} else {
 				$('canvas').css({"z-index": "-1"});
-				Topaz.game.stopGame();
-				delete Topaz.game
+				window.game.stopGame();
+				delete window.game
 			}
 		}
 	});	  
