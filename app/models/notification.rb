@@ -1,6 +1,7 @@
 class Notification < ActiveRecord::Base
   validates :notification_type, :user_id, presence: true
   belongs_to :user
+  belongs_to :article
   
   def message
     case self.notification_type

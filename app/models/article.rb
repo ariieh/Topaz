@@ -18,6 +18,7 @@ class Article < ActiveRecord::Base
   has_many :taggings, inverse_of: :article, dependent: :destroy
   has_many :tags, through: :taggings, dependent: :destroy
   has_many :votes, inverse_of: :article
+  has_many :notifications, inverse_of: :article, dependent: :destroy
   has_attached_file :photo, :styles => {
     :big => "400x400#"
   }

@@ -1,6 +1,6 @@
 Topaz.Views.NotificationShow = Backbone.View.extend({
 	initialize: function(options){
-		this.listenTo(window.currentUser, "sync", this.render)
+		this.listenTo(window.currentUser, "sync", this.render);
 	},
 	events: {
 		"click a": "click"

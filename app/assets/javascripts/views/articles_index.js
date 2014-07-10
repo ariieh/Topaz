@@ -16,6 +16,7 @@ Topaz.Views.ArticlesSnippet = Backbone.View.extend({
 	destroy: function(){
 		event.preventDefault();
 		this.model.destroy();
+		window.currentUser.fetch();
 	},
 	scroll: function(event){
 		event.preventDefault();
