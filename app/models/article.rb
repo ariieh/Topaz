@@ -59,22 +59,17 @@ class Article < ActiveRecord::Base
     self.votes.count
   end
   
-  # caching
+  # Redis caching
   
   def self.votecount_cache(page)
     Rails.cache.fetch("votecount_cache_#{page}") do
       votecount_force(page)
     end
   end
-    
+
   def self.votecount_force(page)
-    query = <<-SQL
-       SELECT articles.*
-       FROM articles JOIN votes ON articles.id = votes.article_id
-       GROUP BY articles.id
-       ORDER BY COUNT(*) DESC
-    SQL
-    @articles = Kaminari.paginate_array(Article.find_by_sql(query)).page(page)
+    query = Article.joins(:votes).group("articles.id").order("COUNT(votes.id) DESC").page(page)
+    ArticleContainer.new(query.to_a, query.total_pages)
   end
   
   def self.created_at_cache(page)
@@ -84,8 +79,61 @@ class Article < ActiveRecord::Base
   end
     
   def self.created_at_force(page)
-    @articles = Article.order("created_at" => :desc).page(page)
+    query = Article.order("created_at" => :desc).page(page)
+    ArticleContainer.new(query.to_a, query.total_pages)
   end
   
+  def self.favorites_cache(favorites, page)
+    Rails.cache.fetch("favorites_#{page}") do
+      favorites_force(favorites, page)
+    end
+  end
+    
+  def self.favorites_force(favorites, page)
+    query = favorites.order("created_at" => :desc).page(page)
+    ArticleContainer.new(query.to_a, query.total_pages)
+  end
   
+  def self.tag_cache(tag, page)
+    Rails.cache.fetch("#{tag.name}_#{page}") do
+      tag_force(tag, page)
+    end
+  end
+    
+  def self.tag_force(tag, page)
+    query = tag.articles.order("created_at" => :desc).page(page)
+    ArticleContainer.new(query.to_a, query.total_pages)
+  end
+  
+  def self.user_cache(user, page)
+    Rails.cache.fetch("#{user.username}_#{page}") do
+      user_force(user, page)
+    end
+  end
+    
+  def self.user_force(user, page)
+    query = user.articles.order("created_at" => :desc).page(@page)
+    ArticleContainer.new(query.to_a, query.total_pages)
+  end
+  
+  def self.search_cache(search_query, page)
+    Rails.cache.fetch("#{search_query}_#{page}") do
+      search_force(search_query, page)
+    end
+  end
+    
+  def self.search_force(search_query, page)
+    results = search_query.blank? ? Article.all : Article.search(search_query)
+    query = results.page(page).per(5)
+    ArticleContainer.new(query.to_a, query.total_pages)
+  end
+end
+
+class ArticleContainer
+  attr_accessor :articles, :total_pages
+  
+  def initialize(articles, total_pages)
+    self.articles = articles
+    self.total_pages = total_pages
+  end
 end

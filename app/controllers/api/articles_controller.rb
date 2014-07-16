@@ -7,36 +7,24 @@ class Api::ArticlesController < ApplicationController
     
     case params[:key]
     when "created_at"
-      # @articles = Article.created_at_cache(@page)
-      @articles = Article.order(params[:key] => :desc).page(params[:page])
+      @articles = Article.created_at_cache(@page)
     when "votecount"
       @articles = Article.votecount_cache(@page)
     when "favorites"
-      @articles = current_user.favorites
-                              .order("created_at" => :desc)
-                              .page(@page)
+      @articles = Article.favorites_cache(current_user.favorites, @page)
     when "tag"
-      if (@tag = Tag.find_by_name(params[:name]))
-        @articles = @tag.articles
-                        .order("created_at" => :desc)
-                        .page(@page)
+      if (tag = Tag.find_by_name(params[:name]))
+        @articles = Article.tag_cache(tag, @page)
       end
     when "user"
-      @articles = User.find(params[:id].to_i)
-                      .articles
-                      .order("created_at" => :desc)
-                      .page(@page)
+      @articles = Article.user_cache(User.find(params[:id]), @page)
     when "search"
-      @results = params[:query].blank? ? Article.all : Article.search(params[:query])
-      @articles = @results.page(@page).per(5)
+      @articles = Article.search_cache(params[:query], @page)
     else
-      @articles = Article.order("created_at" => :desc)
-                          .page(@page)
+      @articles = Article.created_at_cache(@page)
     end
 
-    unless @articles
-      @articles = Kaminari.paginate_array([]).page(@page)
-    end
+    @articles = Kaminari.paginate_array([]).page(@page) unless @articles
     
     render :index
   end
@@ -49,7 +37,9 @@ class Api::ArticlesController < ApplicationController
     render json: @articles
   end
 
-  def create    
+  def create
+    Rails.cache.clear
+    
     @article = current_user.articles.new(article_params)
 
     if @article.save
@@ -65,11 +55,14 @@ class Api::ArticlesController < ApplicationController
   end
   
   def tagshow
-    @articles = Tag.find_by_name(params[:name]).articles.page(params[:page])
+    @page = params[:page]
+    @articles = Article.tag_cache(Tag.find_by_name(params[:name]), @page)
     render :index
   end
   
   def update
+    Rails.cache.clear
+    
     @article = Article.find(params[:id])
     if @article.update_attributes(article_params)
       render partial: "api/articles/article", locals: { article: @article }
@@ -79,6 +72,8 @@ class Api::ArticlesController < ApplicationController
   end
   
   def destroy
+    Rails.cache.clear
+    
     current_user.articles.find(params[:id]).destroy
     head :ok
   end

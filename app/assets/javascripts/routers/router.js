@@ -19,6 +19,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	},
 	
 	articlesIndex: function(){
+		this._scrollUp();
 		Topaz.pageLoaderShow();
     var that = this;
 
@@ -32,6 +33,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	},
 	
 	articlesIndexPopular: function(){
+		this._scrollUp();
 		Topaz.pageLoaderShow();
     var that = this;
 		Topaz.Collections.articles.fetch({
@@ -43,6 +45,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	},
 	
 	articlesIndexFavorites: function(){
+		this._scrollUp();
 		if (window.currentUserId){
 			Topaz.pageLoaderShow();
 			var that = this;
@@ -58,6 +61,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	},
 	
 	tagsShow: function(name){
+		this._scrollUp();
 		Topaz.pageLoaderShow();
     var that = this;
 		Topaz.Collections.articles.fetch({
@@ -69,6 +73,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	},
 	
 	articlesNew: function(){
+		this._scrollUp();
 		var article = new Topaz.Models.Article();
 		var newView = new Topaz.Views.ArticlesForm({
 			model: article
@@ -77,6 +82,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	},
 	
 	articlesShow: function(id){
+		this._scrollUp();
 		var that = this;
     var article = Topaz.Collections.articles.getOrFetch(id, function(){
 	    var showView = new Topaz.Views.ArticlesShow({
@@ -92,6 +98,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	},
 	
 	articlesEdit: function(id){
+		this._scrollUp();
 		var that = this;
     var article = Topaz.Collections.articles.getOrFetch(id, function(){
 	    var editView = new Topaz.Views.ArticlesForm({
@@ -102,6 +109,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	},
 		
 	usersShow: function(id){
+		this._scrollUp();
 		Topaz.pageLoaderShow();
     var that = this;
 		
@@ -122,6 +130,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	},
 	
 	search: function(query){
+		this._scrollUp();
 		$("#page-modal").css({"background":"transparent"});
 		Topaz.pageLoaderShow();
 		
@@ -135,11 +144,13 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	},
 	
 	about: function(){
+		this._scrollUp();
 		var aboutView = new Topaz.Views.About();
     this._swapContentView(aboutView);
 	},
 	
 	welcome: function(){
+		this._scrollUp();
 		var welcomeView = new Topaz.Views.Welcome();
     this._swapContentView(welcomeView);
 	},
@@ -161,6 +172,11 @@ Topaz.Routers.Router = Backbone.Router.extend({
     this._swapContentView(showIndexView);
 	},
 	
+	_scrollUp: function(){
+		$('section.page').animate({scrollTop: 0}, "fast");
+		$('section.sidebar').animate({scrollTop: 0}, "fast");
+	},
+	
 	_swapContentView: function(view){
 		if (this.currentContentView){
 			this._removeSubviews(this.currentContentView);
@@ -169,7 +185,6 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		}
 		this.$contentEl.html(view.render().$el);
 		this.currentContentView = view;
-		$('section.page').animate({scrollTop: 0}, "fast");
 		Topaz.pageLoaderHide();
 		Topaz.scrollLoaderHide();
 	},
@@ -181,7 +196,6 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		};
 		this.$sidebarEl.html(view.render().$el);
 		this.currentSidebarView = view;
-		$('section.sidebar').animate({scrollTop: 0}, "fast");
 		Topaz.pageLoaderHide();		
 	},
 	
