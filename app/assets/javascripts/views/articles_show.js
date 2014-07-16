@@ -57,6 +57,8 @@ Topaz.Views.ArticlesShow = Backbone.View.extend({
 				that.subviews.push(commentView);
 				that.$('#body-text').append(commentView.render().$el);
 				i++;
+			} else {
+				that.$('#body-text').append($(text[el]));
 			}
 		});
 		

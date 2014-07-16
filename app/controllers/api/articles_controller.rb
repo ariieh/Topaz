@@ -7,16 +7,10 @@ class Api::ArticlesController < ApplicationController
     
     case params[:key]
     when "created_at"
+      # @articles = Article.created_at_cache(@page)
       @articles = Article.order(params[:key] => :desc).page(params[:page])
     when "votecount"
-      query = <<-SQL
-        SELECT articles.*
-        FROM articles JOIN votes ON articles.id = votes.article_id
-        GROUP BY articles.id
-        ORDER BY COUNT(*) DESC
-      SQL
-    
-      @articles = Kaminari.paginate_array(Article.find_by_sql(query)).page(params[:page])
+      @articles = Article.votecount_cache(@page)
     when "favorites"
       @articles = current_user.favorites
                               .order("created_at" => :desc)

@@ -58,4 +58,34 @@ class Article < ActiveRecord::Base
   def votecount
     self.votes.count
   end
+  
+  # caching
+  
+  def self.votecount_cache(page)
+    Rails.cache.fetch("votecount_cache_#{page}") do
+      votecount_force(page)
+    end
+  end
+    
+  def self.votecount_force(page)
+    query = <<-SQL
+       SELECT articles.*
+       FROM articles JOIN votes ON articles.id = votes.article_id
+       GROUP BY articles.id
+       ORDER BY COUNT(*) DESC
+    SQL
+    @articles = Kaminari.paginate_array(Article.find_by_sql(query)).page(page)
+  end
+  
+  def self.created_at_cache(page)
+    Rails.cache.fetch("created_at_#{page}") do
+      created_at_force(page)
+    end
+  end
+    
+  def self.created_at_force(page)
+    @articles = Article.order("created_at" => :desc).page(page)
+  end
+  
+  
 end

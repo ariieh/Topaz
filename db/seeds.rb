@@ -523,32 +523,31 @@ photo: "https://s3.amazonaws.com/TopazProd/Semantic-e1382262909875.jpg",
 taglist: "humor"},
 
 {title: "13 Problems Only App Academy Students Understand",
-body: 
-"1. Having your solo day on the first day of a new curriculum.
+body:"1: Having your solo day on the first day of a new curriculum.
 
-2. Being stationed at the island desk near the door where the floor is slanted but then getting assigned a boring partner who won't roll around with you.
+2: Being stationed at the island desk near the door where the floor is slanted but then getting assigned a boring partner who won't roll around with you.
 
-3. It's 12:45pm and Jonathan and Tommy are still helping students and haven't realized the time yet.
+3: It's 12:45pm and Jonathan and Tommy are still helping students and haven't realized the time yet.
 
-4. Getting a partner who is super into pushing to Git.
+4: Getting a partner who is super into pushing to Git.
 
-5. Your code is working fine one minute, but after changing just one line, everything breaks.
+5: Your code is working fine one minute, but after changing just one line, everything breaks.
 
-6. Getting assigned to Station 4 on the day you don't really feel like doing the work.
+6: Getting assigned to Station 4 on the day you don't really feel like doing the work.
 
-7. Forgetting to sign out of Hipchat and realizing that someone else could be reading all your private messages.
+7: Forgetting to sign out of Hipchat and realizing that someone else could be reading all your private messages.
 
-8. Waiting too long for the elevator and having a dilemma about taking the stairs because you don't know if the elevator might come right at that moment.
+8: Waiting too long for the elevator and having a dilemma about taking the stairs because you don't know if the elevator might come right at that moment.
 
-9. Not getting enough sleep the night before and then Jonathan dims the lights for his CSS demo.
+9: Not getting enough sleep the night before and then Jonathan dims the lights for his CSS demo.
 
-10. Your friends asking you to hang out the night before an assessment.
+10: Your friends asking you to hang out the night before an assessment.
 
-11. Your friends asking you to hang out the weekend you have to do the whole Hartl tutorial/read the whole SQL book/read the Effective Javascript book.
+11: Your friends asking you to hang out the weekend you have to do the whole Hartl tutorial/read the whole SQL book/read the Effective Javascript book.
 
-12. Having to read the Effective Javascript book.
+12: Having to read the Effective Javascript book.
 
-13. Having only one spec left on the assessment and not being able to figure out how to pass it.",
+13: Having only one spec left on the assessment and not being able to figure out how to pass it.",
 
 photo: "https://s3.amazonaws.com/TopazProd/photo.JPG",
 taglist: "humor tech"},
