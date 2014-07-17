@@ -132,7 +132,6 @@ window.Topaz = {
 };
 
 $(document).ready(function(){
-	var doc = document;
   jQuery("abbr.timeago").timeago();
 	var height = $(window).height();
 	var width = $(window).width();
@@ -150,14 +149,16 @@ $(document).ready(function(){
 					$.getScript( "asteroids/ship.js" ),
 					$.getScript( "asteroids/game.js" )
 				).done(function( script, textStatus ) {
-			      var canvas = doc.getElementsByTagName("canvas")[0];
-			      var asteroid = doc.getElementById("asteroid");
-			      var spaceship = doc.getElementById("spaceship");
-			      var missile = doc.getElementById("missile");
+		        var canvas = document.getElementsByTagName("canvas")[0];
+		        var asteroids = document.getElementsByClassName("asteroid");
+		        var spaceship = document.getElementById("spaceship");
+		        var enemyShip = document.getElementById("enemyShip");
+		        var missile = document.getElementById("missile");
+		        var football = document.getElementById("football");
 			      $('canvas').css({"z-index": "9999"});
 						$('canvas').attr({"width":width,"height":height});
-			      window.game = new Asteroids.Game(width, height, 10);
-						window.game.start(canvas, asteroid, spaceship, missile);
+			      window.game = new Asteroids.Game(width, height, 15, 2, asteroids, spaceship, enemyShip, missile, football);
+						window.game.start(canvas);
 				 });
 			} else {
 				$('canvas').css({"z-index": "-1"});

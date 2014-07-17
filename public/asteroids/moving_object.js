@@ -1,13 +1,15 @@
 (function (root) {
   var Asteroids = root.Asteroids = (root.Asteroids || {});
   
-  var MovingObject = Asteroids.MovingObject = function (pos, vel, rad, col) {
+  var MovingObject = Asteroids.MovingObject = function (pos, vel, rad, col, img) {
+		console.log(pos, vel, img, rad)
     this.xAxis = pos[0];
     this.yAxis = pos[1];
     this.vx = vel[0];
     this.vy = vel[1];
-    this.rad = rad;
-    this.col = col;
+		this.rad = rad;
+		this.col = col;
+		this.img = img;
   }
   
   MovingObject.prototype.move = function (maxX, maxY) {

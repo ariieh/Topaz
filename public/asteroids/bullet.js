@@ -18,17 +18,15 @@
   var COLOR = "white";
   var RADIUS = 10;
   
-  var Bullet = Asteroids.Bullet = function (pos, vel) {
+  var Bullet = Asteroids.Bullet = function (pos, vel, img) {
     Asteroids.MovingObject.call(this, pos, vel, RADIUS, COLOR);
+		this.img = img;
   }
   
   Bullet.inherits(Asteroids.MovingObject);
   
   Bullet.prototype.draw = function (ctx) {
-    var that = this;
-    
-    drawRotatedImage(ctx, Asteroids.Game.missile, that.xAxis, that.yAxis, Math.atan2(this.vx, -this.vy));
-    
+    drawRotatedImage(ctx, this.img, this.xAxis, this.yAxis, Math.atan2(this.vx, -this.vy));
     
     ctx.fillStyle = this.col;
     ctx.beginPath();
@@ -53,18 +51,16 @@
     if (this.yAxis <= 0) {
       this.yAxis = maxY
     }
-    console.log(this.xAxis);
   }
   
   
   Bullet.createBullet = function (pos, vel){
-
     var dx, dy;
     
     if (vel[0] === 0 && vel[1] === 0) { return null; }
     
 		var shipSpeed = Math.pow(vel[0], 2) + Math.pow(vel[1], 2);
-		var bulletSpeed = 1000;
+		var bulletSpeed = 1300;
 		var bulletFactor = bulletSpeed / shipSpeed;
 				
     dx = Math.sqrt(Math.pow(vel[0], 2) * bulletFactor);
@@ -72,18 +68,28 @@
     
 		if (vel[0] < 0) dx = dx * -1;
 		if (vel[1] < 0) dy = dy * -1;
-    
-    return new Bullet(
-      [
-        pos[0],
-        pos[1]
-      ],
-      [
-        dx,
-        dy
-      ]
-    );
+		
+    return new Bullet([pos[0], pos[1]], [dx, dy], Asteroids.Game.missile);
   }
+	
+  Bullet.createEnemyBullet = function (pos, vel){
+    var dx, dy;
+    
+    if (vel[0] === 0 && vel[1] === 0) { return null; }
+    
+		var shipSpeed = Math.pow(vel[0], 2) + Math.pow(vel[1], 2);
+		var bulletSpeed = 500;
+		var bulletFactor = bulletSpeed / shipSpeed;
+				
+    dx = Math.sqrt(Math.pow(vel[0], 2) * bulletFactor);
+    dy = Math.sqrt(Math.pow(vel[1], 2) * bulletFactor);
+    
+		if (vel[0] < 0) dx = dx * -1;
+		if (vel[1] < 0) dy = dy * -1;
+		
+    return new Bullet([pos[0], pos[1]], [dx, dy], Asteroids.Game.football);
+  }
+	
   
   
 })(this);
