@@ -1,8 +1,9 @@
 # Topaz
 
-* A Backbone.js-based clone of the popular business news site [Quartz](http://qz.com/) with Medium-style blogging features
-* Implements site-wide Kaminari-based infinite scroll drawing from Active Record and custom SQL queries
-* Utilizes custom-built Markdown-based text editor with live HTML text and image preview
+* Backbone.js-based clone of the popular business news site [Quartz](http://qz.com/) with Medium-style blogging features
+* Implements site-wide infinite scroll built on top of Kaminari and firing custom SQL queries
+* Utilizes Redis to maintain full page-level article cache, refreshing on database changes
+* Uses custom-built Markdown-based text editor with live HTML text and image preview, allowing for automated text selection and instantaneous AJAX uploading and rendering
 * Live searches and highlights full article text with prioritized PgSearch query
 
 Website live on [http://www.topaz.ninja/](http://www.topaz.ninja/). Suggested demo path:
