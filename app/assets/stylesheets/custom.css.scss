@@ -899,3 +899,49 @@ form.sign input[type=text]:focus, form.sign input[type=password]:focus {
 .fa-thumbs-o-up{
   margin-left: 5px;
 }
+
+/* mobile */
+@media (max-width: 400px) {
+	section.sidebar{
+		display: none;
+	}
+	
+	section.page{
+	  left: 0px;
+		overflow-x: hidden;
+	}
+	
+	#body-text{
+		padding-right: 30px;
+	}
+	
+	#scroll-modal, #page-modal{
+		left: 0px;
+	}
+	
+	.tagbar ul{
+		margin: 0px;
+		padding-top: 3px;
+	}
+	
+	.tagbar ul > li{
+		padding: 0px;
+		padding-right: 7px;
+	}
+	
+	#filter-div{
+		padding-bottom: 3px;
+	}
+	
+	.main{
+		top: 139px;
+	}
+	
+	#body-text .comment-box{
+		right: -5px;
+	}
+	
+	div.welcome{
+		display: none;
+	}
+}

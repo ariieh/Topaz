@@ -4,9 +4,9 @@
   <title>Topaz</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
-  
   <%= csrf_meta_tags %>
   <%= favicon_link_tag 'favicon.ico' %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
 <link href="/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <link href='http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
@@ -32,7 +32,7 @@
 		  $(".modal-content").prepend("<span id='alert'>Invalid credentials!</span>");
 		  $(".modal-content").addClass("errors");
 	  });
-	  <% end %>	  
+	  <% end %>
   </script>
   
 </head>
@@ -53,7 +53,6 @@
 	    <img src="asteroids/asteroid_gifs/missile.gif" id="missile">
 	    <img src="asteroids/asteroid_gifs/football.gif" id="football">
 	</div>
-
 	
   <%= render "shared/navbar" %>
   <%= render "shared/tagbar" %>

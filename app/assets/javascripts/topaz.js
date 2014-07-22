@@ -4,8 +4,6 @@ window.Topaz = {
   Views: {},
   Routers: {},
   initialize: function() {
-		Topaz.pageLoaderShow();
-		// var initialArticles = JSON.parse($('#initial-articles').html()).articles;
 		Topaz.Collections.articles = new Topaz.Collections.Articles();
 		Topaz.Collections.users = new Topaz.Collections.Users();
 		
