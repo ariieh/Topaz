@@ -516,6 +516,7 @@ nav .search-bar:focus {
   right: 0;
   height: 100%;
   overflow: auto;
+	-webkit-overflow-scrolling: touch;
   font-family: sans-serif;
   border-left: 1px solid rgb(229,229,229);
 }
@@ -911,6 +912,12 @@ form.sign input[type=text]:focus, form.sign input[type=password]:focus {
 		overflow-x: hidden;
 	}
 	
+	section.page img{
+    max-width: 100%;
+    height: auto;
+    width: auto\9; /* ie8 */
+	}
+	
 	#body-text{
 		padding-right: 30px;
 	}
@@ -934,14 +941,20 @@ form.sign input[type=text]:focus, form.sign input[type=password]:focus {
 	}
 	
 	.main{
-		top: 139px;
+		top: 154px;
 	}
 	
 	#body-text .comment-box{
 		right: -5px;
 	}
 	
-	div.welcome{
+	div.welcome, .twitter-li, .facebook-li{
 		display: none;
 	}
+	
+	input.search-bar{
+	  font-size: 16px;
+		top: 8px;
+	}
+	
 }
