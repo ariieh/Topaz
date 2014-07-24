@@ -223,14 +223,13 @@ $(document).ready(function(){
 	$("#expand").on("click", function(event){
     window.getSelection().removeAllRanges();
 		
-		$("section.tagbar").toggleClass("hidden");
+		$("section.tagbar").toggleClass("hidden", 100);
+		
 	  if ($(event.currentTarget).is(".fa-minus-circle")) {
-	    $(event.currentTarget).removeClass("fa-minus-circle");
-	    $(event.currentTarget).addClass("fa-plus-circle");
+			$(event.currentTarget).switchClass("fa-minus-circle", "fa-plus-circle", 100)
 			$("section.main").toggleClass("expanded", 100);
 	  } else {
-	    $(event.currentTarget).removeClass("fa-plus-circle");
-	    $(event.currentTarget).addClass("fa-minus-circle");
+			$(event.currentTarget).switchClass("fa-plus-circle", "fa-minus-circle", 100)
 			$("section.main").toggleClass("expanded", 100);
 	  }
 	});
