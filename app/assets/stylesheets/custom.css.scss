@@ -257,6 +257,14 @@ nav .search-bar:focus {
 	font-size: 13px;
 }
 
+.tagbar.hidden > #filter-div, .tagbar.hidden > #tag-div{
+	display: none;
+}
+
+.tagbar.hidden > #now-reading, .tagbar.hidden > #now-reading-tag{
+	display: block;
+}
+
 .tagbar a{
 	color: white;
 }
@@ -319,6 +327,34 @@ nav .search-bar:focus {
 	padding: 1px;
 	color: white;
 	display: none;
+}
+
+.tagbar #expand{
+	font-size: 20px;
+	color: $fly-blue;
+	float: left;
+	margin: 10px;
+}
+
+.tagbar #expand.fa-minus-circle{
+}
+
+.tagbar #expand.fa-minus-plus{
+}
+
+.tagbar #now-reading{
+	display: none;
+	float: left;
+	color: white;
+	margin: 11px 7px;
+}
+
+.tagbar #now-reading-tag{
+	display: none;
+	float: left;
+	color: $fly-blue;
+	margin: 11px 0px;
+	font-weight: lighter;
 }
 
 /* article form */
@@ -506,6 +542,10 @@ nav .search-bar:focus {
   bottom: 0;
   width: 100%;
   border-top: 1px solid rgb(229,229,229);
+}
+
+.main.expanded{
+	top: 90px;
 }
 
 .page, #page-modal{
