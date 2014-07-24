@@ -221,15 +221,17 @@ $(document).ready(function(){
 	);
 	
 	$("#expand").on("click", function(event){
+    window.getSelection().removeAllRanges();
+		
 		$("section.tagbar").toggleClass("hidden");
 	  if ($(event.currentTarget).is(".fa-minus-circle")) {
 	    $(event.currentTarget).removeClass("fa-minus-circle");
 	    $(event.currentTarget).addClass("fa-plus-circle");
-			$("section.main").toggleClass("expanded");
+			$("section.main").toggleClass("expanded", 100);
 	  } else {
 	    $(event.currentTarget).removeClass("fa-plus-circle");
 	    $(event.currentTarget).addClass("fa-minus-circle");
-			$("section.main").toggleClass("expanded");
+			$("section.main").toggleClass("expanded", 100);
 	  }
 	});
 	
