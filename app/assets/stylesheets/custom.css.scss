@@ -903,6 +903,7 @@ form.sign input[type=text]:focus, form.sign input[type=password]:focus {
 
 /* mobile */
 @media (max-width: 400px) {
+	/* main */
 	section.sidebar{
 		display: none;
 	}
@@ -926,6 +927,22 @@ form.sign input[type=text]:focus, form.sign input[type=password]:focus {
 		left: 0px;
 	}
 	
+	.main{
+		top: 154px;
+	}
+	
+	.modal-content {
+	  position: absolute;
+		top: 10%;
+		left: 5%;
+	  width: 70%;
+	  height: 70%;
+	  margin-left: 0px;
+	  margin-top: 0px;
+	}
+	
+	/* navbar */
+	
 	.tagbar ul{
 		margin: 0px;
 		padding-top: 3px;
@@ -940,21 +957,24 @@ form.sign input[type=text]:focus, form.sign input[type=password]:focus {
 		padding-bottom: 3px;
 	}
 	
-	.main{
-		top: 154px;
-	}
-	
-	#body-text .comment-box{
-		right: -5px;
+	input.search-bar{
+	  font-size: 16px;
+		top: 8px;
 	}
 	
 	div.welcome, .twitter-li, .facebook-li{
 		display: none;
 	}
 	
-	input.search-bar{
-	  font-size: 16px;
-		top: 8px;
+	/* body text */
+	#body-text .comment-box{
+		right: -5px;
 	}
+	
+	/* dashboard */
+	#text-editor{
+		width: 230px;
+	}
+	
 	
 }
