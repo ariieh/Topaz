@@ -330,16 +330,11 @@ nav .search-bar:focus {
 }
 
 .tagbar #expand{
+	cursor: pointer;
 	font-size: 20px;
 	color: $fly-blue;
 	float: left;
 	margin: 10px;
-}
-
-.tagbar #expand.fa-minus-circle{
-}
-
-.tagbar #expand.fa-minus-plus{
 }
 
 .tagbar #now-reading{
