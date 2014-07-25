@@ -134,7 +134,7 @@ $(document).ready(function(){
 	var height = $(window).height();
 	var width = $(window).width();
 	
-	var selectColor = "#e74c3c";
+	var selectColor = "#3498db";
 	
 	$("body").on("keydown", function(event) {	
 		if ( event.ctrlKey && ( event.which === 65 ) ) {

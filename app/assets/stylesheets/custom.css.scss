@@ -1,4 +1,4 @@
-$select-color: #e74c3c;
+$select-color: #3498db;
 $fly-blue: #168dd9;
 
 /* global */
@@ -995,6 +995,10 @@ form.sign input[type=text]:focus, form.sign input[type=password]:focus {
 	
 	#filter-div{
 		padding-bottom: 3px;
+	}
+	
+	#tag-div{
+		margin-left: 38px;
 	}
 	
 	input.search-bar{
