@@ -56,6 +56,13 @@ window.Topaz = {
 		  top: '50%', // Top position relative to parent
 		  left: '50%' // Left position relative to parent
 		};
+		
+		if(/iPhone|iPod|iPad|Android|BlackBerry/.test(navigator.userAgent)) {
+			opts.length = 70;
+			opts.radius = 50;
+			opts.width = 20;
+		}
+		
 		$("#page-modal").fadeTo("fast", 0.8);		
 		Topaz.pageSpinner = (new Spinner(opts).spin());
 		$("#page-modal").append(Topaz.pageSpinner.el);
@@ -86,6 +93,7 @@ window.Topaz = {
 		  top: '50%', // Top position relative to parent
 		  left: '50%' // Left position relative to parent
 		};
+		
 		$("#scroll-modal").fadeTo("fast", 0.8);
 		Topaz.scrollSpinner = (Topaz.scrollSpinner || new Spinner(opts).spin());
 		$("#scroll-modal").append(Topaz.scrollSpinner.el);
