@@ -1,6 +1,5 @@
 Topaz.Views.ArticlesShow = Backbone.View.extend({
 	initialize: function(options){
-		this.user = Topaz.Collections.users.getOrFetch(this.model.get("author_id"));
 		this.subviews = [];
 	},
 	className: "article-show-container",
@@ -11,8 +10,7 @@ Topaz.Views.ArticlesShow = Backbone.View.extend({
 	template: JST["articles/show"],
 	render: function(){		
 		var renderedContent = this.template({
-			article: this.model,
-			user: this.user
+			article: this.model
 		});
 		
 		this.$el.html(renderedContent);

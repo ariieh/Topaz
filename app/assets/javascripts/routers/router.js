@@ -127,7 +127,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		
 		Topaz.pageLoaderShow();
     var that = this;
-		
+
 		var user = Topaz.Collections.users.getOrFetch(id, function(){
 			var id = user.get("id");
 	    var showView = new Topaz.Views.UsersShow({
