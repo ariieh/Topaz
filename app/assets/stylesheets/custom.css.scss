@@ -938,7 +938,7 @@ form.sign input[type=text]:focus, form.sign input[type=password]:focus {
 
 /* mobile */
 @media (max-width: 400px) {
-	/* main */
+	/* main */	
 	section.sidebar{
 		display: none;
 	}
@@ -987,7 +987,7 @@ form.sign input[type=text]:focus, form.sign input[type=password]:focus {
 		padding: 0px;
 		padding-right: 7px;
 	}
-	
+		
 	#filter-div{
 		padding-bottom: 3px;
 	}
