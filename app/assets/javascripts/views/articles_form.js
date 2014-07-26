@@ -32,7 +32,6 @@ Topaz.Views.ArticlesForm = Backbone.View.extend({
 	        Topaz.Collections.articles.add(that.model);
 				}
 				Backbone.history.navigate("users/" + window.currentUserId, {trigger: true});
-				// Topaz.pageLoaderHide();
       },
 			error: function(model, response){
 				Topaz.flashFormErrors($.parseJSON(response.responseText));

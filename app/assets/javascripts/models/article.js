@@ -24,6 +24,10 @@ Topaz.Models.Article = Backbone.Model.extend({
 		return date + " at " + (((hours + 11) % 12) + 1) + ":" + minutes + ampm;
 	},
 	body: function(){
+		if (this.get("id") === undefined){
+			return "";
+		}
+		
 		$.ajax({
 			url: "/api/articles/body/" + this.get("id"),
 			success: function(response){
