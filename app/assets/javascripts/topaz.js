@@ -64,8 +64,8 @@ window.Topaz = {
 		}
 		
 		$("#page-modal").fadeTo("fast", 0.8);		
-		Topaz.pageSpinner = (new Spinner(opts).spin());
-		$("#page-modal").append(Topaz.pageSpinner.el);
+		Topaz.pageSpinner = (Topaz.pageSpinner || new Spinner(opts).spin());
+		$("#page-modal").html(Topaz.pageSpinner.el);
 	},
 	
 	pageLoaderHide: function(){
