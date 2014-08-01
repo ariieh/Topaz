@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140706204419) do
+ActiveRecord::Schema.define(version: 20140801195332) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,7 +29,9 @@ ActiveRecord::Schema.define(version: 20140706204419) do
   end
 
   add_index "articles", ["author_id"], name: "index_articles_on_author_id", using: :btree
+  add_index "articles", ["created_at"], name: "index_articles_on_created_at", using: :btree
   add_index "articles", ["title", "author_id"], name: "index_articles_on_title_and_author_id", unique: true, using: :btree
+  add_index "articles", ["title"], name: "index_articles_on_title", using: :btree
 
   create_table "comments", force: true do |t|
     t.text     "text"
@@ -52,6 +54,7 @@ ActiveRecord::Schema.define(version: 20140706204419) do
     t.integer  "article_id"
   end
 
+  add_index "notifications", ["article_id"], name: "index_notifications_on_article_id", using: :btree
   add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
 
   create_table "pg_search_documents", force: true do |t|
@@ -70,6 +73,8 @@ ActiveRecord::Schema.define(version: 20140706204419) do
   end
 
   add_index "taggings", ["article_id", "tag_id"], name: "index_taggings_on_article_id_and_tag_id", unique: true, using: :btree
+  add_index "taggings", ["article_id"], name: "index_taggings_on_article_id", using: :btree
+  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
 
   create_table "tags", force: true do |t|
     t.string   "name",       null: false
@@ -90,6 +95,7 @@ ActiveRecord::Schema.define(version: 20140706204419) do
     t.string   "uid"
   end
 
+  add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["provider"], name: "index_users_on_provider", using: :btree
   add_index "users", ["uid"], name: "index_users_on_uid", using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
