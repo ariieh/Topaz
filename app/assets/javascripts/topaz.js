@@ -96,7 +96,7 @@ window.Topaz = {
 		
 		$("#scroll-modal").fadeTo("fast", 0.8);
 		Topaz.scrollSpinner = (Topaz.scrollSpinner || new Spinner(opts).spin());
-		$("#scroll-modal").append(Topaz.scrollSpinner.el);
+		$("#scroll-modal").html(Topaz.scrollSpinner.el);
 	},
 	
 	scrollLoaderHide: function(){
