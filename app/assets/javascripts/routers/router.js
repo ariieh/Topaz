@@ -18,65 +18,42 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		"welcome": "welcome"
 	},
 	
-	articlesIndex: function(){
-		$("#now-reading-tag").html("LATEST");
+	_indexTemplate: function(title, key, tagName, searchQuery, userID){
+		$("#now-reading-tag").html(title);
 		this._scrollUp();
 		Topaz.pageLoaderShow();
 		
+		if (searchQuery !== null){
+			$("#page-modal").css({"background":"transparent"});
+		}
+		
     var that = this;
 		Topaz.Collections.articles.fetch({
-			data: {page: 1, key: "created_at"},
+			data: {page: 1, key: key, name: tagName, query: searchQuery, id: userID},
     	success: function(){
-				that._swapPageView("created_at");
+				that._swapPageView(key, tagName, searchQuery, userID);
     	}
     });
-		
+	},
+	
+	articlesIndex: function(){
+		this._indexTemplate("LATEST", "created_at", null, null, null);
 	},
 	
 	articlesIndexPopular: function(){
-		$("#now-reading-tag").html("POPULAR");
-		this._scrollUp();
-		Topaz.pageLoaderShow();
-		
-    var that = this;
-		Topaz.Collections.articles.fetch({
-			data: {page: 1, key: "votecount"},
-    	success: function(){
-				that._swapPageView("votecount");				
-    	}
-    });
+		this._indexTemplate("POPULAR", "votecount", null, null, null);
 	},
 	
 	articlesIndexFavorites: function(){
 		if (window.currentUserId){
-			this._scrollUp();
-			$("#now-reading-tag").html("FAVORITES");
-			Topaz.pageLoaderShow();
-			
-			var that = this;
-			Topaz.Collections.articles.fetch({
-				data: {page: 1, key: "favorites"},
-	    	success: function(){				
-					that._swapPageView("favorites");				
-	    	}
-	    });
+			this._indexTemplate("FAVORITES", "favorites", null, null, null);
 		} else {
 			alert("Sign in to see your favorites!");
 		}
 	},
 	
 	tagsShow: function(name){
-		$("#now-reading-tag").html(name.toUpperCase());
-		this._scrollUp();
-		
-		Topaz.pageLoaderShow();
-    var that = this;
-		Topaz.Collections.articles.fetch({
-			data: {page: 1, key: "tag", name: name},
-    	success: function(){
-				that._swapPageView("tag", name);				
-    	}
-    });
+		this._indexTemplate(name.toUpperCase(), "tag", name, null, null);
 	},
 	
 	articlesNew: function(){
@@ -134,32 +111,12 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	      model: user
 	    });
 			
-			$("#now-reading-tag").html(user.get("username") + "'s articles");
-			
-			Topaz.Collections.articles.fetch({
-				data: {page: 1, key: "user", id: id},
-	    	success: function(){
-					that._swapPageView("user", null, null, id);					
-					that.$contentEl.prepend(showView.render().$el);
-	    	}
-	    });
+			this._indexTemplate(user.get("username") + "'s articles", "user", null, null, id);
 		});
 	},
 	
 	search: function(query){
-		$("#now-reading-tag").html(query.toUpperCase());
-		this._scrollUp();
-		
-		$("#page-modal").css({"background":"transparent"});
-		Topaz.pageLoaderShow();
-		
-    var that = this;
-		Topaz.Collections.articles.fetch({
-			data: {page: 1, key: "search", query: query},
-    	success: function(){
-				that._swapPageView("search", null, query);					
-    	}
-    });
+		this._indexTemplate(query.toUpperCase(), "search", null, query, null);				
 	},
 	
 	about: function(){
