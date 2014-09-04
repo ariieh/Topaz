@@ -18,7 +18,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 		"welcome": "welcome"
 	},
 	
-	_indexTemplate: function(title, key, tagName, searchQuery, userID){
+	_indexTemplate: function(title, key, tagName, searchQuery, userID, callback){
 		$("#now-reading-tag").html(title);
 		this._scrollUp();
 		Topaz.pageLoaderShow();
@@ -32,6 +32,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 			data: {page: 1, key: key, name: tagName, query: searchQuery, id: userID},
     	success: function(){
 				that._swapPageView(key, tagName, searchQuery, userID);
+				callback();
     	}
     });
 	},
@@ -111,7 +112,9 @@ Topaz.Routers.Router = Backbone.Router.extend({
 	      model: user
 	    });
 			
-			this._indexTemplate(user.get("username") + "'s articles", "user", null, null, id);
+			that._indexTemplate(user.get("username") + "'s articles", "user", null, null, id, function(){
+				that.$contentEl.prepend(showView.render().$el);
+			});
 		});
 	},
 	
