@@ -32,7 +32,7 @@ Topaz.Routers.Router = Backbone.Router.extend({
 			data: {page: 1, key: key, name: tagName, query: searchQuery, id: userID},
     	success: function(){
 				that._swapPageView(key, tagName, searchQuery, userID);
-				callback();
+				typeof callback === 'function' && callback();
     	}
     });
 	},
